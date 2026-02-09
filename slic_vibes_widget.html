@@ -1,0 +1,73 @@
+<!-- SLIC Vibes Dashboard Widget -->
+<!-- COPY AND PASTE THIS CODE INTO YOUR WEBSITE -->
+
+<div id="slic-vibes-widget" style="font-family: 'Inter', sans-serif; max-width: 1200px; margin: 0 auto;">
+    <div id="gdelt-feed"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <!-- Content will be injected here -->
+        <div style="padding: 2rem; text-align: center; color: #666;">Loading SLIC Vibes...</div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        // Configuration
+        const WIDGET_ID = 'gdelt-feed';
+
+        // Synthetic Data Generator (Same logic as valid SLIC City Ops)
+        const newsItems = [
+            { icon: '📊', title: 'Start of Week: 142 Reports Received', summary: 'System accepted new issues aligned with city goals.', source: 'System', time: 'Just now', color: '#3182ce' },
+            { icon: '📈', title: 'Top Issue: Traffic Congestion', summary: 'AI recommends signal retiming at 3 major intersections.', source: 'Analytics', time: '2h ago', color: '#e53e3e' },
+            { icon: '✅', title: 'Resolution Success: 98%', summary: 'Community feedback positive on recent park renovations.', source: 'City Ops', time: 'Yesterday', color: '#38a169' },
+            { icon: '⚠️', title: 'Aging Alert: Case #4892', summary: 'Pending for 49 hours. Escalated to rapid response team.', source: 'Alert System', time: '4h ago', color: '#dd6b20' },
+            { icon: '🌱', title: 'PM2.5 Levels Normal', summary: 'Air quality index stays below 50 in residential zones.', source: 'Environment', time: '5h ago', color: '#38a169' },
+            { icon: '🏗️', title: 'Infrastructure Upgrade', summary: 'Smart lighting installation 60% complete in District 4.', source: 'Public Works', time: '1d ago', color: '#3182ce' },
+            { icon: '👥', title: 'Citizen Engagement Up', summary: '2,500 active users on the new city app this week.', source: 'Community', time: '2d ago', color: '#805ad5' },
+            { icon: '🏛️', title: 'Policy Update Approved', summary: 'New zoning regulations for mixed-use areas published.', source: 'Governance', time: '3d ago', color: '#718096' }
+        ];
+
+        function renderWidget() {
+            const container = document.getElementById(WIDGET_ID);
+            if (!container) return;
+
+            container.innerHTML = '';
+            newsItems.forEach(item => {
+                const card = document.createElement('div');
+                // Inline styles for standalone portability
+                card.style.cssText = `
+                background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;
+                display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+                position: relative; overflow: hidden; font-family: system-ui, -apple-system, sans-serif;
+                transition: transform 0.2s;
+                word-break: break-word; hyphens: auto;
+            `;
+
+                card.onmouseenter = () => { card.style.transform = 'translateY(-4px)'; card.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)'; };
+                card.onmouseleave = () => { card.style.transform = 'translateY(0)'; card.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)'; };
+
+                card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="font-size: 2.5rem; line-height: 1;">${item.icon}</div>
+                    <div style="font-size: 0.7rem; font-weight: 600; color: #718096; background: #f7fafc; padding: 0.25rem 0.75rem; border-radius: 20px; border: 1px solid #edf2f7; text-align: right; min-width: 60px;">${item.time}</div>
+                </div>
+                <div style="flex-grow: 1;">
+                    <h4 style="font-size: 1.1rem; margin: 0 0 0.5rem 0; font-weight: 700; color: #2d3748;">${item.title}</h4>
+                    <p style="font-size: 0.9rem; color: #718096; margin: 0; line-height: 1.5;">${item.summary}</p>
+                </div>
+                <div style="margin-top: auto; padding-top: 1rem; border-top: 1px dashed #e2e8f0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 700; color: ${item.color}; text-transform: uppercase;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background-color: ${item.color}; border: 1px solid rgba(0,0,0,0.1);"></span>${item.source}
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: ${item.color};"></div>
+            `;
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderWidget);
+        } else {
+            renderWidget();
+        }
+    })();
+</script>
