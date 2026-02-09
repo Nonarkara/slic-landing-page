@@ -15,6 +15,36 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Critical Mobile Fixes (Inline to prevent caching issues) -->
+    <style>
+        @media (max-width: 900px) {
+            .responsive-grid-2 {
+                display: flex !important;
+                flex-direction: column-reverse !important;
+                gap: 2rem !important;
+            }
+
+            /* Specific fix for "Our Story" which has text first (so we don't want to reverse that one, or do we?) 
+               User asked for "City Health Dashboard" (Proof) to be on top.
+               Proof Section: [Text] [Image]. Column-reverse makes [Image] [Text]. Perfect.
+               
+               Our Story Section: [Text] [Image]. Column-reverse makes [Image] [Text]. 
+               Actually, for "Our Story", usually Text first is better? 
+               But to be consistent and "modern", image top is often preferred. 
+               Let's stick to column-reverse for both as it solves the specific user request for Dashboard.
+            */
+
+            /* Reset explicit widths if any */
+            .responsive-grid-2>div {
+                width: 100% !important;
+            }
+
+            .story-second-image {
+                margin-left: 0 !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
