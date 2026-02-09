@@ -288,3 +288,34 @@ h3 {
         font-size: 2.5rem;
     }
 }
+/* Mobile Optimization / Responsive Utilities (Re-applied) */
+.responsive-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-second-image {
+    margin-left: 2rem;
+}
+
+@media (max-width: 900px) {
+    .responsive-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .story-second-image {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .section h2 {
+        font-size: 2rem !important;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
