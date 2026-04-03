@@ -676,29 +676,39 @@
        SCL (SMART CITY LEADERSHIP)
        ══════════════════════════════════════════════ */
     .scl-section {
-      background: linear-gradient(170deg, #0a2e28 0%, #14594f 50%, #1a7a6d 100%);
+      background: var(--ink);
       padding: 100px 0 0;
       position: relative;
       overflow: hidden;
     }
     .scl-section::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 60% at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(14, 165, 233, 0.06) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 85%, rgba(255, 209, 0, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 85% 15%, rgba(255, 209, 0, 0.06) 0%, transparent 60%);
+    }
+    .scl-section::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255, 209, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 209, 0, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 70%);
     }
     .scl-header { position: relative; z-index: 1; text-align: center; margin-bottom: 56px; }
-    .scl-header .section-label { color: #5eead4; }
+    .scl-header .section-label { color: #ffd100; }
     .scl-header .section-title { color: #fff; }
     .scl-header .section-desc { color: rgba(255,255,255,0.5); max-width: 700px; margin: 0 auto; }
 
     .scl-urgency {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3);
+      background: rgba(255, 209, 0, 0.12); border: 1px solid rgba(255, 209, 0, 0.25);
       border-radius: 100px; padding: 8px 20px; margin-bottom: 20px;
-      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: #fbbf24;
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: #ffd100;
     }
     .scl-urgency-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #fbbf24;
+      width: 8px; height: 8px; border-radius: 50%; background: #ffd100;
       animation: sclPulse 2s ease-in-out infinite;
     }
     @keyframes sclPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -721,7 +731,7 @@
       border-radius: 16px; padding: 28px; transition: all 0.3s var(--ease-out);
     }
     .scl-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-2px); }
-    .scl-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: #5eead4; margin-bottom: 8px; }
+    .scl-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: #ffd100; margin-bottom: 8px; }
     .scl-card p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
     .scl-dimensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
@@ -730,7 +740,7 @@
       border-radius: 12px; padding: 16px 12px; text-align: center;
       transition: all 0.25s;
     }
-    .scl-dim:hover { background: rgba(255,255,255,0.08); border-color: rgba(94, 234, 212, 0.3); }
+    .scl-dim:hover { background: rgba(255,255,255,0.08); border-color: rgba(255, 209, 0, 0.25); }
     .scl-dim-icon { font-size: 1.4rem; margin-bottom: 6px; }
     .scl-dim-text { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.04em; }
 
@@ -752,12 +762,12 @@
     .scl-test-quote {
       font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.75; flex: 1;
       margin-bottom: 20px; position: relative; padding-left: 16px;
-      border-left: 2px solid rgba(94, 234, 212, 0.3);
+      border-left: 2px solid rgba(255, 209, 0, 0.25);
     }
     .scl-test-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
     .scl-test-avatar {
       width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, #1a7a6d, #2dd4bf);
+      background: linear-gradient(135deg, #b8960a, #ffd100);
       display: flex; align-items: center; justify-content: center;
       color: #fff; font-weight: 700; font-size: 0.95rem; flex-shrink: 0;
     }
@@ -765,7 +775,7 @@
     .scl-test-title { font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.4; }
     .scl-test-batch {
       display: inline-block; font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
-      color: #5eead4; background: rgba(94, 234, 212, 0.1);
+      color: #ffd100; background: rgba(255, 209, 0, 0.1);
       padding: 2px 8px; border-radius: 100px; margin-top: 4px;
     }
 
@@ -784,16 +794,16 @@
       margin: 24px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .scl-cta-item { text-align: center; }
-    .scl-cta-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #5eead4; }
+    .scl-cta-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #ffd100; }
     .scl-cta-label { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .btn-teal { background: #14b8a6; color: #fff; }
-    .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(20, 184, 166, 0.35); }
+    .btn-teal { background: #ffd100; color: #1a1a2e; font-weight: 700; }
+    .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255, 209, 0, 0.35); }
     .scl-tax-note {
       margin-top: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.4);
       display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .scl-contacts { margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.8; }
-    .scl-contacts a { color: #5eead4; }
+    .scl-contacts a { color: #ffd100; }
 
     /* ══════════════════════════════════════════════
        SCROLL ANIMATIONS
@@ -1183,7 +1193,7 @@
           <span data-i18n="scl.urgency">Registration closes April 6, 2026</span>
         </div>
         <span class="section-label reveal" data-i18n="scl.label">depa Flagship Program</span>
-        <h2 class="section-title reveal" data-i18n="scl.title" data-i18n-html="true">Smart City Leadership <span style="color: #5eead4;">Batch 6</span></h2>
+        <h2 class="section-title reveal" data-i18n="scl.title" data-i18n-html="true">Smart City Leadership <span style="color: #ffd100;">Batch 6</span></h2>
         <p class="section-desc reveal" data-i18n="scl.desc">A 42-hour executive program by depa training the next generation of smart city leaders through 30+ expert lecturers and hands-on site visits to Thailand's leading organizations.</p>
       </div>
 
@@ -1211,7 +1221,7 @@
         </div>
 
         <div class="reveal reveal-delay-1">
-          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #5eead4; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.dim_title">7 Smart City Dimensions</h4>
+          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #ffd100; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.dim_title">7 Smart City Dimensions</h4>
           <div class="scl-dimensions">
             <div class="scl-dim"><div class="scl-dim-icon">&#127795;</div><div class="scl-dim-text">Environment</div></div>
             <div class="scl-dim"><div class="scl-dim-icon">&#128200;</div><div class="scl-dim-text">Economy</div></div>
@@ -1222,7 +1232,7 @@
             <div class="scl-dim"><div class="scl-dim-icon">&#127963;</div><div class="scl-dim-text">Governance</div></div>
           </div>
 
-          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #5eead4; margin: 28px 0 12px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.schedule_title">Schedule &middot; May 2026</h4>
+          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #ffd100; margin: 28px 0 12px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.schedule_title">Schedule &middot; May 2026</h4>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
             <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">11</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Sun</div></div>
             <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">12</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Mon</div></div>
@@ -1589,7 +1599,7 @@
         'nav.scl': 'SCL',
         'scl.urgency': 'Registration closes April 6, 2026',
         'scl.label': 'depa Flagship Program',
-        'scl.title': 'Smart City Leadership <span style="color: #5eead4;">Batch 6</span>',
+        'scl.title': 'Smart City Leadership <span style="color: #ffd100;">Batch 6</span>',
         'scl.desc': 'A 42-hour executive program by depa training the next generation of smart city leaders through 30+ expert lecturers and hands-on site visits to Thailand\'s leading organizations.',
         'scl.stat_alumni': 'Alumni', 'scl.stat_experts': 'Expert Lecturers', 'scl.stat_hours': 'Hours', 'scl.stat_batches': 'Completed Batches',
         'scl.cur_title': 'Curriculum', 'scl.cur_desc': 'Covers smart city planning with Design Thinking, AI application for urban development, business models aligned with international standards, and hands-on workshops to build real smart city projects.',
@@ -1679,7 +1689,7 @@
         'nav.scl': 'SCL',
         'scl.urgency': 'ปิดรับสมัคร 6 เมษายน 2569',
         'scl.label': 'หลักสูตรหลักจาก depa',
-        'scl.title': 'ผู้นำการส่งเสริมเมืองอัจฉริยะ <span style="color: #5eead4;">รุ่นที่ 6</span>',
+        'scl.title': 'ผู้นำการส่งเสริมเมืองอัจฉริยะ <span style="color: #ffd100;">รุ่นที่ 6</span>',
         'scl.desc': 'หลักสูตรระดับผู้บริหาร 42 ชั่วโมง จาก depa สร้างผู้นำเมืองอัจฉริยะรุ่นใหม่ ผ่านวิทยากรผู้ทรงคุณวุฒิกว่า 30 ท่าน และศึกษาดูงานจากองค์กรชั้นนำ',
         'scl.stat_alumni': 'ศิษย์เก่า', 'scl.stat_experts': 'วิทยากร', 'scl.stat_hours': 'ชั่วโมง', 'scl.stat_batches': 'รุ่นที่จบแล้ว',
         'scl.cur_title': 'หลักสูตร', 'scl.cur_desc': 'ครอบคลุมการวางแผนเมืองอัจฉริยะด้วย Design Thinking การประยุกต์ AI เพื่อพัฒนาเมือง โมเดลธุรกิจตามมาตรฐานสากล และ Workshop ลงมือทำจริง',
@@ -1769,7 +1779,7 @@
         'nav.scl': 'SCL',
         'scl.urgency': '报名截止：2026年4月6日',
         'scl.label': 'depa旗舰项目',
-        'scl.title': '智慧城市领导力计划 <span style="color: #5eead4;">第6期</span>',
+        'scl.title': '智慧城市领导力计划 <span style="color: #ffd100;">第6期</span>',
         'scl.desc': 'depa推出的42小时高管培训项目，通过30+专家讲师和实地考察泰国领先组织，培养新一代智慧城市领导者。',
         'scl.stat_alumni': '校友', 'scl.stat_experts': '专家讲师', 'scl.stat_hours': '课时', 'scl.stat_batches': '已完成期数',
         'scl.cur_title': '课程内容', 'scl.cur_desc': '涵盖设计思维规划智慧城市、AI在城市发展中的应用、符合国际标准的商业模式，以及实践工作坊构建真正的智慧城市项目。',
