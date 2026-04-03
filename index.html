@@ -673,6 +673,129 @@
     .footer-legal { font-size: 0.7rem; color: rgba(255,255,255,0.15); max-width: 500px; text-align: right; line-height: 1.5; }
 
     /* ══════════════════════════════════════════════
+       SCL (SMART CITY LEADERSHIP)
+       ══════════════════════════════════════════════ */
+    .scl-section {
+      background: linear-gradient(170deg, #0a2e28 0%, #14594f 50%, #1a7a6d 100%);
+      padding: 100px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scl-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(14, 165, 233, 0.06) 0%, transparent 60%);
+    }
+    .scl-header { position: relative; z-index: 1; text-align: center; margin-bottom: 56px; }
+    .scl-header .section-label { color: #5eead4; }
+    .scl-header .section-title { color: #fff; }
+    .scl-header .section-desc { color: rgba(255,255,255,0.5); max-width: 700px; margin: 0 auto; }
+
+    .scl-urgency {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 100px; padding: 8px 20px; margin-bottom: 20px;
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: #fbbf24;
+    }
+    .scl-urgency-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #fbbf24;
+      animation: sclPulse 2s ease-in-out infinite;
+    }
+    @keyframes sclPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .scl-stats-row {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: clamp(32px, 6vw, 80px); flex-wrap: wrap;
+      margin-top: 48px; padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .scl-stat { text-align: center; }
+    .scl-stat-num { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1; }
+    .scl-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-display); }
+
+    .scl-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; padding: 60px 0; }
+    .scl-details { display: flex; flex-direction: column; gap: 20px; }
+    .scl-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 28px; transition: all 0.3s var(--ease-out);
+    }
+    .scl-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+    .scl-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: #5eead4; margin-bottom: 8px; }
+    .scl-card p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    .scl-dimensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+    .scl-dim {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 16px 12px; text-align: center;
+      transition: all 0.25s;
+    }
+    .scl-dim:hover { background: rgba(255,255,255,0.08); border-color: rgba(94, 234, 212, 0.3); }
+    .scl-dim-icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .scl-dim-text { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* SCL Testimonials */
+    .scl-testimonials { position: relative; z-index: 1; padding: 60px 0 80px; }
+    .scl-testimonials-header { text-align: center; margin-bottom: 40px; }
+    .scl-testimonials-header h3 {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: #fff;
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .scl-testimonials-header p { font-size: 0.95rem; color: rgba(255,255,255,0.4); }
+    .scl-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .scl-test-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 28px; display: flex; flex-direction: column;
+      transition: all 0.3s var(--ease-out);
+    }
+    .scl-test-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-3px); }
+    .scl-test-quote {
+      font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.75; flex: 1;
+      margin-bottom: 20px; position: relative; padding-left: 16px;
+      border-left: 2px solid rgba(94, 234, 212, 0.3);
+    }
+    .scl-test-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .scl-test-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a7a6d, #2dd4bf);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.95rem; flex-shrink: 0;
+    }
+    .scl-test-name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #fff; line-height: 1.3; }
+    .scl-test-title { font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.4; }
+    .scl-test-batch {
+      display: inline-block; font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
+      color: #5eead4; background: rgba(94, 234, 212, 0.1);
+      padding: 2px 8px; border-radius: 100px; margin-top: 4px;
+    }
+
+    /* SCL CTA */
+    .scl-cta {
+      position: relative; z-index: 1; text-align: center; padding: 48px 0 80px;
+    }
+    .scl-cta-box {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 48px 40px; max-width: 800px; margin: 0 auto;
+    }
+    .scl-cta-box h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .scl-cta-box p { color: rgba(255,255,255,0.5); margin-bottom: 8px; font-size: 0.95rem; }
+    .scl-cta-details {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+      margin: 24px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .scl-cta-item { text-align: center; }
+    .scl-cta-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #5eead4; }
+    .scl-cta-label { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .btn-teal { background: #14b8a6; color: #fff; }
+    .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(20, 184, 166, 0.35); }
+    .scl-tax-note {
+      margin-top: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .scl-contacts { margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.8; }
+    .scl-contacts a { color: #5eead4; }
+
+    /* ══════════════════════════════════════════════
        SCROLL ANIMATIONS
        ══════════════════════════════════════════════ */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
@@ -700,6 +823,8 @@
       .slicx-banner { height: 360px; }
       .slicx-gallery-strip { grid-template-columns: repeat(3, 1fr); }
       .lfc-grid { grid-template-columns: 1fr; }
+      .scl-grid { grid-template-columns: 1fr; }
+      .scl-test-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -726,6 +851,8 @@
       .slicx-highlights { grid-template-columns: 1fr; }
       .slicx-banner { height: 280px; }
       .slicx-gallery-strip { grid-template-columns: repeat(2, 1fr); }
+      .scl-test-grid { grid-template-columns: 1fr; }
+      .scl-dimensions { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
     }
   </style>
 </head>
@@ -744,6 +871,7 @@
           <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
           <li><a href="#slicx" data-i18n="nav.slicx">SLICx</a></li>
           <li><a href="#lfc" data-i18n="nav.lfc">LFC</a></li>
+          <li><a href="#scl" data-i18n="nav.scl">SCL</a></li>
           <li><a href="#team" data-i18n="nav.team">Team</a></li>
           <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Let's Talk</a></li>
         </ul>
@@ -1046,6 +1174,184 @@
     </div>
   </section>
 
+  <!-- ═══════════ SCL: SMART CITY LEADERSHIP ═══════════ -->
+  <section class="scl-section" id="scl">
+    <div class="wrap">
+      <div class="scl-header">
+        <div class="scl-urgency reveal">
+          <span class="scl-urgency-dot"></span>
+          <span data-i18n="scl.urgency">Registration closes April 6, 2026</span>
+        </div>
+        <span class="section-label reveal" data-i18n="scl.label">depa Flagship Program</span>
+        <h2 class="section-title reveal" data-i18n="scl.title" data-i18n-html="true">Smart City Leadership <span style="color: #5eead4;">Batch 6</span></h2>
+        <p class="section-desc reveal" data-i18n="scl.desc">A 42-hour executive program by depa training the next generation of smart city leaders through 30+ expert lecturers and hands-on site visits to Thailand's leading organizations.</p>
+      </div>
+
+      <div class="scl-stats-row reveal">
+        <div class="scl-stat"><div class="scl-stat-num">200+</div><div class="scl-stat-label" data-i18n="scl.stat_alumni">Alumni</div></div>
+        <div class="scl-stat"><div class="scl-stat-num">30+</div><div class="scl-stat-label" data-i18n="scl.stat_experts">Expert Lecturers</div></div>
+        <div class="scl-stat"><div class="scl-stat-num">42</div><div class="scl-stat-label" data-i18n="scl.stat_hours">Hours</div></div>
+        <div class="scl-stat"><div class="scl-stat-num">5</div><div class="scl-stat-label" data-i18n="scl.stat_batches">Completed Batches</div></div>
+      </div>
+
+      <div class="scl-grid">
+        <div class="scl-details reveal">
+          <div class="scl-card">
+            <h4 data-i18n="scl.cur_title">Curriculum</h4>
+            <p data-i18n="scl.cur_desc">Covers smart city planning with Design Thinking, AI application for urban development, business models with international standards, and hands-on workshops to build real smart city projects.</p>
+          </div>
+          <div class="scl-card">
+            <h4 data-i18n="scl.visit_title">Site Visits</h4>
+            <p data-i18n="scl.visit_desc">Learn from leading organizations: Huawei Technology Thailand, KMITL Interactive Digital Center, EGAT Learning Center, SWOC Smart Water Operations, Creative Economy Agency, and Ying Charoen Square.</p>
+          </div>
+          <div class="scl-card">
+            <h4 data-i18n="scl.who_title">Who Should Apply?</h4>
+            <p data-i18n="scl.who_desc">Mid-to-senior government executives (central, regional, local), private sector entrepreneurs of all sizes, and academics or consultants working in smart city development.</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #5eead4; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.dim_title">7 Smart City Dimensions</h4>
+          <div class="scl-dimensions">
+            <div class="scl-dim"><div class="scl-dim-icon">&#127795;</div><div class="scl-dim-text">Environment</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#128200;</div><div class="scl-dim-text">Economy</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#128652;</div><div class="scl-dim-text">Mobility</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#9889;</div><div class="scl-dim-text">Energy</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#128101;</div><div class="scl-dim-text">People</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#127968;</div><div class="scl-dim-text">Living</div></div>
+            <div class="scl-dim"><div class="scl-dim-icon">&#127963;</div><div class="scl-dim-text">Governance</div></div>
+          </div>
+
+          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: #5eead4; margin: 28px 0 12px; text-transform: uppercase; letter-spacing: 0.08em;" data-i18n="scl.schedule_title">Schedule &middot; May 2026</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">11</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Sun</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">12</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Mon</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">18</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Sun</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">19</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Mon</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">20</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Tue</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">25</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Sun</div></div>
+            <div class="scl-dim" style="padding: 12px 16px; min-width: 0;"><div class="scl-dim-text" style="font-size: 0.85rem;">26</div><div style="font-size: 0.6rem; color: rgba(255,255,255,0.3);">Mon</div></div>
+          </div>
+          <p style="font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 10px;" data-i18n="scl.venue">The Quarter Ladprao by UHG, Bangkok (MRT Phahonyothin)</p>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="scl-testimonials">
+        <div class="scl-testimonials-header reveal">
+          <h3 data-i18n="scl.test_title">What Alumni Say</h3>
+          <p data-i18n="scl.test_desc">Leaders from across Thailand share their SCL experience</p>
+        </div>
+
+        <div class="scl-test-grid">
+          <div class="scl-test-card reveal">
+            <p class="scl-test-quote" data-i18n="scl.t1_quote">เป็นหลักสูตรที่ดีและน่าสนใจอย่างยิ่ง ช่วยขยายมุมมองและเครื่องมือเชิงนโยบายที่ทันสมัย สามารถนำไปประยุกต์ใช้พัฒนาเมืองให้ตอบโจทย์ประชาชนได้อย่างเป็นรูปธรรม</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3592;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t1_name">นายจุมพฏ วรรณฉัตรสิริ</div>
+                <div class="scl-test-title" data-i18n="scl.t1_role">รองปลัดกระทรวงมหาดไทย</div>
+                <span class="scl-test-batch">SCL #4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal reveal-delay-1">
+            <p class="scl-test-quote" data-i18n="scl.t2_quote">หลักสูตร SCL ของดีป้า ช่วยเสริมสร้างความเข้าใจแนวคิด Smart City อย่างเป็นระบบ สามารถนำเทคโนโลยีไปประยุกต์ใช้ในการขับเคลื่อนการพัฒนาเมืองได้อย่างมีประสิทธิภาพ</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3594;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t2_name">นายชัชวาลย์ เบญจสิริวงศ์</div>
+                <div class="scl-test-title" data-i18n="scl.t2_role">ผู้ว่าราชการจังหวัดร้อยเอ็ด</div>
+                <span class="scl-test-batch">SCL #4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal reveal-delay-2">
+            <p class="scl-test-quote" data-i18n="scl.t3_quote">หลักสูตร SCL#5 เป็นหลักสูตรที่มีคุณภาพ เปิดโอกาสให้ผู้เข้าอบรมได้รับความรู้จากวิทยากรผู้ทรงคุณวุฒิหลากหลายสายวิชาชีพ ควบคู่กับการศึกษาดูงานจากสถานที่จริง</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3626;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t3_name">นายสัมฤทธิ์ เลียงประสิทธิ์</div>
+                <div class="scl-test-title" data-i18n="scl.t3_role">นายก อบจ.สตูล</div>
+                <span class="scl-test-batch">SCL #5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal">
+            <p class="scl-test-quote" data-i18n="scl.t4_quote">SCL เป็นหลักสูตรที่ได้เติมเต็มความรู้ด้านการพัฒนาเมืองอัจฉริยะอย่างรอบด้าน ไม่เพียงแต่เป็นการสร้างผู้นำเมือง แต่เป็นการสร้างเมืองให้น่าอยู่</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3605;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t4_name">ร.ต.อ.ดร.ตรีสุพงศ์ ธูปกระจ่าง</div>
+                <div class="scl-test-title" data-i18n="scl.t4_role">นายกเทศมนตรีนครรังสิต</div>
+                <span class="scl-test-batch">SCL #1</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal reveal-delay-1">
+            <p class="scl-test-quote" data-i18n="scl.t5_quote">หลักสูตร SCL ทำให้เข้าใจว่าความสำเร็จของ Smart City มีมากกว่าแค่เรื่องของเทคโนโลยี สำคัญที่สุดคือเรื่องของคน ถ้าคนไม่ใช้ เทคโนโลยีดีแค่ไหนก็ไร้ประโยชน์</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3623;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t5_name">ดร.วิภาวัลย์ วรวรรณปรีชา</div>
+                <div class="scl-test-title" data-i18n="scl.t5_role">เลขานุการนายก อบจ.นนทบุรี</div>
+                <span class="scl-test-batch">SCL #1</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal reveal-delay-2">
+            <p class="scl-test-quote" data-i18n="scl.t6_quote">หลักสูตร SCL#2 สามารถนำระบบ Smart City พัฒนาเทศบาลนครยะลาได้อย่างต่อเนื่อง จนเป็นที่ยอมรับจากองค์กรปกครองท้องถิ่นระดับประเทศ</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3623;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t6_name">นายวิศาล จิรภาพพันธุ์</div>
+                <div class="scl-test-title" data-i18n="scl.t6_role">รองนายกเทศมนตรีเทศบาลนครยะลา</div>
+                <span class="scl-test-batch">SCL #2</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scl-test-card reveal" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
+            <p class="scl-test-quote" data-i18n="scl.t7_quote">ได้รับการพัฒนาภาวะผู้นำด้านเมืองอัจฉริยะ เสริมมุมมองการขับเคลื่อนเมืองอย่างยั่งยืน ตั้งแต่วิสัยทัศน์ที่ชัดเจน การวางแผนระยะยาวโดยเน้นประชาชนเป็นหลัก ขับเคลื่อนด้วยข้อมูลและสร้างความร่วมมือจากทุกภาคส่วน</p>
+            <div class="scl-test-author">
+              <div class="scl-test-avatar">&#3585;</div>
+              <div>
+                <div class="scl-test-name" data-i18n="scl.t7_name">นางเกษศิรินทร์ แปงเสน</div>
+                <div class="scl-test-title" data-i18n="scl.t7_role">หน.โครงการแม่เมาะเมืองน่าอยู่ กฟผ.</div>
+                <span class="scl-test-batch">SCL #1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="scl-cta reveal">
+        <div class="scl-cta-box">
+          <h3 data-i18n="scl.cta_title">Apply for SCL Batch 6</h3>
+          <p data-i18n="scl.cta_desc">Registration open now through April 6, 2026</p>
+          <div class="scl-cta-details">
+            <div class="scl-cta-item"><div class="scl-cta-val">&#3647;62,000</div><div class="scl-cta-label" data-i18n="scl.cta_fee">Fee</div></div>
+            <div class="scl-cta-item"><div class="scl-cta-val" data-i18n="scl.cta_dates">May 11-26</div><div class="scl-cta-label" data-i18n="scl.cta_period">Period</div></div>
+            <div class="scl-cta-item"><div class="scl-cta-val" data-i18n="scl.cta_cert">Certificate + NFT</div><div class="scl-cta-label" data-i18n="scl.cta_cert_label">Certification</div></div>
+          </div>
+          <a href="mailto:depasclp@gmail.com" class="btn btn-teal" data-i18n="scl.cta_btn">Apply Now</a>
+          <div class="scl-tax-note"><span>&#128176;</span> <span data-i18n="scl.tax_note">Corporate entities can claim up to 250% tax deduction on registration fees</span></div>
+          <div class="scl-contacts">
+            <a href="mailto:depasclp@gmail.com">depasclp@gmail.com</a> &middot;
+            089-142-8990 &middot; 083-116-6581 &middot; 065-054-6397
+          </div>
+          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-top: 16px;" data-i18n="scl.organizers">Organized by depa (Digital Economy Promotion Agency) &times; Noname IMC Co., Ltd.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════ TEAM ═══════════ -->
   <section class="section section-warm" id="team">
     <div class="wrap">
@@ -1188,6 +1494,7 @@
             <h5 data-i18n="footer.more_title">More</h5>
             <ul>
               <li><a href="#lfc" data-i18n="nav.lfc">LFC</a></li>
+              <li><a href="#scl" data-i18n="nav.scl">SCL</a></li>
               <li><a href="#downloads" data-i18n="downloads.label">Resources</a></li>
               <li><a href="#team" data-i18n="nav.team">Team</a></li>
               <li><a href="#contact" data-i18n="nav.contact">Let's Talk</a></li>
@@ -1278,7 +1585,25 @@
         'lfc.partner_note': 'In partnership with <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">Right Livelihood Foundation</a> (\u0e21\u0e39\u0e25\u0e19\u0e34\u0e18\u0e34\u0e2a\u0e31\u0e21\u0e21\u0e32\u0e0a\u0e35\u0e1e)',
         'downloads.label': 'Resources', 'downloads.title': 'Download our materials',
         'downloads.d1_title': 'SLIC Company Profile', 'downloads.d1_desc': 'PDF \u00b7 22 MB \u00b7 Full overview of our services, team, and projects',
-        'downloads.d2_title': 'Smart City Primer', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 SLIC \u00d7 depa guide to smart city fundamentals'
+        'downloads.d2_title': 'Smart City Primer', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 SLIC \u00d7 depa guide to smart city fundamentals',
+        'nav.scl': 'SCL',
+        'scl.urgency': 'Registration closes April 6, 2026',
+        'scl.label': 'depa Flagship Program',
+        'scl.title': 'Smart City Leadership <span style="color: #5eead4;">Batch 6</span>',
+        'scl.desc': 'A 42-hour executive program by depa training the next generation of smart city leaders through 30+ expert lecturers and hands-on site visits to Thailand\'s leading organizations.',
+        'scl.stat_alumni': 'Alumni', 'scl.stat_experts': 'Expert Lecturers', 'scl.stat_hours': 'Hours', 'scl.stat_batches': 'Completed Batches',
+        'scl.cur_title': 'Curriculum', 'scl.cur_desc': 'Covers smart city planning with Design Thinking, AI application for urban development, business models aligned with international standards, and hands-on workshops to build real smart city projects.',
+        'scl.visit_title': 'Site Visits', 'scl.visit_desc': 'Learn from leading organizations: Huawei Technology Thailand, KMITL Interactive Digital Center, EGAT Learning Center, SWOC Smart Water Operations, Creative Economy Agency, and Ying Charoen Square.',
+        'scl.who_title': 'Who Should Apply?', 'scl.who_desc': 'Mid-to-senior government executives (central, regional, local), private sector entrepreneurs of all sizes, and academics or consultants working in smart city development.',
+        'scl.dim_title': '7 Smart City Dimensions', 'scl.schedule_title': 'Schedule \u00b7 May 2026',
+        'scl.venue': 'The Quarter Ladprao by UHG, Bangkok (MRT Phahonyothin)',
+        'scl.test_title': 'What Alumni Say', 'scl.test_desc': 'Leaders from across Thailand share their SCL experience',
+        'scl.cta_title': 'Apply for SCL Batch 6', 'scl.cta_desc': 'Registration open now through April 6, 2026',
+        'scl.cta_fee': 'Fee', 'scl.cta_dates': 'May 11-26', 'scl.cta_period': 'Period',
+        'scl.cta_cert': 'Certificate + NFT', 'scl.cta_cert_label': 'Certification',
+        'scl.cta_btn': 'Apply Now',
+        'scl.tax_note': 'Corporate entities can claim up to 250% tax deduction on registration fees',
+        'scl.organizers': 'Organized by depa (Digital Economy Promotion Agency) \u00d7 Noname IMC Co., Ltd.'
       },
       th: {
         'nav.about': 'เกี่ยวกับเรา', 'nav.services': 'บริการ', 'nav.projects': 'โครงการ', 'nav.slicx': 'SLICx', 'nav.team': 'ทีมงาน', 'nav.contact': 'ติดต่อเรา',
@@ -1350,7 +1675,25 @@
         'lfc.partner_note': 'จัดร่วมกับ <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">มูลนิธิสัมมาชีพ</a>',
         'downloads.label': 'เอกสาร', 'downloads.title': 'ดาวน์โหลดเอกสารของเรา',
         'downloads.d1_title': 'โปรไฟล์บริษัท SLIC', 'downloads.d1_desc': 'PDF \u00b7 22 MB \u00b7 ภาพรวมบริการ ทีมงาน และโครงการ',
-        'downloads.d2_title': 'คู่มือเมืองอัจฉริยะ', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 คู่มือ SLIC \u00d7 depa เรื่องพื้นฐานเมืองอัจฉริยะ'
+        'downloads.d2_title': 'คู่มือเมืองอัจฉริยะ', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 คู่มือ SLIC \u00d7 depa เรื่องพื้นฐานเมืองอัจฉริยะ',
+        'nav.scl': 'SCL',
+        'scl.urgency': 'ปิดรับสมัคร 6 เมษายน 2569',
+        'scl.label': 'หลักสูตรหลักจาก depa',
+        'scl.title': 'ผู้นำการส่งเสริมเมืองอัจฉริยะ <span style="color: #5eead4;">รุ่นที่ 6</span>',
+        'scl.desc': 'หลักสูตรระดับผู้บริหาร 42 ชั่วโมง จาก depa สร้างผู้นำเมืองอัจฉริยะรุ่นใหม่ ผ่านวิทยากรผู้ทรงคุณวุฒิกว่า 30 ท่าน และศึกษาดูงานจากองค์กรชั้นนำ',
+        'scl.stat_alumni': 'ศิษย์เก่า', 'scl.stat_experts': 'วิทยากร', 'scl.stat_hours': 'ชั่วโมง', 'scl.stat_batches': 'รุ่นที่จบแล้ว',
+        'scl.cur_title': 'หลักสูตร', 'scl.cur_desc': 'ครอบคลุมการวางแผนเมืองอัจฉริยะด้วย Design Thinking การประยุกต์ AI เพื่อพัฒนาเมือง โมเดลธุรกิจตามมาตรฐานสากล และ Workshop ลงมือทำจริง',
+        'scl.visit_title': 'ศึกษาดูงาน', 'scl.visit_desc': 'เรียนรู้จากองค์กรชั้นนำ: Huawei Technology, KMITL KIDC, EGAT Learning Center, SWOC ศูนย์บริหารจัดการน้ำอัจฉริยะ, CEA สำนักงานส่งเสริมเศรษฐกิจสร้างสรรค์, และ Ying Charoen Square',
+        'scl.who_title': 'เหมาะสำหรับ', 'scl.who_desc': 'ผู้บริหารระดับกลาง-สูง ภาครัฐ (ส่วนกลาง ภูมิภาค ท้องถิ่น) ผู้ประกอบการเอกชนทุกขนาด และนักวิชาการ/ที่ปรึกษาด้านเมืองอัจฉริยะ',
+        'scl.dim_title': '7 มิติเมืองอัจฉริยะ', 'scl.schedule_title': 'กำหนดการ \u00b7 พฤษภาคม 2569',
+        'scl.venue': 'โรงแรม เดอะ ควอเตอร์ ลาดพร้าว บาย ยูเอชจี (ใกล้ MRT พหลโยธิน)',
+        'scl.test_title': 'ทัศนะผู้จบหลักสูตร', 'scl.test_desc': 'ผู้นำจากทั่วประเทศไทยแบ่งปันประสบการณ์จากหลักสูตร SCL',
+        'scl.cta_title': 'สมัคร SCL รุ่นที่ 6', 'scl.cta_desc': 'เปิดรับสมัครแล้ววันนี้ \u2014 ถึง 6 เมษายน 2569',
+        'scl.cta_fee': 'ค่าลงทะเบียน', 'scl.cta_dates': '11-26 พ.ค.', 'scl.cta_period': 'ระยะเวลา',
+        'scl.cta_cert': 'ใบรับรอง + NFT', 'scl.cta_cert_label': 'ใบรับรอง',
+        'scl.cta_btn': 'สมัครเลย',
+        'scl.tax_note': 'นิติบุคคลสามารถนำค่าอบรมลดหย่อนภาษีได้สูงสุด 250%',
+        'scl.organizers': 'จัดโดย สำนักงานส่งเสริมเศรษฐกิจดิจิทัล (depa) \u00d7 บริษัท โนเนม ไอเอ็มซี จำกัด'
       },
       zh: {
         'nav.about': '关于我们', 'nav.services': '服务', 'nav.projects': '项目', 'nav.slicx': 'SLICx', 'nav.team': '团队', 'nav.contact': '联系我们',
@@ -1422,7 +1765,25 @@
         'lfc.partner_note': '与<a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">正命基金会</a>（\u0e21\u0e39\u0e25\u0e19\u0e34\u0e18\u0e34\u0e2a\u0e31\u0e21\u0e21\u0e32\u0e0a\u0e35\u0e1e）联合举办',
         'downloads.label': '资源', 'downloads.title': '下载我们的资料',
         'downloads.d1_title': 'SLIC公司简介', 'downloads.d1_desc': 'PDF \u00b7 22 MB \u00b7 我们的服务、团队和项目全面概览',
-        'downloads.d2_title': '智慧城市入门指南', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 SLIC \u00d7 depa智慧城市基础指南'
+        'downloads.d2_title': '智慧城市入门指南', 'downloads.d2_desc': 'PDF \u00b7 16 MB \u00b7 SLIC \u00d7 depa智慧城市基础指南',
+        'nav.scl': 'SCL',
+        'scl.urgency': '报名截止：2026年4月6日',
+        'scl.label': 'depa旗舰项目',
+        'scl.title': '智慧城市领导力计划 <span style="color: #5eead4;">第6期</span>',
+        'scl.desc': 'depa推出的42小时高管培训项目，通过30+专家讲师和实地考察泰国领先组织，培养新一代智慧城市领导者。',
+        'scl.stat_alumni': '校友', 'scl.stat_experts': '专家讲师', 'scl.stat_hours': '课时', 'scl.stat_batches': '已完成期数',
+        'scl.cur_title': '课程内容', 'scl.cur_desc': '涵盖设计思维规划智慧城市、AI在城市发展中的应用、符合国际标准的商业模式，以及实践工作坊构建真正的智慧城市项目。',
+        'scl.visit_title': '实地考察', 'scl.visit_desc': '向领先组织学习：华为泰国、KMITL互动数字中心、EGAT学习中心、SWOC智慧水务运营中心、创意经济署、Ying Charoen Square。',
+        'scl.who_title': '适合谁申请？', 'scl.who_desc': '政府中高层管理者（中央、区域、地方）、各类规模的私营企业家，以及从事智慧城市发展的学者和顾问。',
+        'scl.dim_title': '7大智慧城市维度', 'scl.schedule_title': '课程安排 \u00b7 2026年5月',
+        'scl.venue': 'The Quarter Ladprao by UHG酒店，曼谷（MRT Phahonyothin站）',
+        'scl.test_title': '校友心声', 'scl.test_desc': '来自泰国各地的领导者分享他们的SCL体验',
+        'scl.cta_title': '申请SCL第6期', 'scl.cta_desc': '现已开放报名，截止2026年4月6日',
+        'scl.cta_fee': '费用', 'scl.cta_dates': '5月11-26日', 'scl.cta_period': '期间',
+        'scl.cta_cert': '证书 + NFT', 'scl.cta_cert_label': '认证',
+        'scl.cta_btn': '立即申请',
+        'scl.tax_note': '企业可享受最高250%的培训费税收抵扣',
+        'scl.organizers': '由depa（数字经济促进署）\u00d7 Noname IMC Co., Ltd. 联合举办'
       }
     };
 
