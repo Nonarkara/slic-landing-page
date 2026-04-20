@@ -575,6 +575,38 @@
     @media (max-width: 768px) {
       .data-products-grid { grid-template-columns: 1fr; }
     }
+    .index-card-blurb {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(248,245,240,0.62);
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .tiers { list-style: none; }
+    .tiers li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      align-items: baseline;
+    }
+    .tiers li:last-child { border-bottom: 0; }
+    .tier-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .tier-desc {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: var(--cream-on-dark);
+    }
 
     /* ── LFC dossier ───────────────────────────── */
     .lfc {
@@ -1299,10 +1331,11 @@
               <span><strong>SLIC Index</strong> · 2026 Edition</span>
               <span data-i18n="index.card_scope">Global · Open Source</span>
             </div>
+            <p class="index-card-blurb" data-i18n="index.card_blurb">157 cities ranked across five dimensions. Users control the weights — shift Growth versus Creative Momentum and the rankings update in real time. Every score traces to a citable public source. No lifestyle fantasy.</p>
             <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
               <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
                 <span class="n" style="color:#f8f5f0;">157</span>
-                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
+                <span class="l" data-i18n="index.stat_cities">Cities</span>
               </div>
               <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
                 <span class="n" style="color:#f8f5f0;">5</span>
@@ -1318,10 +1351,10 @@
               <li><span class="pnum">II</span><span class="pname" data-i18n="index.p2">Viability</span><span class="pweight">22%</span></li>
               <li><span class="pnum">III</span><span class="pname" data-i18n="index.p3">Capability</span><span class="pweight">18%</span></li>
               <li><span class="pnum">IV</span><span class="pname" data-i18n="index.p4">Community</span><span class="pweight">15%</span></li>
-              <li><span class="pnum">V</span><span class="pname" data-i18n="index.p5">Creative</span><span class="pweight">20%</span></li>
+              <li><span class="pnum">V</span><span class="pname" data-i18n="index.p5">Creative Momentum</span><span class="pweight">20%</span></li>
             </ol>
             <div class="index-card-footer">
-              <span data-i18n="index.card_foot">AMPI · no imputation</span>
+              <span data-i18n="index.card_foot">AMPI · no imputation · adjustable weights</span>
               <span>
                 <a href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit ↗</a>
                 &nbsp;&nbsp;
@@ -1330,37 +1363,34 @@
             </div>
           </aside>
 
-          <!-- Smart City Thailand Index -->
+          <!-- Smart City Thailand Index (SCITI) -->
           <aside class="index-card" aria-label="Smart City Thailand Index">
             <div class="index-card-header">
-              <span><strong data-i18n="thi.card_name">Thailand Index</strong> · 2026 Edition</span>
-              <span data-i18n="thi.card_scope">Thailand · depa Certified</span>
+              <span><strong>SCITI</strong> · Smart City Thailand Index</span>
+              <span data-i18n="thi.card_scope">Thailand · depa Certified Cities</span>
             </div>
+            <p class="index-card-blurb" data-i18n="thi.card_blurb">Not a certification checklist — a reality check. 118 Thai cities measured against 15+ verifiable data sources. Scores reflect what is actually built and operating, not what is planned. Cities earn Alpha, Beta, or Gamma tier.</p>
             <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
               <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">49</span>
-                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
+                <span class="n" style="color:#f8f5f0;">118</span>
+                <span class="l" data-i18n="index.stat_cities">Cities</span>
               </div>
               <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">7</span>
-                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
+                <span class="n" style="color:#f8f5f0;">15+</span>
+                <span class="l" data-i18n="thi.stat_sources">Data Sources</span>
               </div>
               <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">TH</span>
-                <span class="l" data-i18n="thi.stat_focus">Country Focus</span>
+                <span class="n" style="color:#f8f5f0;">3</span>
+                <span class="l" data-i18n="thi.stat_tiers">Tiers</span>
               </div>
             </div>
-            <ol class="pillars">
-              <li><span class="pnum">I</span><span class="pname" data-i18n="thi.p1">Livability</span><span class="pweight"></span></li>
-              <li><span class="pnum">II</span><span class="pname" data-i18n="thi.p2">Economy</span><span class="pweight"></span></li>
-              <li><span class="pnum">III</span><span class="pname" data-i18n="thi.p3">Safety</span><span class="pweight"></span></li>
-              <li><span class="pnum">IV</span><span class="pname" data-i18n="thi.p4">Wellbeing</span><span class="pweight"></span></li>
-              <li><span class="pnum">V</span><span class="pname" data-i18n="thi.p5">Environment</span><span class="pweight"></span></li>
-              <li><span class="pnum">VI</span><span class="pname" data-i18n="thi.p6">Hospitality</span><span class="pweight"></span></li>
-              <li><span class="pnum">VII</span><span class="pname" data-i18n="thi.p7">Digital</span><span class="pweight"></span></li>
+            <ol class="tiers">
+              <li><span class="tier-label" data-i18n="thi.t1">Alpha</span><span class="tier-desc" data-i18n="thi.t1_desc">Fully integrated, operating at scale</span></li>
+              <li><span class="tier-label" data-i18n="thi.t2">Beta</span><span class="tier-desc" data-i18n="thi.t2_desc">Functional, scaling toward Alpha</span></li>
+              <li><span class="tier-label" data-i18n="thi.t3">Gamma</span><span class="tier-desc" data-i18n="thi.t3_desc">Certified, building foundational systems</span></li>
             </ol>
             <div class="index-card-footer">
-              <span data-i18n="thi.card_foot">Outcome-based · no imputation</span>
+              <span data-i18n="thi.card_foot">Outcomes · not plans · no imputation</span>
               <a href="https://nonarkara.github.io/smart-city-thailand-index/" target="_blank" rel="noopener" data-i18n="thi.cta1">Visit ↗</a>
             </div>
           </aside>
@@ -1705,16 +1735,20 @@
 
         'index.label': '§ 04 · Data Products',
         'index.title': 'Two indices. <em>One methodology.</em>',
-        'index.intro': "SLIC's two in-house rankings — one global, one country-level — built on transparent, source-cited scoring with no imputation.",
-        'index.stat_cities': 'Cities Ranked', 'index.stat_pillars': 'Pillars', 'index.stat_indicators': 'Indicators',
+        'index.intro': 'One lets you build your own city ranking. The other holds Thailand's smart cities accountable to real-world outcomes. Both reject the lifestyle-fantasy approach.',
+        'index.stat_cities': 'Cities', 'index.stat_pillars': 'Pillars', 'index.stat_indicators': 'Indicators',
         'index.card_scope': 'Global · Open Source',
-        'index.card_foot': 'AMPI · no imputation',
+        'index.card_blurb': '157 cities ranked across five dimensions. Users control the weights — shift Growth versus Creative Momentum and the rankings update in real time. Every score traces to a citable public source. No lifestyle fantasy.',
+        'index.card_foot': 'AMPI · no imputation · adjustable weights',
         'index.cta1': 'Visit ↗', 'index.cta2': 'Methodology',
-        'index.p1': 'Growth', 'index.p2': 'Viability', 'index.p3': 'Capability', 'index.p4': 'Community', 'index.p5': 'Creative',
-        'thi.card_name': 'Thailand Index', 'thi.card_scope': 'Thailand · depa Certified',
-        'thi.stat_focus': 'Country Focus',
-        'thi.card_foot': 'Outcome-based · no imputation', 'thi.cta1': 'Visit ↗',
-        'thi.p1': 'Livability', 'thi.p2': 'Economy', 'thi.p3': 'Safety', 'thi.p4': 'Wellbeing', 'thi.p5': 'Environment', 'thi.p6': 'Hospitality', 'thi.p7': 'Digital',
+        'index.p1': 'Growth', 'index.p2': 'Viability', 'index.p3': 'Capability', 'index.p4': 'Community', 'index.p5': 'Creative Momentum',
+        'thi.card_scope': 'Thailand · depa Certified Cities',
+        'thi.card_blurb': 'Not a certification checklist — a reality check. 118 Thai cities measured against 15+ verifiable data sources. Scores reflect what is actually built and operating, not what is planned. Cities earn Alpha, Beta, or Gamma tier.',
+        'thi.stat_sources': 'Data Sources', 'thi.stat_tiers': 'Tiers',
+        'thi.t1': 'Alpha', 'thi.t1_desc': 'Fully integrated, operating at scale',
+        'thi.t2': 'Beta', 'thi.t2_desc': 'Functional, scaling toward Alpha',
+        'thi.t3': 'Gamma', 'thi.t3_desc': 'Certified, building foundational systems',
+        'thi.card_foot': 'Outcomes · not plans · no imputation', 'thi.cta1': 'Visit ↗',
 
         'lfc.label': '§ 05 · LFC · Flagship Programme',
         'lfc.title': 'Leadership for Change <em>Cohort 16.</em>',
@@ -1833,16 +1867,20 @@
 
         'index.label': '§ 04 · ผลิตภัณฑ์ข้อมูล',
         'index.title': 'สองดัชนี <em>หนึ่งระเบียบวิธี</em>',
-        'index.intro': 'ผลิตภัณฑ์ข้อมูลสองรายการของ SLIC — หนึ่งระดับโลก หนึ่งระดับประเทศ — สร้างบนการให้คะแนนที่โปร่งใสและอ้างอิงแหล่งที่มา ไม่มีการคาดเดาข้อมูล',
-        'index.stat_cities': 'เมืองที่จัดอันดับ', 'index.stat_pillars': 'เสาหลัก', 'index.stat_indicators': 'ตัวชี้วัด',
+        'index.intro': 'ตัวหนึ่งให้คุณสร้างอันดับเมืองของตัวเอง อีกตัวหนึ่งตรวจสอบเมืองอัจฉริยะไทยด้วยผลลัพธ์จริง ทั้งสองปฏิเสธแนวทางที่ตัดสินจากภาพลักษณ์',
+        'index.stat_cities': 'เมือง', 'index.stat_pillars': 'เสาหลัก', 'index.stat_indicators': 'ตัวชี้วัด',
         'index.card_scope': 'ระดับโลก · โอเพนซอร์ส',
-        'index.card_foot': 'AMPI · ไม่มีการคาดเดา',
+        'index.card_blurb': '157 เมืองจัดอันดับตามห้ามิติ ผู้ใช้ควบคุมน้ำหนัก — ปรับ Growth กับ Creative Momentum แล้วดูอันดับเปลี่ยนแบบเรียลไทม์ ทุกคะแนนอ้างอิงแหล่งข้อมูลสาธารณะที่ตรวจสอบได้',
+        'index.card_foot': 'AMPI · ไม่คาดเดาข้อมูล · ปรับน้ำหนักได้',
         'index.cta1': 'เข้าชม ↗', 'index.cta2': 'ระเบียบวิธี',
-        'index.p1': 'การเติบโต', 'index.p2': 'ความยั่งยืน', 'index.p3': 'ศักยภาพ', 'index.p4': 'ชุมชน', 'index.p5': 'ความสร้างสรรค์',
-        'thi.card_name': 'ดัชนีไทย', 'thi.card_scope': 'ประเทศไทย · ผ่านการรับรอง depa',
-        'thi.stat_focus': 'จุดเน้น',
-        'thi.card_foot': 'วัดผลลัพธ์จริง · ไม่มีการคาดเดา', 'thi.cta1': 'เข้าชม ↗',
-        'thi.p1': 'คุณภาพชีวิต', 'thi.p2': 'เศรษฐกิจ', 'thi.p3': 'ความปลอดภัย', 'thi.p4': 'สุขภาวะ', 'thi.p5': 'สิ่งแวดล้อม', 'thi.p6': 'การต้อนรับ', 'thi.p7': 'ดิจิทัล',
+        'index.p1': 'การเติบโต', 'index.p2': 'ความยั่งยืน', 'index.p3': 'ศักยภาพ', 'index.p4': 'ชุมชน', 'index.p5': 'โมเมนตัมสร้างสรรค์',
+        'thi.card_scope': 'ประเทศไทย · เมืองที่ผ่านการรับรอง depa',
+        'thi.card_blurb': 'ไม่ใช่รายการตรวจสอบใบรับรอง แต่เป็นการตรวจสอบความจริง 118 เมืองของไทยวัดด้วยแหล่งข้อมูลที่ตรวจสอบได้กว่า 15 แหล่ง คะแนนสะท้อนสิ่งที่สร้างและดำเนินการจริง ไม่ใช่แค่แผน เมืองจะได้รับระดับ Alpha Beta หรือ Gamma',
+        'thi.stat_sources': 'แหล่งข้อมูล', 'thi.stat_tiers': 'ระดับ',
+        'thi.t1': 'Alpha', 'thi.t1_desc': 'บูรณาการสมบูรณ์ ดำเนินการในระดับขยาย',
+        'thi.t2': 'Beta', 'thi.t2_desc': 'ดำเนินการได้ กำลังขยายสู่ Alpha',
+        'thi.t3': 'Gamma', 'thi.t3_desc': 'ผ่านการรับรอง กำลังสร้างระบบพื้นฐาน',
+        'thi.card_foot': 'ผลลัพธ์จริง · ไม่ใช่แผน · ไม่คาดเดาข้อมูล', 'thi.cta1': 'เข้าชม ↗',
 
         'lfc.label': '§ 05 · LFC · หลักสูตรหลัก',
         'lfc.title': 'ผู้นำ-นำการเปลี่ยนแปลง <em>รุ่นที่ 16</em>',
@@ -1961,16 +1999,20 @@
 
         'index.label': '§ 04 · 数据产品',
         'index.title': '两个指数。<em>一套方法论。</em>',
-        'index.intro': 'SLIC 的两款内部排名产品 — 一个全球级，一个国家级 — 均基于透明、可追溯来源的评分，不做数据填补。',
-        'index.stat_cities': '已排名城市', 'index.stat_pillars': '支柱', 'index.stat_indicators': '指标',
+        'index.intro': '一个让你构建自己的城市排名，另一个以真实结果问责泰国智慧城市。两者都拒绝"生活方式幻想"式的评判方法。',
+        'index.stat_cities': '城市', 'index.stat_pillars': '支柱', 'index.stat_indicators': '指标',
         'index.card_scope': '全球 · 开源',
-        'index.card_foot': 'AMPI · 不做填补',
+        'index.card_blurb': '157 座城市按五个维度排名。用户自主控制权重 — 调整增长与创意动能的比例，排名实时更新。每项分数均可追溯至公开、可引用的来源。不做"生活方式"式评判。',
+        'index.card_foot': 'AMPI · 不做填补 · 权重可调',
         'index.cta1': '访问 ↗', 'index.cta2': '方法论',
-        'index.p1': '增长', 'index.p2': '可持续性', 'index.p3': '能力', 'index.p4': '社区', 'index.p5': '创造力',
-        'thi.card_name': '泰国指数', 'thi.card_scope': '泰国 · depa 认证',
-        'thi.stat_focus': '国家聚焦',
-        'thi.card_foot': '结果导向 · 不做填补', 'thi.cta1': '访问 ↗',
-        'thi.p1': '宜居性', 'thi.p2': '经济', 'thi.p3': '安全', 'thi.p4': '健康', 'thi.p5': '环境', 'thi.p6': '好客', 'thi.p7': '数字化',
+        'index.p1': '增长', 'index.p2': '可持续性', 'index.p3': '能力', 'index.p4': '社区', 'index.p5': '创意动能',
+        'thi.card_scope': '泰国 · depa 认证城市',
+        'thi.card_blurb': '不是认证清单 — 而是现实核查。118 座泰国城市以 15+ 个可验证数据源衡量。分数反映实际建成和运营的内容，而非规划。城市获评 Alpha、Beta 或 Gamma 级别。',
+        'thi.stat_sources': '数据来源', 'thi.stat_tiers': '等级',
+        'thi.t1': 'Alpha', 'thi.t1_desc': '全面整合，规模化运营',
+        'thi.t2': 'Beta', 'thi.t2_desc': '功能完善，向 Alpha 级扩展',
+        'thi.t3': 'Gamma', 'thi.t3_desc': '已认证，正在构建基础系统',
+        'thi.card_foot': '结果导向 · 非规划 · 不做填补', 'thi.cta1': '访问 ↗',
 
         'lfc.label': '§ 05 · LFC · 旗舰项目',
         'lfc.title': '领导力变革 <em>第16期。</em>',
