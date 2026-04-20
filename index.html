@@ -1909,5 +1909,24 @@
     });
   </script>
 
+
+<!-- SLIC Visitor Tracking -->
+<script>
+(function() {
+  if (sessionStorage.getItem('slic_tracked')) return;
+  sessionStorage.setItem('slic_tracked', 'true');
+  fetch('https://ipapi.co/json/').then(function(r){return r.json()}).then(function(geo) {
+    fetch('https://script.google.com/macros/s/AKfycbxvOCOjlsYHF7qwWEXEYyDM8CeoLfT2asWRwaa171evuRoa-HubOkliqG3GPNyshUE4mw/exec', {
+      method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'},
+      body: JSON.stringify({ip:geo.ip||'Unknown',country:geo.country_name||'Unknown',region:geo.region||'Unknown',city:geo.city||'Unknown',userAgent:navigator.userAgent,referrer:document.referrer||'Direct',page:window.location.href,version:'v1'})
+    });
+  }).catch(function(){
+    fetch('https://script.google.com/macros/s/AKfycbxvOCOjlsYHF7qwWEXEYyDM8CeoLfT2asWRwaa171evuRoa-HubOkliqG3GPNyshUE4mw/exec', {
+      method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'},
+      body: JSON.stringify({ip:'Unknown',country:'Unknown',region:'Unknown',city:'Unknown',userAgent:navigator.userAgent,referrer:document.referrer||'Direct',page:window.location.href,version:'v1'})
+    });
+  });
+})();
+</script>
 </body>
 </html>
