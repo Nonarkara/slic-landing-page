@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIC — Smart &amp; Livable City</title>
+  <meta name="description" content="SLIC is a Thai consultancy and innovation partner building data-driven, citizen-centred smart cities across Southeast Asia.">
+  <link rel="canonical" href="https://nonarkara.github.io/slic-landing-page/slic/">
+  <link rel="alternate" href="https://nonarkara.github.io/slic-landing-page/" hreflang="x-default">
+  <meta property="og:title" content="SLIC — Smart &amp; Livable City">
+  <meta property="og:description" content="A Thai consultancy and innovation partner for data-driven, citizen-centred smart cities.">
+  <meta property="og:image" content="../slic-photos/mainphoto.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+Thai:wght@400;700&family=Noto+Sans+Thai:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── reset ─────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    /* ── design tokens ─────────────────────────── */
+    :root {
+      --surface: #f8f5f0;
+      --surface-deep: #ece6db;
+      --ink: #1c1914;
+      --ink-soft: #3c3529;
+      --ink-mute: #6b6355;
+      --rule: #d7cfbf;
+      --rule-soft: #e7e0d0;
+      --accent: #b85c28;
+      --accent-deep: #8c4319;
+      --paper-dark: #14120d;
+      --paper-dark-soft: #2a2520;
+      --cream-on-dark: #e7e0d0;
+      --mute-on-dark: #8a8275;
+
+      --serif: 'Libre Baskerville', 'Times New Roman', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+      --measure: 1240px;
+      --gutter: clamp(24px, 5vw, 64px);
+    }
+
+    html[lang="th"] {
+      --serif: 'Noto Serif Thai', 'Libre Baskerville', serif;
+      --sans: 'Noto Sans Thai', 'Inter', sans-serif;
+    }
+    html[lang="zh"] {
+      --serif: 'Noto Serif SC', 'Libre Baskerville', serif;
+      --sans: 'Noto Sans SC', 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--surface);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--accent); color: var(--surface); }
+
+    .wrap {
+      max-width: var(--measure);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ── typographic primitives ────────────────── */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      font-weight: 500;
+    }
+    .eyebrow-accent { color: var(--accent); }
+
+    .display {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .display em { font-style: italic; font-weight: 400; }
+
+    .standfirst {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 22px);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 56ch;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--rule);
+      border: 0;
+      margin: 0;
+    }
+
+    .hairline { border-top: 1px solid var(--rule); }
+    .hairline-soft { border-top: 1px solid var(--rule-soft); }
+
+    /* ── masthead ──────────────────────────────── */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 245, 240, 0.92);
+      backdrop-filter: saturate(140%) blur(12px);
+      -webkit-backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .masthead-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 32px;
+      height: 64px;
+    }
+    .wordmark {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .wordmark-dot {
+      width: 6px; height: 6px; background: var(--accent);
+      border-radius: 50%; display: inline-block;
+      transform: translateY(-2px);
+    }
+    .wordmark small {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      font-weight: 500;
+    }
+
+    .primary-nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .primary-nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 150ms var(--ease), border-color 150ms var(--ease);
+    }
+    .primary-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .utility {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .lang {
+      display: flex;
+      gap: 2px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .lang button {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      font-weight: 500;
+      padding: 6px 10px;
+      background: transparent;
+      color: var(--ink-mute);
+      border: 0;
+      transition: background 120ms var(--ease), color 120ms var(--ease);
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button.on {
+      background: var(--ink);
+      color: var(--surface);
+    }
+
+    .nav-toggle { display: none; background: none; border: 0; padding: 8px; }
+    .nav-toggle span {
+      display: block; width: 20px; height: 1.5px; background: var(--ink);
+      margin: 4px 0; transition: transform 180ms var(--ease), opacity 120ms var(--ease);
+    }
+    .nav-toggle.on span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .nav-toggle.on span:nth-child(2) { opacity: 0; }
+    .nav-toggle.on span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    /* ── lede ──────────────────────────────────── */
+    .lede {
+      padding: clamp(72px, 12vw, 140px) 0 clamp(56px, 10vw, 120px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .lede-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: end;
+    }
+    .lede-meta {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .lede-meta span + span { border-left: 1px solid var(--rule); padding-left: 24px; }
+    .lede h1.display {
+      font-size: clamp(40px, 6.2vw, 84px);
+      max-width: 15ch;
+    }
+    .lede-right p { margin-top: 20px; }
+    .lede-links {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .link {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 500;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--ink);
+      transition: color 150ms var(--ease), border-color 150ms var(--ease), padding-bottom 150ms var(--ease);
+    }
+    .link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .link-ghost {
+      border-bottom-color: var(--rule);
+      color: var(--ink-soft);
+    }
+    .link-ghost:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .link-arrow::after { content: ' ↗'; font-family: var(--sans); }
+
+    /* ── section frames ────────────────────────── */
+    .section {
+      padding: clamp(64px, 10vw, 128px) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(24px, 4vw, 64px);
+      margin-bottom: clamp(40px, 6vw, 80px);
+      align-items: baseline;
+    }
+    .section-title.display {
+      font-size: clamp(32px, 4.6vw, 56px);
+      max-width: 18ch;
+    }
+    .section-intro {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+      max-width: 52ch;
+    }
+
+    /* ── firm (tenets) ─────────────────────────── */
+    .tenets {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .tenet {
+      padding: 40px 28px 40px 0;
+      border-right: 1px solid var(--rule);
+    }
+    .tenet:last-child { border-right: 0; padding-right: 0; }
+    .tenet-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .tenet h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+    .tenet p {
+      font-size: 14px;
+      color: var(--ink-mute);
+      line-height: 1.55;
+    }
+
+    .firm-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      margin-top: clamp(40px, 6vw, 72px);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .firm-body p + p { margin-top: 16px; }
+
+    /* ── services (4C table) ───────────────────── */
+    .fourc {
+      border-top: 1px solid var(--ink);
+    }
+    .fourc-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 2.5fr;
+      gap: clamp(16px, 3vw, 40px);
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .fourc-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .fourc h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .fourc p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 58ch;
+    }
+
+    /* ── work (projects) ───────────────────────── */
+    .work-feature {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      padding: clamp(40px, 6vw, 72px) 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: center;
+    }
+    .work-feature:first-of-type { border-top: 1px solid var(--rule); }
+    .work-feature.reverse { grid-template-columns: 1fr 1.1fr; }
+    .work-feature.reverse .work-media { order: 2; }
+    .work-media {
+      aspect-ratio: 4/3;
+      background: var(--surface-deep);
+      overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .work-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.02);
+      transition: transform 600ms var(--ease);
+    }
+    .work-media:hover img { transform: scale(1.03); }
+    .work-text .eyebrow { margin-bottom: 18px; display: block; }
+    .work-text h3.display {
+      font-size: clamp(28px, 3.4vw, 40px);
+      margin-bottom: 18px;
+      max-width: 14ch;
+    }
+    .work-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 44ch;
+      margin-bottom: 20px;
+    }
+
+    /* ── SLIC Index feature ────────────────────── */
+    .index-feature {
+      position: relative;
+    }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: start;
+    }
+    .index-left h3.display {
+      font-size: clamp(34px, 4.4vw, 54px);
+      margin-bottom: 24px;
+      max-width: 13ch;
+    }
+    .index-left h3 em { color: var(--accent); }
+    .index-left p.lead {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+      max-width: 44ch;
+    }
+    .index-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 32px;
+    }
+    .index-stat {
+      padding: 22px 18px 22px 0;
+      border-right: 1px solid var(--rule);
+    }
+    .index-stat:last-child { border-right: 0; }
+    .index-stat .n {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .index-stat .l {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .index-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .index-card {
+      background: var(--paper-dark);
+      color: var(--cream-on-dark);
+      padding: clamp(28px, 4vw, 44px);
+      position: relative;
+      overflow: hidden;
+    }
+    .index-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent);
+    }
+    .index-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--paper-dark-soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+    }
+    .index-card-header strong {
+      color: var(--cream-on-dark);
+      font-weight: 500;
+    }
+    .pillars {
+      list-style: none;
+    }
+    .pillars li {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 16px;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--paper-dark-soft);
+    }
+    .pillars li:last-child { border-bottom: 0; }
+    .pillars .pnum {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+    }
+    .pillars .pname {
+      font-family: var(--serif);
+      font-size: clamp(17px, 1.7vw, 20px);
+      color: var(--cream-on-dark);
+    }
+    .pillars .pweight {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--mute-on-dark);
+    }
+    .index-card-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--paper-dark-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+    }
+    .index-card-footer a {
+      color: var(--cream-on-dark);
+      border-bottom: 1px solid var(--mute-on-dark);
+      padding-bottom: 4px;
+    }
+    .index-card-footer a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── LFC dossier ───────────────────────────── */
+    .lfc {
+      background: var(--surface-deep);
+    }
+    .lfc .section-header .eyebrow { color: var(--accent); }
+    .lfc-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      padding-bottom: clamp(48px, 6vw, 80px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .lfc-hero h2.display { font-size: clamp(36px, 4.8vw, 60px); }
+    .lfc-hero h2 em { color: var(--accent); }
+    .lfc-hero p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      margin-top: 24px;
+      max-width: 48ch;
+    }
+    .lfc-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin: clamp(40px, 6vw, 64px) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .lfc-meta div {
+      padding: 28px 24px 28px 0;
+      border-right: 1px solid var(--rule);
+    }
+    .lfc-meta div:last-child { border-right: 0; }
+    .lfc-meta dt {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 10px;
+    }
+    .lfc-meta dd {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2vw, 26px);
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .lfc-modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 clamp(32px, 5vw, 72px);
+    }
+    .lfc-modules h3 {
+      grid-column: 1 / -1;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .lfc-modules .mod {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .lfc-modules .mod-num {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+    }
+    .lfc-modules .mod-text {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .lfc-footer {
+      margin-top: clamp(40px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding-top: clamp(28px, 4vw, 40px);
+      border-top: 1px solid var(--rule);
+    }
+    .lfc-partner {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ink-soft);
+      max-width: 60ch;
+    }
+    .lfc-partner a { border-bottom: 1px solid var(--ink-mute); }
+    .lfc-partner a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 14px 22px;
+      background: var(--ink);
+      color: var(--surface);
+      border: 1px solid var(--ink);
+      transition: background 150ms var(--ease), color 150ms var(--ease), border-color 150ms var(--ease);
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+
+    /* ── SLICx (dark) ──────────────────────────── */
+    .slicx {
+      background: var(--paper-dark);
+      color: var(--cream-on-dark);
+      border-top: 0;
+    }
+    .slicx .section-title.display,
+    .slicx h2, .slicx h3, .slicx h4 { color: var(--cream-on-dark); }
+    .slicx .section-intro, .slicx p { color: var(--mute-on-dark); }
+    .slicx .eyebrow { color: var(--mute-on-dark); }
+    .slicx .eyebrow-accent { color: var(--accent); }
+    .slicx .hairline, .slicx .rule { background: var(--paper-dark-soft); border-color: var(--paper-dark-soft); }
+
+    .slicx-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      margin-bottom: clamp(40px, 6vw, 72px);
+    }
+    .slicx-hero-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--paper-dark-soft);
+    }
+    .slicx-hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85) contrast(1.05) brightness(0.92);
+    }
+    .slicx-hero-text h2.display { font-size: clamp(32px, 4.4vw, 52px); margin-bottom: 20px; }
+    .slicx-hero-text p { font-size: 16px; line-height: 1.7; }
+    .slicx-hero-text p + p { margin-top: 14px; }
+
+    .slicx-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--paper-dark-soft);
+      border-bottom: 1px solid var(--paper-dark-soft);
+      margin-bottom: clamp(40px, 6vw, 72px);
+    }
+    .slicx-pillar {
+      padding: 32px 24px 32px 0;
+      border-right: 1px solid var(--paper-dark-soft);
+    }
+    .slicx-pillar:last-child { border-right: 0; padding-right: 0; }
+    .slicx-pillar h4 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .slicx-pillar p { font-size: 13px; line-height: 1.55; }
+
+    .slicx-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--paper-dark-soft);
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+    .slicx-gallery img {
+      aspect-ratio: 4/3;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(1.04) brightness(0.9);
+    }
+
+    .slicx-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding-top: clamp(28px, 4vw, 40px);
+      border-top: 1px solid var(--paper-dark-soft);
+    }
+    .slicx-cta-text h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .slicx-cta-text p { font-size: 14px; }
+    .btn-light {
+      background: var(--cream-on-dark);
+      color: var(--paper-dark);
+      border-color: var(--cream-on-dark);
+    }
+    .btn-light:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+    /* ── team roster ───────────────────────────── */
+    .roster {
+      border-top: 1px solid var(--ink);
+    }
+    .roster-row {
+      display: grid;
+      grid-template-columns: 40px 2fr 2fr 1fr;
+      gap: clamp(16px, 3vw, 40px);
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .roster-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-mute);
+    }
+    .roster-name {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .roster-role {
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .roster-tags {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-align: right;
+    }
+
+    /* ── downloads ─────────────────────────────── */
+    .downloads {
+      border-top: 1px solid var(--ink);
+    }
+    .dl-row {
+      display: grid;
+      grid-template-columns: 40px 1fr 2fr auto;
+      gap: clamp(16px, 3vw, 40px);
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+      transition: background 120ms var(--ease);
+      margin: 0 calc(-1 * var(--gutter));
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+    .dl-row:hover { background: var(--surface-deep); }
+    .dl-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-mute);
+    }
+    .dl-title {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .dl-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-mute);
+      letter-spacing: 0.04em;
+    }
+    .dl-action {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+    }
+
+    /* ── partners ──────────────────────────────── */
+    .partners {
+      padding: clamp(48px, 8vw, 80px) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .partners-label {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .partners-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: clamp(24px, 4vw, 56px);
+      align-items: center;
+      justify-items: center;
+    }
+    .partners-row img {
+      max-height: 44px;
+      width: auto;
+      filter: grayscale(1) contrast(0.9);
+      opacity: 0.7;
+      transition: opacity 200ms var(--ease), filter 200ms var(--ease);
+    }
+    .partners-row img:hover {
+      filter: grayscale(0) contrast(1);
+      opacity: 1;
+    }
+
+    /* ── contact ───────────────────────────────── */
+    .contact {
+      padding: clamp(72px, 12vw, 128px) 0;
+      background: var(--paper-dark);
+      color: var(--cream-on-dark);
+    }
+    .contact .wrap { max-width: 960px; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    .contact h2.display { font-size: clamp(36px, 5vw, 60px); color: var(--cream-on-dark); margin-bottom: 24px; }
+    .contact-left p { color: var(--mute-on-dark); font-size: 16px; line-height: 1.7; margin-bottom: 28px; max-width: 40ch; }
+    .contact-left address {
+      font-style: normal;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--mute-on-dark);
+    }
+    .contact-left address a { color: var(--cream-on-dark); border-bottom: 1px solid var(--paper-dark-soft); padding-bottom: 2px; }
+    .contact-left address a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .contact-form { display: grid; gap: 18px; }
+    .contact-form .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      font: inherit;
+      font-family: var(--sans);
+      font-size: 15px;
+      background: transparent;
+      color: var(--cream-on-dark);
+      border: 0;
+      border-bottom: 1px solid var(--paper-dark-soft);
+      padding: 14px 0;
+      transition: border-color 150ms var(--ease);
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+      color: var(--mute-on-dark);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-bottom-color: var(--accent);
+    }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .contact-form button {
+      justify-self: start;
+      margin-top: 8px;
+      background: var(--cream-on-dark);
+      color: var(--paper-dark);
+      border-color: var(--cream-on-dark);
+    }
+    .contact-form button:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+    /* ── footer ────────────────────────────────── */
+    .colophon {
+      padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 48px);
+      background: var(--surface);
+      color: var(--ink-soft);
+    }
+    .colophon-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      padding-bottom: clamp(32px, 4vw, 48px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .colophon h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .colophon ul { list-style: none; }
+    .colophon li { padding: 6px 0; font-size: 14px; }
+    .colophon li a { color: var(--ink); border-bottom: 1px solid transparent; padding-bottom: 2px; }
+    .colophon li a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .colophon-brand h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .colophon-brand p.small {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--ink-mute);
+      max-width: 38ch;
+    }
+
+    .colophon-bottom {
+      padding-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--ink-mute);
+    }
+    .edition-link {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      color: var(--ink-soft);
+    }
+    .edition-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── reveal animation ──────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── responsive ────────────────────────────── */
+    @media (max-width: 960px) {
+      .masthead-inner { grid-template-columns: auto auto; gap: 16px; }
+      .primary-nav {
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--rule);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 300ms var(--ease);
+      }
+      .primary-nav.on { max-height: 400px; }
+      .primary-nav a {
+        padding: 18px var(--gutter);
+        border-bottom: 1px solid var(--rule-soft);
+        display: block;
+      }
+      .nav-toggle { display: block; order: -1; margin-right: 4px; }
+      .utility { order: 1; }
+      .wordmark { order: 0; margin-right: auto; }
+
+      .lede-grid, .firm-body,
+      .work-feature, .work-feature.reverse,
+      .index-grid,
+      .lfc-hero, .lfc-modules, .lfc-footer,
+      .slicx-grid, .slicx-cta,
+      .contact-grid, .section-header,
+      .colophon-top {
+        grid-template-columns: 1fr;
+      }
+      .work-feature.reverse .work-media { order: 0; }
+      .tenets, .lfc-meta, .slicx-pillars, .index-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .index-stat:nth-child(2n) { border-right: 0; }
+      .index-stat { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+      .tenet, .lfc-meta div, .slicx-pillar {
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+        padding: 24px 0;
+      }
+      .slicx-pillar { border-bottom-color: var(--paper-dark-soft); }
+      .lfc-meta div:nth-child(2n) { border-right: 0; }
+      .tenets { border-top: 1px solid var(--rule); }
+
+      .fourc-row, .roster-row, .dl-row {
+        grid-template-columns: 30px 1fr;
+        gap: 12px;
+      }
+      .fourc-row > :nth-child(3),
+      .roster-row > :nth-child(3), .roster-row > :nth-child(4),
+      .dl-row > :nth-child(3), .dl-row > :nth-child(4) {
+        grid-column: 2 / -1;
+        margin-top: 6px;
+      }
+      .roster-tags { text-align: left; }
+      .partners-row { grid-template-columns: repeat(3, 1fr); }
+      .slicx-gallery { grid-template-columns: repeat(2, 1fr); }
+      .colophon-top { gap: 32px; }
+      .section-header { margin-bottom: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .lede-meta { flex-direction: column; gap: 8px; }
+      .lede-meta span + span { border-left: 0; padding-left: 0; }
+      .lede-links { gap: 20px; }
+      .tenets { grid-template-columns: 1fr; }
+      .slicx-pillars { grid-template-columns: 1fr; }
+      .lfc-meta { grid-template-columns: 1fr 1fr; }
+      .contact-form .row { grid-template-columns: 1fr; }
+      .colophon-top { grid-template-columns: 1fr; }
+      .partners-row { grid-template-columns: repeat(2, 1fr); }
+      .slicx-gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── MASTHEAD ─────────────────────────────── -->
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a href="#top" class="wordmark" aria-label="SLIC home">
+        <span>SLIC<span class="wordmark-dot"></span></span>
+        <small data-i18n="masthead.tagline">Smart &amp; Livable City</small>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="primary-nav" id="primaryNav">
+          <li><a href="#firm" data-i18n="nav.firm">Firm</a></li>
+          <li><a href="#services" data-i18n="nav.services">Practice</a></li>
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#index" data-i18n="nav.index">Index</a></li>
+          <li><a href="#lfc" data-i18n="nav.lfc">LFC</a></li>
+          <li><a href="#slicx" data-i18n="nav.slicx">SLICx</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="utility">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" class="lang-btn on" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="th">TH</button>
+          <button type="button" class="lang-btn" data-lang="zh">ZH</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ── LEDE ───────────────────────────────── -->
+    <section class="lede">
+      <div class="wrap">
+        <div class="lede-meta eyebrow">
+          <span data-i18n="lede.edition">2026 Edition</span>
+          <span data-i18n="lede.place">Bangkok · Southeast Asia</span>
+        </div>
+        <div class="lede-grid">
+          <h1 class="display reveal" data-i18n="lede.title" data-i18n-html="true">We make cities <em>smarter</em> and <em>more livable.</em></h1>
+          <div class="lede-right reveal">
+            <p class="standfirst" data-i18n="lede.standfirst">A Thai consultancy and innovation partner building data-driven, citizen-centred smart cities with public institutions, private enterprises, and academic networks across Southeast Asia.</p>
+            <div class="lede-links">
+              <a class="link" href="#work" data-i18n="lede.cta1">See the Work</a>
+              <a class="link link-ghost" href="#contact" data-i18n="lede.cta2">Open a Dialogue</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FIRM / TENETS ──────────────────────── -->
+    <section class="section" id="firm">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow reveal" data-i18n="firm.label">§ 01 · The Firm</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="firm.title" data-i18n-html="true">Not just consultants. <em>Innovation partners.</em></h2>
+            <p class="section-intro reveal" data-i18n="firm.intro">Smart &amp; Livable City Co., Ltd. began as friends and colleagues who shared one belief — that cities could be made better with the right tools and a little discipline.</p>
+          </div>
+        </div>
+
+        <div class="tenets reveal">
+          <div class="tenet">
+            <span class="tenet-num">01</span>
+            <h3 data-i18n="firm.t1_title">Purpose-driven</h3>
+            <p data-i18n="firm.t1_desc">Every engagement begins with a community need. Never technology for its own sake.</p>
+          </div>
+          <div class="tenet">
+            <span class="tenet-num">02</span>
+            <h3 data-i18n="firm.t2_title">Proof-based</h3>
+            <p data-i18n="firm.t2_desc">Data and measurable outcomes guide every design and delivery decision.</p>
+          </div>
+          <div class="tenet">
+            <span class="tenet-num">03</span>
+            <h3 data-i18n="firm.t3_title">People-centric</h3>
+            <p data-i18n="firm.t3_desc">Citizens are the subject of the work, not the audience of it.</p>
+          </div>
+          <div class="tenet">
+            <span class="tenet-num">04</span>
+            <h3 data-i18n="firm.t4_title">Practical</h3>
+            <p data-i18n="firm.t4_desc">Modular, bankable solutions a municipal budget can actually carry.</p>
+          </div>
+        </div>
+
+        <div class="firm-body">
+          <p class="reveal" data-i18n="firm.p1">SLIC bridges public institutions, private enterprises, and academic networks to co-create data-driven, citizen-centric smart cities. We work with mayors, ministries, and operators — not only with vendors.</p>
+          <p class="reveal" data-i18n="firm.p2">Our Thai engineers, architects, anthropologists, urban planners and AI specialists are united by one vision: cities that serve the people who live in them, at a price those cities can afford.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES (4C) ──────────────────────── -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow reveal" data-i18n="services.label">§ 02 · Practice</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="services.title">Innovation as a service.</h2>
+            <p class="section-intro reveal" data-i18n="services.intro">The 4C framework carries an engagement from first conversation to lasting impact — one contract, four discrete modes.</p>
+          </div>
+        </div>
+
+        <div class="fourc reveal">
+          <div class="fourc-row">
+            <div class="fourc-num">01 / C</div>
+            <h3 data-i18n="services.s1_title">Consultation</h3>
+            <p data-i18n="services.s1_desc">Strategic advisory for municipalities and private developers — smart infrastructure, urban sustainability, digital transformation.</p>
+          </div>
+          <div class="fourc-row">
+            <div class="fourc-num">02 / C</div>
+            <h3 data-i18n="services.s2_title">Connecting</h3>
+            <p data-i18n="services.s2_desc">Bridges between government agencies, universities, and the private sector so collaboration and scale become possible.</p>
+          </div>
+          <div class="fourc-row">
+            <div class="fourc-num">03 / C</div>
+            <h3 data-i18n="services.s3_title">Capacity Building</h3>
+            <p data-i18n="services.s3_desc">Training smart city officers, community leaders, and local teams in the technical and creative methods they need.</p>
+          </div>
+          <div class="fourc-row">
+            <div class="fourc-num">04 / C</div>
+            <h3 data-i18n="services.s4_title">Co-Creation</h3>
+            <p data-i18n="services.s4_desc">Collaborative implementation through people-public-private partnerships (4Ps) — from idea through evaluation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WORK ───────────────────────────────── -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow reveal" data-i18n="work.label">§ 03 · Work</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="work.title">Projects that move cities forward.</h2>
+            <p class="section-intro reveal" data-i18n="work.intro">From AI-powered data platforms to immersive learning environments — work that's been built, deployed, and tested against real municipal friction.</p>
+          </div>
+        </div>
+
+        <article class="work-feature reveal">
+          <div class="work-media"><img src="../files/photos/SCTCDP dashboard.png" alt="Thailand Smart City Data Platform dashboard"></div>
+          <div class="work-text">
+            <span class="eyebrow eyebrow-accent" data-i18n="work.p1_label">Featured Platform · UN Habitat–aligned</span>
+            <h3 class="display" data-i18n="work.p1_title">Thailand Smart City Data Platform</h3>
+            <p data-i18n="work.p1_desc">An AI-powered city-listening and analytics platform that turns urban noise into operational intelligence. Delivered with depa; aligned with UN Habitat standards; deployed across multiple Thai municipalities.</p>
+          </div>
+        </article>
+
+        <article class="work-feature reverse reveal">
+          <div class="work-media"><img src="../files/photos/Metaverse classroom.jpg" alt="Metaverse Classroom VR learning environment"></div>
+          <div class="work-text">
+            <span class="eyebrow eyebrow-accent" data-i18n="work.p2_label">Education · STEM</span>
+            <h3 class="display" data-i18n="work.p2_title">Metaverse Classroom</h3>
+            <p data-i18n="work.p2_desc">A VR-powered learning ecosystem boosting STEM engagement in Thai schools — designed with teachers, not at them. Now operational across a growing pilot programme.</p>
+          </div>
+        </article>
+
+        <article class="work-feature reveal">
+          <div class="work-media"><img src="../files/photos/SLICx 2025 at Sustainability Expo (SX) at Queen Sirikit Convention Center.jpg" alt="SLICx 2025 at Sustainability Expo"></div>
+          <div class="work-text">
+            <span class="eyebrow eyebrow-accent" data-i18n="work.p3_label">Flagship Event · 2025</span>
+            <h3 class="display" data-i18n="work.p3_title">SLICx 2025 Expo</h3>
+            <p data-i18n="work.p3_desc">Three days of keynotes, panels, tech showcases, and business matching at Queen Sirikit National Convention Center, hosted within Sustainability Expo (SX2025). The inaugural edition of SLIC's own expo format.</p>
+            <a class="link" href="#slicx" data-i18n="work.p3_link">Read the dossier</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── SLIC INDEX ─────────────────────────── -->
+    <section class="section index-feature" id="index">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow eyebrow-accent reveal" data-i18n="index.label">§ 04 · Index · Flagship Data Product</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="index.title" data-i18n-html="true">The <em>SLIC Index.</em></h2>
+            <p class="section-intro reveal" data-i18n="index.intro">A transparent, open-source ranking of the world's cities — the firm's flagship data product, built in-house and refreshed annually.</p>
+          </div>
+        </div>
+
+        <div class="index-grid reveal">
+          <div class="index-left">
+            <h3 class="display" data-i18n="index.headline" data-i18n-html="true">Every score traces to <em>a source.</em></h3>
+            <p class="lead" data-i18n="index.lead">Absolute piecewise-linear scoring, AMPI aggregation, no imputation. Adding new cities never shifts existing scores. Every metric traces to a public, citable source.</p>
+
+            <div class="index-stats">
+              <div class="index-stat">
+                <span class="n">157</span>
+                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
+              </div>
+              <div class="index-stat">
+                <span class="n">5</span>
+                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
+              </div>
+              <div class="index-stat">
+                <span class="n">36</span>
+                <span class="l" data-i18n="index.stat_indicators">Indicators</span>
+              </div>
+            </div>
+
+            <div class="index-links">
+              <a class="link" href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit SLIC Index ↗</a>
+              <a class="link link-ghost" href="https://nonarkara.github.io/SLIC-Index/methodology" target="_blank" rel="noopener" data-i18n="index.cta2">Read the methodology</a>
+            </div>
+          </div>
+
+          <aside class="index-card" aria-label="SLIC Index pillars">
+            <div class="index-card-header">
+              <span><strong>SLIC Index</strong> · 2026 Edition</span>
+              <span data-i18n="index.card_note">Pillar Weights</span>
+            </div>
+            <ol class="pillars">
+              <li><span class="pnum">I</span><span class="pname" data-i18n="index.p1">Growth</span><span class="pweight">25%</span></li>
+              <li><span class="pnum">II</span><span class="pname" data-i18n="index.p2">Viability</span><span class="pweight">22%</span></li>
+              <li><span class="pnum">III</span><span class="pname" data-i18n="index.p3">Capability</span><span class="pweight">18%</span></li>
+              <li><span class="pnum">IV</span><span class="pname" data-i18n="index.p4">Community</span><span class="pweight">15%</span></li>
+              <li><span class="pnum">V</span><span class="pname" data-i18n="index.p5">Creative</span><span class="pweight">20%</span></li>
+            </ol>
+            <div class="index-card-footer">
+              <span data-i18n="index.card_foot">AMPI aggregation · no imputation</span>
+              <a href="https://nonarkara.github.io/SLIC-Index/rankings" target="_blank" rel="noopener" data-i18n="index.card_link">See rankings ↗</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LFC ────────────────────────────────── -->
+    <section class="section lfc" id="lfc">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow eyebrow-accent reveal" data-i18n="lfc.label">§ 05 · LFC · Flagship Programme</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="lfc.title" data-i18n-html="true">Leadership for Change <em>Cohort 16.</em></h2>
+            <p class="section-intro reveal" data-i18n="lfc.intro">A 9-module executive programme for practical smart-city leaders — co-organised with the Right Livelihood Foundation (มูลนิธิสัมมาชีพ). Dr. Non Akaraprasertkul, Course Director.</p>
+          </div>
+        </div>
+
+        <div class="lfc-hero reveal">
+          <div>
+            <h2 class="display" data-i18n="lfc.what_title">What LFC is</h2>
+            <p data-i18n="lfc.what_desc">Now in its sixteenth cohort, LFC has trained over 1,500 leaders across government, private sector, and civil society. This year's theme — <em>Practical Smart City Leaders</em> — is organised around a 4P framework: Purposeful, Practical, Proof-based, People-Centric.</p>
+          </div>
+          <div>
+            <h2 class="display" data-i18n="lfc.who_title">Who should apply</h2>
+            <p data-i18n="lfc.who_desc">City executives, municipal officers, smart city project managers, SE/SME/startup founders, policy designers, PPP teams, and civil society leaders intent on building real, bankable smart-city projects.</p>
+          </div>
+        </div>
+
+        <dl class="lfc-meta reveal">
+          <div>
+            <dt data-i18n="lfc.meta_date_label">Duration</dt>
+            <dd data-i18n="lfc.meta_date">13 Jun — 5 Jul 2026</dd>
+          </div>
+          <div>
+            <dt data-i18n="lfc.meta_modules_label">Modules</dt>
+            <dd>9</dd>
+          </div>
+          <div>
+            <dt data-i18n="lfc.meta_alumni_label">Alumni</dt>
+            <dd>1,500+</dd>
+          </div>
+          <div>
+            <dt data-i18n="lfc.meta_fee_label">Registration</dt>
+            <dd data-i18n="lfc.meta_fee_val">On enquiry</dd>
+          </div>
+        </dl>
+
+        <div class="lfc-modules reveal">
+          <h3 data-i18n="lfc.curriculum">Curriculum · Nine Modules</h3>
+          <div class="mod"><div class="mod-num">01</div><div class="mod-text" data-i18n="lfc.m1">Right Livelihood Leadership for Sustainable Cities</div></div>
+          <div class="mod"><div class="mod-num">02</div><div class="mod-text" data-i18n="lfc.m2">What is a Smart City? Finding the Real Problems</div></div>
+          <div class="mod"><div class="mod-num">03</div><div class="mod-text" data-i18n="lfc.m3">Where Are the People? Citizen Listening &amp; Co-design</div></div>
+          <div class="mod"><div class="mod-num">04</div><div class="mod-text" data-i18n="lfc.m4">Technology, Data &amp; Ethics: Using Tech Without Breaking Cities</div></div>
+          <div class="mod"><div class="mod-num">05</div><div class="mod-text" data-i18n="lfc.m5">Study Tour: National Disaster Warning Center &amp; depa</div></div>
+          <div class="mod"><div class="mod-num">06</div><div class="mod-text" data-i18n="lfc.m6">Innovation, Business Models &amp; Finance: Who Pays?</div></div>
+          <div class="mod"><div class="mod-num">07</div><div class="mod-text" data-i18n="lfc.m7">City Leaders, Governance &amp; Procurement</div></div>
+          <div class="mod"><div class="mod-num">08</div><div class="mod-text" data-i18n="lfc.m8">Build a Smart City App with AI + Social Enterprise</div></div>
+          <div class="mod"><div class="mod-num">09</div><div class="mod-text" data-i18n="lfc.m9">Pitching for Change &amp; Graduation</div></div>
+        </div>
+
+        <div class="lfc-footer reveal">
+          <p class="lfc-partner" data-i18n="lfc.partner_note" data-i18n-html="true">In partnership with <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">Right Livelihood Foundation</a> (มูลนิธิสัมมาชีพ) — championing ethical leadership and sustainable livelihoods for over sixteen years.</p>
+          <a class="btn" href="mailto:slic.connects@gmail.com?subject=LFC%20Cohort%2016%20application" data-i18n="lfc.cta">Apply for LFC Cohort 16</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLICx ──────────────────────────────── -->
+    <section class="section slicx" id="slicx">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow eyebrow-accent reveal" data-i18n="slicx.label">§ 06 · SLICx · Expo</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="slicx.title">Where smart-city leaders converge.</h2>
+            <p class="section-intro reveal" data-i18n="slicx.intro">The Smart &amp; Livable City Expo — SLIC's own convening format. 2025 was the inaugural edition, inside SX2025 at Queen Sirikit National Convention Center.</p>
+          </div>
+        </div>
+
+        <div class="slicx-grid reveal">
+          <div class="slicx-hero-img"><img src="../slic-photos/mainphoto.jpg" alt="SLICx 2025 keynote stage"></div>
+          <div class="slicx-hero-text">
+            <h2 class="display" data-i18n="slicx.recap_title">SLICx 2025 · Recap</h2>
+            <p data-i18n="slicx.recap_p1">Three days of keynotes, industry panels, tech showcases, and business matching at the Queen Sirikit National Convention Center, hosted within Sustainability Expo (SX2025).</p>
+            <p data-i18n="slicx.recap_p2">Featuring a keynote by Bangkok Governor Chadchart Sittipunt on his vision for Bangkok as a smart and livable city — alongside leadership from Thai AirAsia, SCGJWD, Thailand Post, depa, and TED Fund.</p>
+          </div>
+        </div>
+
+        <div class="slicx-pillars reveal">
+          <div class="slicx-pillar">
+            <h4 data-i18n="slicx.h1_title">Keynote Stage</h4>
+            <p data-i18n="slicx.h1_desc">The Bangkok Governor's vision for transforming the capital into a smarter, more livable city.</p>
+          </div>
+          <div class="slicx-pillar">
+            <h4 data-i18n="slicx.h2_title">Industry Panels</h4>
+            <p data-i18n="slicx.h2_desc">Leadership from AirAsia, depa, and TED Fund on the future of urban innovation.</p>
+          </div>
+          <div class="slicx-pillar">
+            <h4 data-i18n="slicx.h3_title">Tech Showcase</h4>
+            <p data-i18n="slicx.h3_desc">Technologies and prototypes from Thai and international exhibitors.</p>
+          </div>
+          <div class="slicx-pillar">
+            <h4 data-i18n="slicx.h4_title">Business Matching</h4>
+            <p data-i18n="slicx.h4_desc">Real public–private collaboration opportunities across smart-city projects.</p>
+          </div>
+        </div>
+
+        <div class="slicx-gallery reveal">
+          <img src="../slic-photos/557456420_122103354291035021_6700779106084760250_n.jpg" alt="Governor Chadchart keynote">
+          <img src="../slic-photos/558905079_122103352719035021_6967241534688836707_n.jpg" alt="SLICx panel discussion">
+          <img src="../slic-photos/557598846_122103347745035021_7993161574696120128_n.jpg" alt="SLICx full audience">
+          <img src="../slic-photos/557631232_122103350259035021_8215488967222381152_n.jpg" alt="Panel speakers">
+          <img src="../slic-photos/556930750_122103352467035021_2003397427082593463_n.jpg" alt="Tech exhibit VR">
+          <img src="../slic-photos/557165040_122103351555035021_7099655888310907406_n.jpg" alt="Exhibitors floor">
+        </div>
+
+        <div class="slicx-cta reveal">
+          <div class="slicx-cta-text">
+            <h3 data-i18n="slicx.cta_title">SLICx 2026 is coming.</h3>
+            <p data-i18n="slicx.cta_desc">Programming for the 2026 edition is underway. Register interest and we'll send the details once dates are confirmed.</p>
+          </div>
+          <a class="btn btn-light" href="mailto:slic.connects@gmail.com?subject=SLICx%202026%20interest" data-i18n="slicx.cta_btn">Register Interest</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TEAM / ROSTER ──────────────────────── -->
+    <section class="section" id="team">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow reveal" data-i18n="team.label">§ 07 · The Firm · Board</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="team.title">A diverse board by design.</h2>
+            <p class="section-intro reveal" data-i18n="team.intro">Engineers, architects, anthropologists, urban planners, AI specialists. United by one vision for cities that work for the people who live in them.</p>
+          </div>
+        </div>
+
+        <div class="roster reveal">
+          <div class="roster-row">
+            <div class="roster-num">01</div>
+            <div class="roster-name">Vichate Tantiwanich</div>
+            <div class="roster-role" data-i18n="team.t1_role">Chairman of the Board</div>
+            <div class="roster-tags">Finance · Business · Macro</div>
+          </div>
+          <div class="roster-row">
+            <div class="roster-num">02</div>
+            <div class="roster-name">Wichian Chedchutrakulthong</div>
+            <div class="roster-role" data-i18n="team.t2_role">Vice Chairman</div>
+            <div class="roster-tags">Industry · Manufacturing</div>
+          </div>
+          <div class="roster-row">
+            <div class="roster-num">03</div>
+            <div class="roster-name">Dr. Non Akaraprasertkul</div>
+            <div class="roster-role" data-i18n="team.t3_role">Advisor to the Executive Committee</div>
+            <div class="roster-tags">Architecture · Urban · Anthropology</div>
+          </div>
+          <div class="roster-row">
+            <div class="roster-num">04</div>
+            <div class="roster-name">Amarin Prachusilpa</div>
+            <div class="roster-role" data-i18n="team.t4_role">Board Member &amp; Managing Director</div>
+            <div class="roster-tags">Engineering · Technology</div>
+          </div>
+          <div class="roster-row">
+            <div class="roster-num">05</div>
+            <div class="roster-name">Chonlawan Vanichpan</div>
+            <div class="roster-role" data-i18n="team.t5_role">Board Member</div>
+            <div class="roster-tags">Private Sector · Urban · Design</div>
+          </div>
+          <div class="roster-row">
+            <div class="roster-num">06</div>
+            <div class="roster-name">Korawich Asavatreesakul</div>
+            <div class="roster-role" data-i18n="team.t6_role">Board Member</div>
+            <div class="roster-tags">Negotiation · Project Initiation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DOWNLOADS ──────────────────────────── -->
+    <section class="section" id="downloads">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow reveal" data-i18n="downloads.label">§ 08 · Materials</span>
+          <div>
+            <h2 class="section-title display reveal" data-i18n="downloads.title">Download the dossier.</h2>
+            <p class="section-intro reveal" data-i18n="downloads.intro">Two PDFs. The company profile and a primer on smart-city fundamentals, co-published with depa.</p>
+          </div>
+        </div>
+
+        <div class="downloads reveal">
+          <a class="dl-row" href="../Downloadable%20resouces/SLIC%20Company%20Profile.pdf" target="_blank" rel="noopener">
+            <div class="dl-num">01</div>
+            <div class="dl-title" data-i18n="downloads.d1_title">SLIC Company Profile</div>
+            <div class="dl-desc" data-i18n="downloads.d1_desc">PDF · 22 MB · Services, team, and projects.</div>
+            <div class="dl-action" data-i18n="downloads.action">Download ↓</div>
+          </a>
+          <a class="dl-row" href="../Downloadable%20resouces/%5BUS%20-%20depa%5D%20Smart%20City%20Primer.pdf" target="_blank" rel="noopener">
+            <div class="dl-num">02</div>
+            <div class="dl-title" data-i18n="downloads.d2_title">Smart City Primer</div>
+            <div class="dl-desc" data-i18n="downloads.d2_desc">PDF · 16 MB · SLIC × depa guide to smart-city fundamentals.</div>
+            <div class="dl-action" data-i18n="downloads.action">Download ↓</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PARTNERS ───────────────────────────── -->
+    <section class="partners">
+      <div class="wrap">
+        <div class="partners-label">
+          <span class="eyebrow" data-i18n="partners.label">In Collaboration With</span>
+        </div>
+        <div class="partners-row">
+          <img src="../files/photos/depa.png" alt="depa">
+          <img src="../files/photos/PMU-A logo.jpeg" alt="PMU-A">
+          <img src="../files/photos/Sasin Logo.png" alt="Sasin">
+          <img src="../files/photos/CMU logo.jpg" alt="Chiang Mai University">
+          <img src="../files/photos/CASEAN LOGO.png" alt="CASEAN">
+          <img src="../files/photos/Smart City Thailand logo.jpg" alt="Smart City Thailand">
+          <img src="../files/photos/Superbrain City Logo.jpg" alt="Superbrain City">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ────────────────────────────── -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="contact-left">
+            <span class="eyebrow" style="color: var(--mute-on-dark);" data-i18n="contact.label">§ 09 · Dialogue</span>
+            <h2 class="display" data-i18n="contact.title" data-i18n-html="true" style="margin-top: 16px;">Let's build something <em>that matters.</em></h2>
+            <p data-i18n="contact.desc">Municipality exploring smart-city solutions, developer in search of an innovation partner, researcher wanting to collaborate — we'd like to hear from you.</p>
+            <address>
+              Smart &amp; Livable City Co., Ltd.<br>
+              326/1 Soi Chaloem Suk, Chan Kasem Sub-district,<br>
+              Chatuchak District, Bangkok 10900, Thailand<br><br>
+              <a href="mailto:slic.connects@gmail.com">slic.connects@gmail.com</a><br>
+              <span data-i18n="contact.tax">Tax ID</span> · 0105568046106
+            </address>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="row">
+              <input type="text" name="name" required data-i18n-placeholder="contact.ph_name" placeholder="Your name">
+              <input type="text" name="org" required data-i18n-placeholder="contact.ph_org" placeholder="Organisation / City">
+            </div>
+            <input type="email" name="email" required data-i18n-placeholder="contact.ph_email" placeholder="Email address">
+            <textarea name="message" rows="5" required data-i18n-placeholder="contact.ph_msg" placeholder="Tell us about your project or idea"></textarea>
+            <button class="btn" type="submit" data-i18n="contact.submit">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── COLOPHON ─────────────────────────────── -->
+  <footer class="colophon">
+    <div class="wrap">
+      <div class="colophon-top">
+        <div class="colophon-brand">
+          <h3>SLIC<span style="color: var(--accent);">.</span></h3>
+          <p class="small" data-i18n="footer.company_name">Smart and Livable City Company Limited.</p>
+          <p class="small" style="margin-top: 10px;" data-i18n="footer.legal">Registered under the laws of the Kingdom of Thailand. Committed to the Personal Data Protection Act (PDPA) B.E. 2562.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.nav_title">Site</h4>
+          <ul>
+            <li><a href="#firm" data-i18n="nav.firm">Firm</a></li>
+            <li><a href="#services" data-i18n="nav.services">Practice</a></li>
+            <li><a href="#work" data-i18n="nav.work">Work</a></li>
+            <li><a href="#team" data-i18n="footer.board">Board</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.programmes">Programmes</h4>
+          <ul>
+            <li><a href="#lfc" data-i18n="nav.lfc">LFC</a></li>
+            <li><a href="#slicx" data-i18n="nav.slicx">SLICx</a></li>
+            <li><a href="#downloads" data-i18n="footer.materials">Materials</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.archives">Archives</h4>
+          <ul>
+            <li><a href="../" data-i18n="footer.legacy">2025 Edition ↗</a></li>
+            <li><a href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener">SLIC Index ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon-bottom">
+        <div data-i18n="footer.copy">© 2026 Smart &amp; Livable City Co., Ltd. All rights reserved.</div>
+        <a class="edition-link" href="../" data-i18n="footer.view_2025">View 2025 edition ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── translations ──────────────────────────
+    const T = {
+      en: {
+        'masthead.tagline': 'Smart & Livable City',
+        'nav.firm': 'Firm', 'nav.services': 'Practice', 'nav.work': 'Work',
+        'nav.index': 'Index', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': 'Contact',
+
+        'lede.edition': '2026 Edition', 'lede.place': 'Bangkok · Southeast Asia',
+        'lede.title': 'We make cities <em>smarter</em> and <em>more livable.</em>',
+        'lede.standfirst': 'A Thai consultancy and innovation partner building data-driven, citizen-centred smart cities with public institutions, private enterprises, and academic networks across Southeast Asia.',
+        'lede.cta1': 'See the Work', 'lede.cta2': 'Open a Dialogue',
+
+        'firm.label': '§ 01 · The Firm',
+        'firm.title': 'Not just consultants. <em>Innovation partners.</em>',
+        'firm.intro': "Smart & Livable City Co., Ltd. began as friends and colleagues who shared one belief — that cities could be made better with the right tools and a little discipline.",
+        'firm.t1_title': 'Purpose-driven', 'firm.t1_desc': 'Every engagement begins with a community need. Never technology for its own sake.',
+        'firm.t2_title': 'Proof-based', 'firm.t2_desc': 'Data and measurable outcomes guide every design and delivery decision.',
+        'firm.t3_title': 'People-centric', 'firm.t3_desc': 'Citizens are the subject of the work, not the audience of it.',
+        'firm.t4_title': 'Practical', 'firm.t4_desc': 'Modular, bankable solutions a municipal budget can actually carry.',
+        'firm.p1': 'SLIC bridges public institutions, private enterprises, and academic networks to co-create data-driven, citizen-centric smart cities. We work with mayors, ministries, and operators — not only with vendors.',
+        'firm.p2': 'Our Thai engineers, architects, anthropologists, urban planners and AI specialists are united by one vision: cities that serve the people who live in them, at a price those cities can afford.',
+
+        'services.label': '§ 02 · Practice',
+        'services.title': 'Innovation as a service.',
+        'services.intro': "The 4C framework carries an engagement from first conversation to lasting impact — one contract, four discrete modes.",
+        'services.s1_title': 'Consultation', 'services.s1_desc': 'Strategic advisory for municipalities and private developers — smart infrastructure, urban sustainability, digital transformation.',
+        'services.s2_title': 'Connecting', 'services.s2_desc': 'Bridges between government agencies, universities, and the private sector so collaboration and scale become possible.',
+        'services.s3_title': 'Capacity Building', 'services.s3_desc': 'Training smart city officers, community leaders, and local teams in the technical and creative methods they need.',
+        'services.s4_title': 'Co-Creation', 'services.s4_desc': 'Collaborative implementation through people-public-private partnerships (4Ps) — from idea through evaluation.',
+
+        'work.label': '§ 03 · Work',
+        'work.title': 'Projects that move cities forward.',
+        'work.intro': "From AI-powered data platforms to immersive learning environments — work that's been built, deployed, and tested against real municipal friction.",
+        'work.p1_label': 'Featured Platform · UN Habitat–aligned',
+        'work.p1_title': 'Thailand Smart City Data Platform',
+        'work.p1_desc': 'An AI-powered city-listening and analytics platform that turns urban noise into operational intelligence. Delivered with depa; aligned with UN Habitat standards; deployed across multiple Thai municipalities.',
+        'work.p2_label': 'Education · STEM',
+        'work.p2_title': 'Metaverse Classroom',
+        'work.p2_desc': 'A VR-powered learning ecosystem boosting STEM engagement in Thai schools — designed with teachers, not at them. Now operational across a growing pilot programme.',
+        'work.p3_label': 'Flagship Event · 2025',
+        'work.p3_title': 'SLICx 2025 Expo',
+        'work.p3_desc': "Three days of keynotes, panels, tech showcases, and business matching at Queen Sirikit National Convention Center, hosted within Sustainability Expo (SX2025). The inaugural edition of SLIC's own expo format.",
+        'work.p3_link': 'Read the dossier',
+
+        'index.label': '§ 04 · Index · Flagship Data Product',
+        'index.title': 'The <em>SLIC Index.</em>',
+        'index.intro': "A transparent, open-source ranking of the world's cities — the firm's flagship data product, built in-house and refreshed annually.",
+        'index.headline': 'Every score traces to <em>a source.</em>',
+        'index.lead': 'Absolute piecewise-linear scoring, AMPI aggregation, no imputation. Adding new cities never shifts existing scores. Every metric traces to a public, citable source.',
+        'index.stat_cities': 'Cities Ranked', 'index.stat_pillars': 'Pillars', 'index.stat_indicators': 'Indicators',
+        'index.cta1': 'Visit SLIC Index ↗', 'index.cta2': 'Read the methodology',
+        'index.card_note': 'Pillar Weights', 'index.card_foot': 'AMPI aggregation · no imputation', 'index.card_link': 'See rankings ↗',
+        'index.p1': 'Growth', 'index.p2': 'Viability', 'index.p3': 'Capability', 'index.p4': 'Community', 'index.p5': 'Creative',
+
+        'lfc.label': '§ 05 · LFC · Flagship Programme',
+        'lfc.title': 'Leadership for Change <em>Cohort 16.</em>',
+        'lfc.intro': 'A 9-module executive programme for practical smart-city leaders — co-organised with the Right Livelihood Foundation (มูลนิธิสัมมาชีพ). Dr. Non Akaraprasertkul, Course Director.',
+        'lfc.what_title': 'What LFC is',
+        'lfc.what_desc': "Now in its sixteenth cohort, LFC has trained over 1,500 leaders across government, private sector, and civil society. This year's theme — <em>Practical Smart City Leaders</em> — is organised around a 4P framework: Purposeful, Practical, Proof-based, People-Centric.",
+        'lfc.who_title': 'Who should apply',
+        'lfc.who_desc': 'City executives, municipal officers, smart city project managers, SE/SME/startup founders, policy designers, PPP teams, and civil society leaders intent on building real, bankable smart-city projects.',
+        'lfc.meta_date': '13 Jun — 5 Jul 2026', 'lfc.meta_date_label': 'Duration',
+        'lfc.meta_modules_label': 'Modules', 'lfc.meta_alumni_label': 'Alumni',
+        'lfc.meta_fee_label': 'Registration', 'lfc.meta_fee_val': 'On enquiry',
+        'lfc.curriculum': 'Curriculum · Nine Modules',
+        'lfc.m1': 'Right Livelihood Leadership for Sustainable Cities',
+        'lfc.m2': 'What is a Smart City? Finding the Real Problems',
+        'lfc.m3': 'Where Are the People? Citizen Listening & Co-design',
+        'lfc.m4': 'Technology, Data & Ethics: Using Tech Without Breaking Cities',
+        'lfc.m5': 'Study Tour: National Disaster Warning Center & depa',
+        'lfc.m6': 'Innovation, Business Models & Finance: Who Pays?',
+        'lfc.m7': 'City Leaders, Governance & Procurement',
+        'lfc.m8': 'Build a Smart City App with AI + Social Enterprise',
+        'lfc.m9': 'Pitching for Change & Graduation',
+        'lfc.partner_note': 'In partnership with <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">Right Livelihood Foundation</a> (มูลนิธิสัมมาชีพ) — championing ethical leadership and sustainable livelihoods for over sixteen years.',
+        'lfc.cta': 'Apply for LFC Cohort 16',
+
+        'slicx.label': '§ 06 · SLICx · Expo',
+        'slicx.title': 'Where smart-city leaders converge.',
+        'slicx.intro': "The Smart & Livable City Expo — SLIC's own convening format. 2025 was the inaugural edition, inside SX2025 at Queen Sirikit National Convention Center.",
+        'slicx.recap_title': 'SLICx 2025 · Recap',
+        'slicx.recap_p1': 'Three days of keynotes, industry panels, tech showcases, and business matching at the Queen Sirikit National Convention Center, hosted within Sustainability Expo (SX2025).',
+        'slicx.recap_p2': "Featuring a keynote by Bangkok Governor Chadchart Sittipunt on his vision for Bangkok as a smart and livable city — alongside leadership from Thai AirAsia, SCGJWD, Thailand Post, depa, and TED Fund.",
+        'slicx.h1_title': 'Keynote Stage', 'slicx.h1_desc': "The Bangkok Governor's vision for transforming the capital into a smarter, more livable city.",
+        'slicx.h2_title': 'Industry Panels', 'slicx.h2_desc': 'Leadership from AirAsia, depa, and TED Fund on the future of urban innovation.',
+        'slicx.h3_title': 'Tech Showcase', 'slicx.h3_desc': 'Technologies and prototypes from Thai and international exhibitors.',
+        'slicx.h4_title': 'Business Matching', 'slicx.h4_desc': 'Real public–private collaboration opportunities across smart-city projects.',
+        'slicx.cta_title': 'SLICx 2026 is coming.', 'slicx.cta_desc': "Programming for the 2026 edition is underway. Register interest and we'll send the details once dates are confirmed.", 'slicx.cta_btn': 'Register Interest',
+
+        'team.label': '§ 07 · The Firm · Board',
+        'team.title': 'A diverse board by design.',
+        'team.intro': 'Engineers, architects, anthropologists, urban planners, AI specialists. United by one vision for cities that work for the people who live in them.',
+        'team.t1_role': 'Chairman of the Board',
+        'team.t2_role': 'Vice Chairman',
+        'team.t3_role': 'Advisor to the Executive Committee',
+        'team.t4_role': 'Board Member & Managing Director',
+        'team.t5_role': 'Board Member',
+        'team.t6_role': 'Board Member',
+
+        'downloads.label': '§ 08 · Materials',
+        'downloads.title': 'Download the dossier.',
+        'downloads.intro': 'Two PDFs. The company profile and a primer on smart-city fundamentals, co-published with depa.',
+        'downloads.d1_title': 'SLIC Company Profile',
+        'downloads.d1_desc': 'PDF · 22 MB · Services, team, and projects.',
+        'downloads.d2_title': 'Smart City Primer',
+        'downloads.d2_desc': 'PDF · 16 MB · SLIC × depa guide to smart-city fundamentals.',
+        'downloads.action': 'Download ↓',
+
+        'partners.label': 'In Collaboration With',
+
+        'contact.label': '§ 09 · Dialogue',
+        'contact.title': "Let's build something <em>that matters.</em>",
+        'contact.desc': "Municipality exploring smart-city solutions, developer in search of an innovation partner, researcher wanting to collaborate — we'd like to hear from you.",
+        'contact.tax': 'Tax ID',
+        'contact.ph_name': 'Your name', 'contact.ph_org': 'Organisation / City',
+        'contact.ph_email': 'Email address', 'contact.ph_msg': 'Tell us about your project or idea',
+        'contact.submit': 'Send Inquiry',
+
+        'footer.company_name': 'Smart and Livable City Company Limited.',
+        'footer.legal': 'Registered under the laws of the Kingdom of Thailand. Committed to the Personal Data Protection Act (PDPA) B.E. 2562.',
+        'footer.nav_title': 'Site', 'footer.board': 'Board',
+        'footer.programmes': 'Programmes', 'footer.materials': 'Materials',
+        'footer.archives': 'Archives', 'footer.legacy': '2025 Edition ↗',
+        'footer.copy': '© 2026 Smart & Livable City Co., Ltd. All rights reserved.',
+        'footer.view_2025': 'View 2025 edition ↗',
+      },
+
+      th: {
+        'masthead.tagline': 'เมืองอัจฉริยะที่น่าอยู่',
+        'nav.firm': 'บริษัท', 'nav.services': 'บริการ', 'nav.work': 'ผลงาน',
+        'nav.index': 'ดัชนี', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': 'ติดต่อ',
+
+        'lede.edition': 'ฉบับปี 2569', 'lede.place': 'กรุงเทพฯ · เอเชียตะวันออกเฉียงใต้',
+        'lede.title': 'เราทำให้เมือง <em>ฉลาดขึ้น</em> และ <em>น่าอยู่ขึ้น</em>',
+        'lede.standfirst': 'บริษัทที่ปรึกษาและพันธมิตรด้านนวัตกรรมจากประเทศไทย ร่วมสร้างเมืองอัจฉริยะที่ขับเคลื่อนด้วยข้อมูลและเน้นประชาชนเป็นศูนย์กลาง กับภาครัฐ ภาคเอกชน และเครือข่ายวิชาการทั่วภูมิภาคเอเชียตะวันออกเฉียงใต้',
+        'lede.cta1': 'ดูผลงาน', 'lede.cta2': 'เริ่มสนทนา',
+
+        'firm.label': '§ 01 · บริษัท',
+        'firm.title': 'ไม่ใช่แค่ที่ปรึกษา <em>แต่เป็นพันธมิตรนวัตกรรม</em>',
+        'firm.intro': 'บริษัท สมาร์ท แอนด์ ลิฟเอเบิล ซิตี้ จำกัด เริ่มต้นจากกลุ่มเพื่อนและเพื่อนร่วมงาน ที่มีความเชื่อร่วมกันว่าเมืองสามารถถูกพัฒนาให้ดีขึ้นได้ ด้วยเครื่องมือที่ถูกต้องและวินัยในการทำงาน',
+        'firm.t1_title': 'มีเป้าหมาย', 'firm.t1_desc': 'ทุกโครงการเริ่มจากความต้องการที่แท้จริงของชุมชน ไม่ใช่เทคโนโลยีเพื่อเทคโนโลยี',
+        'firm.t2_title': 'อิงหลักฐาน', 'firm.t2_desc': 'ข้อมูลและผลลัพธ์ที่วัดได้เป็นตัวนำทางทุกการออกแบบและการส่งมอบ',
+        'firm.t3_title': 'เน้นคน', 'firm.t3_desc': 'ประชาชนคือประธานของงาน ไม่ใช่ผู้ชม',
+        'firm.t4_title': 'ปฏิบัติได้จริง', 'firm.t4_desc': 'โซลูชันโมดูลาร์ที่คุ้มค่า และงบประมาณของเทศบาลสามารถแบกรับได้จริง',
+        'firm.p1': 'SLIC เชื่อมโยงภาครัฐ ภาคเอกชน และเครือข่ายวิชาการ เพื่อร่วมสร้างเมืองอัจฉริยะที่ขับเคลื่อนด้วยข้อมูลและเน้นประชาชนเป็นศูนย์กลาง เราทำงานกับนายกเทศมนตรี กระทรวง และผู้ปฏิบัติ ไม่ใช่แค่กับผู้ขาย',
+        'firm.p2': 'วิศวกร สถาปนิก นักมานุษยวิทยา นักผังเมือง และผู้เชี่ยวชาญ AI ของเราเป็นคนไทย รวมตัวกันด้วยวิสัยทัศน์เดียวกัน — เมืองที่รับใช้ผู้คนที่อาศัยอยู่ในเมืองนั้น ในราคาที่เมืองจ่ายได้',
+
+        'services.label': '§ 02 · บริการ',
+        'services.title': 'นวัตกรรมในรูปแบบบริการ',
+        'services.intro': 'กรอบการทำงาน 4C พาโครงการจากการสนทนาแรกจนถึงผลกระทบที่ยั่งยืน — สัญญาเดียว สี่โหมดที่ชัดเจน',
+        'services.s1_title': 'ให้คำปรึกษา', 'services.s1_desc': 'ที่ปรึกษาเชิงกลยุทธ์สำหรับเทศบาลและนักพัฒนาภาคเอกชน ด้านโครงสร้างพื้นฐานอัจฉริยะ ความยั่งยืนเมือง และการเปลี่ยนแปลงทางดิจิทัล',
+        'services.s2_title': 'เชื่อมต่อ', 'services.s2_desc': 'สร้างสะพานระหว่างหน่วยงานรัฐ มหาวิทยาลัย และภาคเอกชน เพื่อให้ความร่วมมือและการขยายผลเกิดขึ้นได้',
+        'services.s3_title': 'เสริมศักยภาพ', 'services.s3_desc': 'ฝึกอบรมเจ้าหน้าที่เมืองอัจฉริยะ ผู้นำชุมชน และทีมท้องถิ่น ด้วยความรู้ทางเทคนิคและวิธีการเชิงสร้างสรรค์',
+        'services.s4_title': 'ร่วมสร้าง', 'services.s4_desc': 'การดำเนินงานร่วมกันผ่านความร่วมมือแบบประชาชน-ภาครัฐ-ภาคเอกชน (4Ps) ตั้งแต่สร้างไอเดียจนถึงการประเมินผล',
+
+        'work.label': '§ 03 · ผลงาน',
+        'work.title': 'โครงการที่ขับเคลื่อนเมืองไปข้างหน้า',
+        'work.intro': 'จากแพลตฟอร์มข้อมูลที่ขับเคลื่อนด้วย AI ไปจนถึงสภาพแวดล้อมการเรียนรู้แบบดื่มด่ำ — งานที่ถูกสร้าง ติดตั้ง และทดสอบกับเงื่อนไขจริงของเทศบาล',
+        'work.p1_label': 'แพลตฟอร์มหลัก · สอดคล้องกับ UN Habitat',
+        'work.p1_title': 'แพลตฟอร์มข้อมูลเมืองอัจฉริยะไทย',
+        'work.p1_desc': 'แพลตฟอร์มการรับฟังและวิเคราะห์เมืองที่ขับเคลื่อนด้วย AI เปลี่ยนสัญญาณเมืองเป็นข่าวกรองเชิงปฏิบัติการ ส่งมอบร่วมกับ depa สอดคล้องกับมาตรฐาน UN Habitat ติดตั้งในหลายเทศบาลของไทย',
+        'work.p2_label': 'การศึกษา · STEM',
+        'work.p2_title': 'ห้องเรียน Metaverse',
+        'work.p2_desc': 'ระบบนิเวศการเรียนรู้ผ่าน VR ที่เพิ่มการมีส่วนร่วมด้าน STEM ในโรงเรียนไทย ออกแบบร่วมกับครู ไม่ใช่ทำใส่ครู ปัจจุบันเปิดใช้งานในโครงการนำร่องที่ขยายตัว',
+        'work.p3_label': 'งานประจำปี · 2568',
+        'work.p3_title': 'SLICx 2025 Expo',
+        'work.p3_desc': 'สามวันของปาฐกถา เสวนา นิทรรศการ และจับคู่ธุรกิจ ณ ศูนย์ประชุมแห่งชาติสิริกิติ์ ในงาน SX2025 — ครั้งแรกของ SLICx',
+        'work.p3_link': 'อ่านรายละเอียด',
+
+        'index.label': '§ 04 · ดัชนี · ผลิตภัณฑ์ข้อมูลหลัก',
+        'index.title': '<em>SLIC Index</em>',
+        'index.intro': 'ระบบจัดอันดับเมืองแบบโอเพนซอร์สที่โปร่งใส — ผลิตภัณฑ์ข้อมูลเรือธงของบริษัท สร้างในองค์กร ปรับปรุงรายปี',
+        'index.headline': 'ทุกคะแนน <em>อ้างอิงถึงแหล่งข้อมูล</em>',
+        'index.lead': 'การให้คะแนนแบบ piecewise-linear เชิงสัมบูรณ์ รวมผลด้วย AMPI ไม่มีการคาดเดาข้อมูลที่ขาด การเพิ่มเมืองใหม่ไม่กระทบคะแนนเดิม ทุกตัวชี้วัดอ้างอิงแหล่งข้อมูลที่เปิดเผยและตรวจสอบได้',
+        'index.stat_cities': 'เมืองที่จัดอันดับ', 'index.stat_pillars': 'เสาหลัก', 'index.stat_indicators': 'ตัวชี้วัด',
+        'index.cta1': 'เข้าชม SLIC Index ↗', 'index.cta2': 'อ่านระเบียบวิธี',
+        'index.card_note': 'น้ำหนักเสาหลัก', 'index.card_foot': 'รวมด้วย AMPI · ไม่มีการคาดเดา', 'index.card_link': 'ดูอันดับ ↗',
+        'index.p1': 'การเติบโต', 'index.p2': 'ความยั่งยืน', 'index.p3': 'ศักยภาพ', 'index.p4': 'ชุมชน', 'index.p5': 'ความสร้างสรรค์',
+
+        'lfc.label': '§ 05 · LFC · หลักสูตรหลัก',
+        'lfc.title': 'ผู้นำ-นำการเปลี่ยนแปลง <em>รุ่นที่ 16</em>',
+        'lfc.intro': 'หลักสูตรผู้บริหาร 9 โมดูล สำหรับผู้นำเมืองอัจฉริยะเชิงปฏิบัติ จัดร่วมกับมูลนิธิสัมมาชีพ โดยมี ดร.นน อัครประเสริฐกุล เป็นผู้อำนวยการหลักสูตร',
+        'lfc.what_title': 'LFC คืออะไร',
+        'lfc.what_desc': 'หลักสูตรผู้นำ-นำการเปลี่ยนแปลง ปัจจุบันเข้าสู่รุ่นที่ 16 ได้ฝึกอบรมผู้นำกว่า 1,500 คน จากภาครัฐ ภาคเอกชน และภาคประชาสังคม ธีมปีนี้คือ <em>ผู้นำแห่งเมืองอัจฉริยะเชิงปฏิบัติ</em> เน้นกรอบ 4P: มีเป้าหมาย ปฏิบัติได้จริง พิสูจน์ได้ และเน้นคนเป็นศูนย์กลาง',
+        'lfc.who_title': 'ใครควรสมัคร',
+        'lfc.who_desc': 'ผู้บริหารเมือง เจ้าหน้าที่ท้องถิ่น ผู้จัดการโครงการเมืองอัจฉริยะ ผู้ก่อตั้ง SE/SME/สตาร์ทอัพ นักออกแบบนโยบาย ทีม PPP และผู้นำภาคประชาสังคม ที่ต้องการสร้างโครงการเมืองอัจฉริยะที่ทำได้จริง',
+        'lfc.meta_date': '13 มิ.ย. — 5 ก.ค. 2569', 'lfc.meta_date_label': 'ระยะเวลา',
+        'lfc.meta_modules_label': 'โมดูล', 'lfc.meta_alumni_label': 'ศิษย์เก่า',
+        'lfc.meta_fee_label': 'ค่าลงทะเบียน', 'lfc.meta_fee_val': 'สอบถาม',
+        'lfc.curriculum': 'หลักสูตร · เก้าโมดูล',
+        'lfc.m1': 'ผู้นำสัมมาชีพเพื่อเมืองยั่งยืน',
+        'lfc.m2': 'สมาร์ทซิตี้คืออะไร? ค้นหาปัญหาที่แท้จริง',
+        'lfc.m3': 'คนอยู่ตรงไหน? การฟังประชาชนและร่วมออกแบบ',
+        'lfc.m4': 'เทคโนโลยี ข้อมูล และจริยธรรม: ใช้อย่างไรไม่ให้เมืองพัง',
+        'lfc.m5': 'ทัศนศึกษา: ศูนย์เตือนภัยพิบัติแห่งชาติ และ depa',
+        'lfc.m6': 'นวัตกรรม โมเดลธุรกิจ และการเงิน: ใครจ่าย?',
+        'lfc.m7': 'ผู้นำเมือง ธรรมาภิบาล และระบบจัดซื้อ',
+        'lfc.m8': 'สร้าง Smart City App ด้วย AI + วิสาหกิจเพื่อสังคม',
+        'lfc.m9': 'นำเสนอแผนเพื่อการเปลี่ยนแปลงและพิธีปิด',
+        'lfc.partner_note': 'จัดร่วมกับ <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">มูลนิธิสัมมาชีพ</a> — ส่งเสริมภาวะผู้นำอย่างมีจริยธรรมและอาชีพที่ยั่งยืนมากว่า 16 ปี',
+        'lfc.cta': 'สมัคร LFC รุ่นที่ 16',
+
+        'slicx.label': '§ 06 · SLICx · งานเอ็กซ์โป',
+        'slicx.title': 'จุดรวมตัวของผู้นำเมืองอัจฉริยะ',
+        'slicx.intro': 'Smart & Livable City Expo — รูปแบบงานของ SLIC เอง ฉบับแรกคือปี 2568 ในงาน SX2025 ที่ศูนย์ประชุมแห่งชาติสิริกิติ์',
+        'slicx.recap_title': 'SLICx 2025 · สรุปงาน',
+        'slicx.recap_p1': 'สามวันของปาฐกถา เสวนาอุตสาหกรรม นิทรรศการเทคโนโลยี และจับคู่ธุรกิจ ณ ศูนย์ประชุมแห่งชาติสิริกิติ์ ในงาน SX2025',
+        'slicx.recap_p2': 'มีปาฐกถาพิเศษจากผู้ว่าฯ กทม. ชัชชาติ สิทธิพันธุ์ เกี่ยวกับวิสัยทัศน์กรุงเทพฯ สู่เมืองอัจฉริยะน่าอยู่ พร้อมผู้นำจาก Thai AirAsia, SCGJWD, Thailand Post, depa และ TED Fund',
+        'slicx.h1_title': 'เวทีปาฐกถา', 'slicx.h1_desc': 'วิสัยทัศน์ของผู้ว่าฯ กทม. ในการเปลี่ยนเมืองหลวงสู่เมืองอัจฉริยะที่น่าอยู่',
+        'slicx.h2_title': 'เสวนาอุตสาหกรรม', 'slicx.h2_desc': 'ผู้นำจาก AirAsia, depa และ TED Fund พูดคุยเรื่องอนาคตนวัตกรรมเมือง',
+        'slicx.h3_title': 'โชว์เคสเทคโนโลยี', 'slicx.h3_desc': 'เทคโนโลยีและต้นแบบจากผู้แสดงทั้งไทยและต่างประเทศ',
+        'slicx.h4_title': 'จับคู่ธุรกิจ', 'slicx.h4_desc': 'โอกาสจริงในการร่วมมือระหว่างภาครัฐ-เอกชนในโครงการเมืองอัจฉริยะ',
+        'slicx.cta_title': 'SLICx 2026 กำลังมา', 'slicx.cta_desc': 'ฉบับปี 2569 กำลังจัดเตรียม ลงทะเบียนความสนใจเพื่อรับข่าวสารเมื่อกำหนดการยืนยัน', 'slicx.cta_btn': 'ลงทะเบียนความสนใจ',
+
+        'team.label': '§ 07 · บริษัท · คณะกรรมการ',
+        'team.title': 'คณะกรรมการที่หลากหลายโดยการออกแบบ',
+        'team.intro': 'วิศวกร สถาปนิก นักมานุษยวิทยา นักผังเมือง ผู้เชี่ยวชาญ AI รวมตัวกันด้วยวิสัยทัศน์เดียวกัน — เมืองที่ทำงานเพื่อคนที่อาศัยอยู่',
+        'team.t1_role': 'ประธานกรรมการ',
+        'team.t2_role': 'รองประธาน',
+        'team.t3_role': 'ที่ปรึกษาคณะกรรมการบริหาร',
+        'team.t4_role': 'กรรมการและกรรมการผู้จัดการ',
+        'team.t5_role': 'กรรมการ',
+        'team.t6_role': 'กรรมการ',
+
+        'downloads.label': '§ 08 · เอกสาร',
+        'downloads.title': 'ดาวน์โหลดเอกสาร',
+        'downloads.intro': 'เอกสารสองเล่ม โปรไฟล์บริษัทและคู่มือพื้นฐานเมืองอัจฉริยะที่เผยแพร่ร่วมกับ depa',
+        'downloads.d1_title': 'โปรไฟล์บริษัท SLIC',
+        'downloads.d1_desc': 'PDF · 22 MB · บริการ ทีมงาน และโครงการ',
+        'downloads.d2_title': 'คู่มือเมืองอัจฉริยะ',
+        'downloads.d2_desc': 'PDF · 16 MB · คู่มือ SLIC × depa ว่าด้วยพื้นฐานเมืองอัจฉริยะ',
+        'downloads.action': 'ดาวน์โหลด ↓',
+
+        'partners.label': 'ร่วมมือกับ',
+
+        'contact.label': '§ 09 · สนทนา',
+        'contact.title': 'มาสร้างสิ่งที่ <em>มีความหมาย</em> ด้วยกัน',
+        'contact.desc': 'เทศบาลที่กำลังสำรวจโซลูชันเมืองอัจฉริยะ นักพัฒนาที่มองหาพันธมิตรนวัตกรรม หรือผู้วิจัยที่อยากร่วมงาน เรายินดีรับฟัง',
+        'contact.tax': 'เลขประจำตัวผู้เสียภาษี',
+        'contact.ph_name': 'ชื่อของคุณ', 'contact.ph_org': 'องค์กร / เมือง',
+        'contact.ph_email': 'อีเมล', 'contact.ph_msg': 'เล่าเกี่ยวกับโครงการหรือไอเดียของคุณ',
+        'contact.submit': 'ส่งข้อความ',
+
+        'footer.company_name': 'บริษัท สมาร์ท แอนด์ ลิฟเอเบิล ซิตี้ จำกัด',
+        'footer.legal': 'จดทะเบียนภายใต้กฎหมายแห่งราชอาณาจักรไทย ปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)',
+        'footer.nav_title': 'เมนู', 'footer.board': 'คณะกรรมการ',
+        'footer.programmes': 'หลักสูตร', 'footer.materials': 'เอกสาร',
+        'footer.archives': 'คลัง', 'footer.legacy': 'ฉบับปี 2568 ↗',
+        'footer.copy': '© 2569 บริษัท สมาร์ท แอนด์ ลิฟเอเบิล ซิตี้ จำกัด สงวนลิขสิทธิ์',
+        'footer.view_2025': 'ดูฉบับปี 2568 ↗',
+      },
+
+      zh: {
+        'masthead.tagline': '智慧宜居城市',
+        'nav.firm': '关于', 'nav.services': '业务', 'nav.work': '项目',
+        'nav.index': '指数', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': '联系',
+
+        'lede.edition': '2026年版', 'lede.place': '曼谷 · 东南亚',
+        'lede.title': '让城市 <em>更智慧</em>、<em>更宜居</em>。',
+        'lede.standfirst': '一家来自泰国的咨询与创新合作伙伴，携手公共机构、私营企业与学术网络，在东南亚打造以数据驱动、以市民为中心的智慧城市。',
+        'lede.cta1': '查看项目', 'lede.cta2': '开启对话',
+
+        'firm.label': '§ 01 · 关于',
+        'firm.title': '不仅是顾问， <em>更是创新伙伴。</em>',
+        'firm.intro': 'Smart & Livable City Co., Ltd. 源于一群朋友和同事的共同信念 — 只要工具得当、方法严谨，城市是可以被改善的。',
+        'firm.t1_title': '目标驱动', 'firm.t1_desc': '每一次合作都从社区真实需求出发，而非为技术而技术。',
+        'firm.t2_title': '实证导向', 'firm.t2_desc': '数据与可衡量的成果指导我们每一个设计与交付决策。',
+        'firm.t3_title': '以人为本', 'firm.t3_desc': '市民是工作的主角，而不是观众。',
+        'firm.t4_title': '务实可行', 'firm.t4_desc': '模块化、可融资、城市预算承担得起的解决方案。',
+        'firm.p1': 'SLIC 连接公共机构、私营企业与学术网络，共同打造以数据驱动、以市民为中心的智慧城市。我们与市长、部委与一线运营团队合作，不仅仅与供应商合作。',
+        'firm.p2': '我们的工程师、建筑师、人类学家、城市规划师与 AI 专家皆为泰国人，因同一个愿景而团结——让城市真正服务于生活在其中的人，价格城市承担得起。',
+
+        'services.label': '§ 02 · 业务',
+        'services.title': '创新即服务。',
+        'services.intro': '4C 框架贯穿从首次对话到持久影响 — 一份合约，四种清晰模式。',
+        'services.s1_title': '咨询', 'services.s1_desc': '为市政部门和私营开发商提供智慧基础设施、城市可持续性与数字化转型的战略咨询。',
+        'services.s2_title': '连接', 'services.s2_desc': '在政府机构、大学与私营部门之间架设桥梁，使协作与规模化成为可能。',
+        'services.s3_title': '能力建设', 'services.s3_desc': '为智慧城市官员、社区领袖与本地团队提供所需的技术知识与创新方法培训。',
+        'services.s4_title': '共创', 'services.s4_desc': '通过公私民合作伙伴关系（4Ps）协作实施，从创意产生到评估。',
+
+        'work.label': '§ 03 · 项目',
+        'work.title': '推动城市前进的项目。',
+        'work.intro': '从 AI 驱动的数据平台到沉浸式学习环境 — 真正被构建、部署并在真实市政环境中经受考验的工作。',
+        'work.p1_label': '核心平台 · 符合联合国人居署',
+        'work.p1_title': '泰国智慧城市数据平台',
+        'work.p1_desc': 'AI 驱动的城市监听与分析平台，将城市噪声转化为运营智能。与 depa 联合交付；符合联合国人居署标准；已在多个泰国城市部署。',
+        'work.p2_label': '教育 · STEM',
+        'work.p2_title': '元宇宙教室',
+        'work.p2_desc': 'VR 驱动的学习生态，提升泰国学校 STEM 参与度 — 与教师共同设计，而非强加。目前在不断扩大的试点项目中运行。',
+        'work.p3_label': '旗舰活动 · 2025',
+        'work.p3_title': 'SLICx 2025 博览会',
+        'work.p3_desc': '三天的主题演讲、论坛、技术展示与商业对接，在诗丽吉王后国家会议中心，作为 SX2025 可持续发展博览会的一部分 — SLIC 自有博览会格式的首届版本。',
+        'work.p3_link': '阅读专题',
+
+        'index.label': '§ 04 · 指数 · 旗舰数据产品',
+        'index.title': '<em>SLIC 指数</em>',
+        'index.intro': '一个透明、开源的全球城市排名系统 — 公司旗舰数据产品，内部构建，每年更新。',
+        'index.headline': '每一个分数都 <em>追溯到来源。</em>',
+        'index.lead': '绝对分段线性评分，AMPI 聚合，不做数据填补。新增城市永远不改变既有分数。每项指标都可追溯至公开、可引用的来源。',
+        'index.stat_cities': '已排名城市', 'index.stat_pillars': '支柱', 'index.stat_indicators': '指标',
+        'index.cta1': '访问 SLIC 指数 ↗', 'index.cta2': '阅读方法论',
+        'index.card_note': '支柱权重', 'index.card_foot': 'AMPI 聚合 · 不做填补', 'index.card_link': '查看排名 ↗',
+        'index.p1': '增长', 'index.p2': '可持续性', 'index.p3': '能力', 'index.p4': '社区', 'index.p5': '创造力',
+
+        'lfc.label': '§ 05 · LFC · 旗舰项目',
+        'lfc.title': '领导力变革 <em>第16期。</em>',
+        'lfc.intro': '与正命基金会（มูลนิธิสัมมาชีพ）联合举办的 9 模块高管课程，培养务实的智慧城市领导者。课程总监：Non Akaraprasertkul 博士。',
+        'lfc.what_title': 'LFC 是什么',
+        'lfc.what_desc': '领导力变革计划目前已进入第 16 期，累计培训来自政府、私营部门与民间社会的领导者超过 1,500 名。今年的主题 — <em>务实的智慧城市领导者</em> — 围绕 4P 框架：目标驱动、务实可行、实证导向、以人为本。',
+        'lfc.who_title': '适合谁申请',
+        'lfc.who_desc': '城市管理者、市政官员、智慧城市项目经理、社会企业/中小企业/创业公司创始人、政策设计师、PPP 团队与民间社会领袖 — 致力于打造真正可融资的智慧城市项目。',
+        'lfc.meta_date': '2026 年 6 月 13 日 — 7 月 5 日', 'lfc.meta_date_label': '时长',
+        'lfc.meta_modules_label': '模块', 'lfc.meta_alumni_label': '校友',
+        'lfc.meta_fee_label': '注册费', 'lfc.meta_fee_val': '请来函',
+        'lfc.curriculum': '课程 · 九个模块',
+        'lfc.m1': '正命领导力与可持续城市',
+        'lfc.m2': '什么是智慧城市？发现真正的问题',
+        'lfc.m3': '人在哪里？市民倾听与共同设计',
+        'lfc.m4': '技术、数据与伦理：如何使用技术而不破坏城市',
+        'lfc.m5': '考察：国家灾害预警中心和 depa',
+        'lfc.m6': '创新、商业模式与融资：谁来买单？',
+        'lfc.m7': '城市领导者、治理与采购',
+        'lfc.m8': '用 AI 构建智慧城市应用 + 社会企业',
+        'lfc.m9': '变革演说与毕业典礼',
+        'lfc.partner_note': '与 <a href="https://www.right-livelihoods.com" target="_blank" rel="noopener">正命基金会</a>（มูลนิธิสัมมาชีพ）联合举办 — 十六年来致力于推动道德领导力与可持续生计。',
+        'lfc.cta': '申请 LFC 第16期',
+
+        'slicx.label': '§ 06 · SLICx · 博览会',
+        'slicx.title': '智慧城市领袖汇聚之地。',
+        'slicx.intro': 'Smart & Livable City Expo — SLIC 自有的汇聚格式。2025 年是首届版本，位于 SX2025 之内，在诗丽吉王后国家会议中心举办。',
+        'slicx.recap_title': 'SLICx 2025 · 回顾',
+        'slicx.recap_p1': '三天的主题演讲、行业论坛、技术展示与商业对接，在诗丽吉王后国家会议中心，作为 SX2025 可持续发展博览会的一部分。',
+        'slicx.recap_p2': '活动特邀曼谷市长差察·西提蓬发表主题演讲，分享他对曼谷智慧宜居城市的愿景 — 同时还有来自 Thai AirAsia、SCGJWD、Thailand Post、depa 与 TED Fund 的领导人。',
+        'slicx.h1_title': '主题演讲', 'slicx.h1_desc': '曼谷市长关于将首都转变为更智慧、更宜居城市的愿景。',
+        'slicx.h2_title': '行业论坛', 'slicx.h2_desc': 'AirAsia、depa 与 TED Fund 的领导人谈论城市创新的未来。',
+        'slicx.h3_title': '技术展示', 'slicx.h3_desc': '来自泰国与国际参展商的技术与原型。',
+        'slicx.h4_title': '商业对接', 'slicx.h4_desc': '为智慧城市项目创造真正的公私合作机会。',
+        'slicx.cta_title': 'SLICx 2026 即将到来。', 'slicx.cta_desc': '2026 年版本的筹备工作正在进行中。注册兴趣，日期确定后我们会发送详情。', 'slicx.cta_btn': '注册兴趣',
+
+        'team.label': '§ 07 · 关于 · 董事会',
+        'team.title': '设计上多元的董事会。',
+        'team.intro': '工程师、建筑师、人类学家、城市规划师、AI 专家。因同一个愿景而团结——让城市真正服务于生活在其中的人。',
+        'team.t1_role': '董事会主席',
+        'team.t2_role': '副主席',
+        'team.t3_role': '执行委员会顾问',
+        'team.t4_role': '董事兼总经理',
+        'team.t5_role': '董事',
+        'team.t6_role': '董事',
+
+        'downloads.label': '§ 08 · 资料',
+        'downloads.title': '下载资料。',
+        'downloads.intro': '两份 PDF。公司简介，以及与 depa 共同发布的智慧城市基础指南。',
+        'downloads.d1_title': 'SLIC 公司简介',
+        'downloads.d1_desc': 'PDF · 22 MB · 业务、团队与项目。',
+        'downloads.d2_title': '智慧城市入门指南',
+        'downloads.d2_desc': 'PDF · 16 MB · SLIC × depa 智慧城市基础指南。',
+        'downloads.action': '下载 ↓',
+
+        'partners.label': '合作单位',
+
+        'contact.label': '§ 09 · 对话',
+        'contact.title': '让我们一起构建 <em>有意义的事物。</em>',
+        'contact.desc': '正在探索智慧城市方案的市政部门、寻找创新合作伙伴的开发商、希望协作的研究者 — 我们都期待您的联系。',
+        'contact.tax': '税号',
+        'contact.ph_name': '您的姓名', 'contact.ph_org': '组织 / 城市',
+        'contact.ph_email': '电子邮箱', 'contact.ph_msg': '告诉我们您的项目或想法',
+        'contact.submit': '发送咨询',
+
+        'footer.company_name': 'Smart and Livable City Company Limited.',
+        'footer.legal': '根据泰王国法律注册。致力于遵守《个人数据保护法》(PDPA) B.E. 2562。',
+        'footer.nav_title': '站点', 'footer.board': '董事会',
+        'footer.programmes': '项目', 'footer.materials': '资料',
+        'footer.archives': '档案', 'footer.legacy': '2025 年版 ↗',
+        'footer.copy': '© 2026 Smart & Livable City Co., Ltd. 版权所有。',
+        'footer.view_2025': '查看 2025 年版 ↗',
+      }
+    };
+
+    // ── i18n apply ────────────────────────────
+    let lang = (localStorage.getItem('slic_lang') || (navigator.language || 'en').slice(0,2).toLowerCase());
+    if (!T[lang]) lang = 'en';
+
+    function applyLang(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      localStorage.setItem('slic_lang', l);
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+      const dict = T[l];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.dataset.i18n;
+        const v = dict[k];
+        if (v == null) return;
+        if (el.dataset.i18nHtml === 'true') el.innerHTML = v; else el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const k = el.dataset.i18nPlaceholder;
+        const v = dict[k];
+        if (v != null) el.placeholder = v;
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.addEventListener('click', () => applyLang(b.dataset.lang));
+    });
+    applyLang(lang);
+
+    // ── mobile nav ────────────────────────────
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    navToggle.addEventListener('click', () => {
+      const on = navToggle.classList.toggle('on');
+      primaryNav.classList.toggle('on', on);
+      navToggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    primaryNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('on');
+        primaryNav.classList.remove('on');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── reveal on scroll ──────────────────────
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── contact form (mailto bridge) ──────────
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const name = fd.get('name') || '';
+        const org = fd.get('org') || '';
+        const email = fd.get('email') || '';
+        const msg = fd.get('message') || '';
+        const subject = encodeURIComponent('SLIC inquiry from ' + name + (org ? ' (' + org + ')' : ''));
+        const body = encodeURIComponent('Name: ' + name + '\nOrganisation: ' + org + '\nEmail: ' + email + '\n\n' + msg);
+        window.location.href = 'mailto:slic.connects@gmail.com?subject=' + subject + '&body=' + body;
+      });
+    }
+  </script>
+</body>
+</html>
