@@ -666,48 +666,83 @@
       background: var(--surface-deep);
     }
     .lfc .section-header .eyebrow { color: var(--accent); }
-    .lfc-hero {
+    .lfc-poster-feature {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+      padding-bottom: clamp(40px, 6vw, 72px);
+      border-bottom: 1px solid var(--rule);
+      margin-top: clamp(32px, 4vw, 56px);
+    }
+    .lfc-poster-feature figure { margin: 0; }
+    .lfc-poster-feature figure img {
+      width: 100%;
+      display: block;
+      filter: grayscale(15%) contrast(1.04);
+    }
+    .lfc-poster-text .display { font-size: clamp(26px, 3.2vw, 40px); margin-bottom: 16px; }
+    .lfc-poster-text .display em { color: var(--accent); }
+    .lfc-poster-text p {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--ink-soft);
+      margin-top: 16px;
+      max-width: 46ch;
+    }
+    .lfc-poster-meta {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 72px);
-      padding-bottom: clamp(48px, 6vw, 80px);
-      border-bottom: 1px solid var(--rule);
-    }
-    .lfc-hero h2.display { font-size: clamp(36px, 4.8vw, 60px); }
-    .lfc-hero h2 em { color: var(--accent); }
-    .lfc-hero p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--ink-soft);
-      margin-top: 24px;
-      max-width: 48ch;
-    }
-    .lfc-meta {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      margin: clamp(40px, 6vw, 64px) 0;
+      margin: 28px 0;
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
     }
-    .lfc-meta div {
-      padding: 28px 24px 28px 0;
+    .lfc-poster-meta div {
+      padding: 18px 20px 18px 0;
       border-right: 1px solid var(--rule);
     }
-    .lfc-meta div:last-child { border-right: 0; }
-    .lfc-meta dt {
+    .lfc-poster-meta div:nth-child(even) {
+      border-right: 0;
+      padding-left: 20px;
+      padding-right: 0;
+    }
+    .lfc-poster-meta dt {
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
-    .lfc-meta dd {
+    .lfc-poster-meta dd {
       font-family: var(--serif);
-      font-size: clamp(20px, 2vw, 26px);
+      font-size: clamp(15px, 1.6vw, 20px);
       color: var(--ink);
-      line-height: 1.15;
+      line-height: 1.2;
+    }
+    .lfc-faculty {
+      margin-top: clamp(40px, 6vw, 64px);
+      padding-top: clamp(24px, 3vw, 36px);
+      border-top: 1px solid var(--rule);
+    }
+    .lfc-faculty-heading {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .roster-th {
+      display: block;
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--ink-mute);
+      margin-top: 3px;
+      font-style: italic;
     }
     .lfc-modules {
       display: grid;
@@ -1135,26 +1170,28 @@
       .lede-grid, .firm-body,
       .work-feature, .work-feature.reverse,
       .index-grid,
-      .lfc-hero, .lfc-modules, .lfc-footer,
+      .lfc-poster-feature, .lfc-modules, .lfc-footer,
       .slicx-grid, .slicx-cta,
       .contact-grid, .section-header,
       .colophon-top {
         grid-template-columns: 1fr;
       }
       .work-feature.reverse .work-media { order: 0; }
-      .tenets, .lfc-meta, .slicx-pillars, .index-stats {
+      .tenets, .slicx-pillars, .index-stats {
         grid-template-columns: repeat(2, 1fr);
       }
       .index-stat:nth-child(2n) { border-right: 0; }
       .index-stat { border-bottom: 1px solid var(--rule); padding: 18px 0; }
-      .tenet, .lfc-meta div, .slicx-pillar {
+      .tenet, .slicx-pillar {
         border-right: 0;
         border-bottom: 1px solid var(--rule);
         padding: 24px 0;
       }
       .slicx-pillar { border-bottom-color: var(--paper-dark-soft); }
-      .lfc-meta div:nth-child(2n) { border-right: 0; }
       .tenets { border-top: 1px solid var(--rule); }
+      .lfc-poster-meta { grid-template-columns: 1fr 1fr; }
+      .lfc-poster-meta div { padding: 14px 16px 14px 0; }
+      .lfc-poster-meta div:nth-child(even) { padding-left: 16px; }
 
       .fourc-row, .roster-row, .dl-row {
         grid-template-columns: 30px 1fr;
@@ -1379,7 +1416,7 @@
         <!-- SLIC Index — photo left, text right -->
         <div class="work-feature index-product reveal">
           <div class="work-media">
-            <img src="../files/photos/slic-waterfront.jpg" alt="Singapore Marina Bay at dusk — one of 157 cities in the SLIC Index" loading="lazy">
+            <img src="../files/photos/slic-hkcity.jpg" alt="Hong Kong — one of 157 cities in the SLIC Index top tier" loading="lazy">
           </div>
           <div class="work-text">
             <span class="eyebrow eyebrow-accent" style="margin-bottom:18px;display:block;" data-i18n="index.card_scope">SLIC Index · Global · Open Source</span>
@@ -1442,35 +1479,35 @@
           </div>
         </div>
 
-        <div class="lfc-hero reveal">
-          <div>
-            <h2 class="display" data-i18n="lfc.what_title">What LFC is</h2>
+        <div class="lfc-poster-feature reveal">
+          <figure>
+            <img src="../slic/assets/lfc16-poster.jpg" alt="Leadership for Change Cohort 16 — Smart City Leaders for Local Transformation" loading="lazy">
+          </figure>
+          <div class="lfc-poster-text">
+            <h2 class="display" data-i18n="lfc.poster_headline" data-i18n-html="true">Smart City Leaders<br>for <em>Local Transformation.</em></h2>
             <p data-i18n="lfc.what_desc">Now in its sixteenth cohort, LFC has trained over 1,500 leaders across government, private sector, and civil society. This year's theme — <em>Practical Smart City Leaders</em> — is organised around a 4P framework: Purposeful, Practical, Proof-based, People-Centric.</p>
-          </div>
-          <div>
-            <h2 class="display" data-i18n="lfc.who_title">Who should apply</h2>
             <p data-i18n="lfc.who_desc">City executives, municipal officers, smart city project managers, SE/SME/startup founders, policy designers, PPP teams, and civil society leaders intent on building real, bankable smart-city projects.</p>
+            <dl class="lfc-poster-meta">
+              <div>
+                <dt data-i18n="lfc.meta_date_label">Duration</dt>
+                <dd data-i18n="lfc.meta_date">13 Jun — 5 Jul 2026</dd>
+              </div>
+              <div>
+                <dt data-i18n="lfc.meta_modules_label">Modules</dt>
+                <dd>9</dd>
+              </div>
+              <div>
+                <dt data-i18n="lfc.meta_alumni_label">Alumni</dt>
+                <dd>1,500+</dd>
+              </div>
+              <div>
+                <dt data-i18n="lfc.meta_fee_label">Registration</dt>
+                <dd data-i18n="lfc.meta_fee_val">On enquiry</dd>
+              </div>
+            </dl>
+            <a class="btn" href="mailto:slic.connects@gmail.com?subject=LFC%20Cohort%2016%20application" data-i18n="lfc.cta">Apply for LFC Cohort 16</a>
           </div>
         </div>
-
-        <dl class="lfc-meta reveal">
-          <div>
-            <dt data-i18n="lfc.meta_date_label">Duration</dt>
-            <dd data-i18n="lfc.meta_date">13 Jun — 5 Jul 2026</dd>
-          </div>
-          <div>
-            <dt data-i18n="lfc.meta_modules_label">Modules</dt>
-            <dd>9</dd>
-          </div>
-          <div>
-            <dt data-i18n="lfc.meta_alumni_label">Alumni</dt>
-            <dd>1,500+</dd>
-          </div>
-          <div>
-            <dt data-i18n="lfc.meta_fee_label">Registration</dt>
-            <dd data-i18n="lfc.meta_fee_val">On enquiry</dd>
-          </div>
-        </dl>
 
         <div class="lfc-modules reveal">
           <h3 data-i18n="lfc.curriculum">Curriculum · Nine Modules</h3>
@@ -1483,6 +1520,42 @@
           <div class="mod"><div class="mod-num">07</div><div class="mod-text" data-i18n="lfc.m7">City Leaders, Governance &amp; Procurement</div></div>
           <div class="mod"><div class="mod-num">08</div><div class="mod-text" data-i18n="lfc.m8">Build a Smart City App with AI + Social Enterprise</div></div>
           <div class="mod"><div class="mod-num">09</div><div class="mod-text" data-i18n="lfc.m9">Pitching for Change &amp; Graduation</div></div>
+        </div>
+
+        <div class="lfc-faculty reveal">
+          <h3 class="lfc-faculty-heading" data-i18n="lfc.faculty_heading">Faculty · Five Instructors</h3>
+          <div class="roster">
+            <div class="roster-row">
+              <div class="roster-num">01</div>
+              <div class="roster-name">Prasert Boonsamphant<span class="roster-th">ประเสริฐ บุญสัมพันธ์</span></div>
+              <div class="roster-role" data-i18n="lfc.f1_role">Chairman, Right Livelihood Foundation</div>
+              <div class="roster-tags">Right Livelihood · Finance · Governance</div>
+            </div>
+            <div class="roster-row">
+              <div class="roster-num">02</div>
+              <div class="roster-name">Ernyu Cheusuwanna<span class="roster-th">เอื้นยู ชื่อสุวรรณ</span></div>
+              <div class="roster-role" data-i18n="lfc.f2_role">Vice Chairman, Right Livelihood Foundation</div>
+              <div class="roster-tags">CSR · Governance · Business</div>
+            </div>
+            <div class="roster-row">
+              <div class="roster-num">03</div>
+              <div class="roster-name">Mongkol Leelathum<span class="roster-th">มงคล ลีลาธรรม</span></div>
+              <div class="roster-role" data-i18n="lfc.f3_role">Executive Chairman, Right Livelihood Foundation</div>
+              <div class="roster-tags">Public Administration · Social Enterprise</div>
+            </div>
+            <div class="roster-row">
+              <div class="roster-num">04</div>
+              <div class="roster-name">Vichate Tantiwanich<span class="roster-th">วิเชษ ตันติวานิช</span></div>
+              <div class="roster-role" data-i18n="lfc.f4_role">Chairman, Transformational Change Foundation</div>
+              <div class="roster-tags">Finance · Smart City · Leadership</div>
+            </div>
+            <div class="roster-row">
+              <div class="roster-num">05</div>
+              <div class="roster-name">Dr. Non Akaraprasertkul<span class="roster-th">ดร.นน อัครประเสริฐกุล</span></div>
+              <div class="roster-role" data-i18n="lfc.f5_role">Course Director, SLIC</div>
+              <div class="roster-tags">Smart City · Data · Urban Design</div>
+            </div>
+          </div>
         </div>
 
         <div class="lfc-footer reveal">
@@ -1785,6 +1858,13 @@
         'lfc.label': '§ 05 · LFC · Flagship Programme',
         'lfc.title': 'Leadership for Change <em>Cohort 16.</em>',
         'lfc.intro': 'A 9-module executive programme for practical smart-city leaders — co-organised with the Right Livelihood Foundation (มูลนิธิสัมมาชีพ). Dr. Non Akaraprasertkul, Course Director.',
+        'lfc.poster_headline': 'Smart City Leaders<br>for <em>Local Transformation.</em>',
+        'lfc.faculty_heading': 'Faculty · Five Instructors',
+        'lfc.f1_role': 'Chairman, Right Livelihood Foundation',
+        'lfc.f2_role': 'Vice Chairman, Right Livelihood Foundation',
+        'lfc.f3_role': 'Executive Chairman, Right Livelihood Foundation',
+        'lfc.f4_role': 'Chairman, Transformational Change Foundation',
+        'lfc.f5_role': 'Course Director, SLIC',
         'lfc.what_title': 'What LFC is',
         'lfc.what_desc': "Now in its sixteenth cohort, LFC has trained over 1,500 leaders across government, private sector, and civil society. This year's theme — <em>Practical Smart City Leaders</em> — is organised around a 4P framework: Purposeful, Practical, Proof-based, People-Centric.",
         'lfc.who_title': 'Who should apply',
@@ -1917,6 +1997,13 @@
         'lfc.label': '§ 05 · LFC · หลักสูตรหลัก',
         'lfc.title': 'ผู้นำ-นำการเปลี่ยนแปลง <em>รุ่นที่ 16</em>',
         'lfc.intro': 'หลักสูตรผู้บริหาร 9 โมดูล สำหรับผู้นำเมืองอัจฉริยะเชิงปฏิบัติ จัดร่วมกับมูลนิธิสัมมาชีพ โดยมี ดร.นน อัครประเสริฐกุล เป็นผู้อำนวยการหลักสูตร',
+        'lfc.poster_headline': 'ผู้นำท้องถิ่นอัจฉริยะ<br>เพื่อ<em>การเปลี่ยนแปลงเชิงปฏิบัติ</em>',
+        'lfc.faculty_heading': 'คณาจารย์ · ห้าท่าน',
+        'lfc.f1_role': 'ประธานกรรมการมูลนิธิสัมมาชีพ',
+        'lfc.f2_role': 'รองประธานกรรมการมูลนิธิสัมมาชีพ',
+        'lfc.f3_role': 'ประธานกรรมการบริหารมูลนิธิสัมมาชีพ',
+        'lfc.f4_role': 'ประธานมูลนิธิเตาเผ็นผู้นำ',
+        'lfc.f5_role': 'ผู้อำนวยการหลักสูตร, SLIC',
         'lfc.what_title': 'LFC คืออะไร',
         'lfc.what_desc': 'หลักสูตรผู้นำ-นำการเปลี่ยนแปลง ปัจจุบันเข้าสู่รุ่นที่ 16 ได้ฝึกอบรมผู้นำกว่า 1,500 คน จากภาครัฐ ภาคเอกชน และภาคประชาสังคม ธีมปีนี้คือ <em>ผู้นำแห่งเมืองอัจฉริยะเชิงปฏิบัติ</em> เน้นกรอบ 4P: มีเป้าหมาย ปฏิบัติได้จริง พิสูจน์ได้ และเน้นคนเป็นศูนย์กลาง',
         'lfc.who_title': 'ใครควรสมัคร',
@@ -2049,6 +2136,13 @@
         'lfc.label': '§ 05 · LFC · 旗舰项目',
         'lfc.title': '领导力变革 <em>第16期。</em>',
         'lfc.intro': '与正命基金会（มูลนิธิสัมมาชีพ）联合举办的 9 模块高管课程，培养务实的智慧城市领导者。课程总监：Non Akaraprasertkul 博士。',
+        'lfc.poster_headline': '智慧城市领导者<br>推动<em>地方转型。</em>',
+        'lfc.faculty_heading': '教师团队 · 五位导师',
+        'lfc.f1_role': '正命基金会主席',
+        'lfc.f2_role': '正命基金会副主席',
+        'lfc.f3_role': '正命基金会执行主席',
+        'lfc.f4_role': '转型变革基金会主席',
+        'lfc.f5_role': '课程总监，SLIC',
         'lfc.what_title': 'LFC 是什么',
         'lfc.what_desc': '领导力变革计划目前已进入第 16 期，累计培训来自政府、私营部门与民间社会的领导者超过 1,500 名。今年的主题 — <em>务实的智慧城市领导者</em> — 围绕 4P 框架：目标驱动、务实可行、实证导向、以人为本。',
         'lfc.who_title': '适合谁申请',
