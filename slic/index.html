@@ -22,19 +22,22 @@
 
     /* ── design tokens ─────────────────────────── */
     :root {
-      --surface: #f8f5f0;
-      --surface-deep: #ece6db;
-      --ink: #1c1914;
-      --ink-soft: #3c3529;
-      --ink-mute: #6b6355;
-      --rule: #d7cfbf;
-      --rule-soft: #e7e0d0;
+      --surface: #ffffff;
+      --surface-deep: #f4f2ed;
+      --ink: #0a0a0f;
+      --ink-soft: #2a2a30;
+      --ink-mute: #6a6a72;
+      --rule: #d8d6cf;
+      --rule-soft: #eaeae4;
       --accent: #b85c28;
       --accent-deep: #8c4319;
-      --paper-dark: #14120d;
-      --paper-dark-soft: #2a2520;
-      --cream-on-dark: #e7e0d0;
-      --mute-on-dark: #8a8275;
+      --accent-blue: #1e4bb8;
+      --accent-blue-deep: #123383;
+      --accent-teal: #2f9b91;
+      --paper-dark: #0a0a12;
+      --paper-dark-soft: #1a1a24;
+      --cream-on-dark: #f0efea;
+      --mute-on-dark: #9a9aa4;
 
       --serif: 'Libre Baskerville', 'Times New Roman', Georgia, serif;
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
@@ -85,6 +88,8 @@
       font-weight: 500;
     }
     .eyebrow-accent { color: var(--accent); }
+    .eyebrow-blue { color: var(--accent-blue); }
+    .eyebrow-teal { color: var(--accent-teal); }
 
     .display {
       font-family: var(--serif);
@@ -93,7 +98,8 @@
       letter-spacing: -0.01em;
       color: var(--ink);
     }
-    .display em { font-style: italic; font-weight: 400; }
+    .display em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .display em.alt { color: var(--accent-blue); }
 
     .standfirst {
       font-family: var(--serif);
@@ -119,7 +125,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(248, 245, 240, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: saturate(140%) blur(12px);
       -webkit-backdrop-filter: saturate(140%) blur(12px);
       border-bottom: 1px solid var(--rule-soft);
@@ -132,19 +138,15 @@
       height: 64px;
     }
     .wordmark {
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: 0.02em;
-      color: var(--ink);
       display: flex;
-      align-items: baseline;
-      gap: 10px;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
     }
-    .wordmark-dot {
-      width: 6px; height: 6px; background: var(--accent);
-      border-radius: 50%; display: inline-block;
-      transform: translateY(-2px);
+    .wordmark img {
+      height: 34px;
+      width: auto;
+      display: block;
     }
     .wordmark small {
       font-family: var(--mono);
@@ -153,6 +155,12 @@
       text-transform: uppercase;
       color: var(--ink-mute);
       font-weight: 500;
+      padding-left: 12px;
+      border-left: 1px solid var(--rule);
+    }
+    @media (max-width: 560px) {
+      .wordmark small { display: none; }
+      .wordmark img { height: 28px; }
     }
 
     .primary-nav {
@@ -307,7 +315,12 @@
       letter-spacing: 0.2em;
       margin-bottom: 16px;
       display: block;
+      font-weight: 600;
     }
+    .tenet:nth-child(1) .tenet-num { color: var(--accent-blue); }
+    .tenet:nth-child(2) .tenet-num { color: var(--accent); }
+    .tenet:nth-child(3) .tenet-num { color: var(--accent-teal); }
+    .tenet:nth-child(4) .tenet-num { color: var(--accent-deep); }
     .tenet h3 {
       font-family: var(--serif);
       font-size: clamp(22px, 2.4vw, 30px);
@@ -351,7 +364,12 @@
       letter-spacing: 0.22em;
       color: var(--accent);
       text-transform: uppercase;
+      font-weight: 600;
     }
+    .fourc-row:nth-child(1) .fourc-num { color: var(--accent-blue); }
+    .fourc-row:nth-child(2) .fourc-num { color: var(--accent); }
+    .fourc-row:nth-child(3) .fourc-num { color: var(--accent-teal); }
+    .fourc-row:nth-child(4) .fourc-num { color: var(--accent-deep); }
     .fourc h3 {
       font-family: var(--serif);
       font-size: clamp(22px, 2.4vw, 28px);
@@ -445,13 +463,17 @@
     .index-stat:last-child { border-right: 0; }
     .index-stat .n {
       font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 400;
+      font-size: clamp(34px, 4.4vw, 52px);
+      font-weight: 500;
       line-height: 1;
       color: var(--ink);
       display: block;
       margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
+    .index-stat:nth-child(1) .n { color: var(--accent-blue); }
+    .index-stat:nth-child(2) .n { color: var(--accent); }
+    .index-stat:nth-child(3) .n { color: var(--accent-teal); }
     .index-stat .l {
       font-family: var(--mono);
       font-size: 10px;
@@ -616,11 +638,16 @@
     .index-p-stat:last-child { border-right: 0; }
     .index-p-stat .n {
       font-family: var(--serif);
-      font-size: clamp(28px, 3.2vw, 44px);
+      font-size: clamp(32px, 3.6vw, 48px);
+      font-weight: 500;
       line-height: 1;
       display: block;
       margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
+    .index-p-stat:nth-child(1) .n { color: var(--accent-blue); }
+    .index-p-stat:nth-child(2) .n { color: var(--accent); }
+    .index-p-stat:nth-child(3) .n { color: var(--accent-teal); }
     .index-p-stat .l {
       font-family: var(--mono);
       font-size: 10px;
@@ -679,7 +706,7 @@
     .lfc-poster-feature figure img {
       width: 100%;
       display: block;
-      filter: grayscale(15%) contrast(1.04);
+      filter: contrast(1.03) saturate(1.05);
     }
     .lfc-poster-text .display { font-size: clamp(26px, 3.2vw, 40px); margin-bottom: 16px; }
     .lfc-poster-text .display em { color: var(--accent); }
@@ -1221,6 +1248,28 @@
       .colophon-top { grid-template-columns: 1fr; }
       .partners-row { grid-template-columns: repeat(2, 1fr); }
       .slicx-gallery { grid-template-columns: 1fr; }
+      /* Mobile punch — bigger display type, tighter rhythm */
+      .lede h1.display { font-size: clamp(44px, 12vw, 60px); line-height: 1.02; }
+      .section-title.display { font-size: clamp(34px, 9vw, 44px); line-height: 1.06; }
+      .section-header { margin-bottom: 32px; }
+      .section { padding: 56px 0; }
+      .standfirst { font-size: 17px; }
+      .lede-meta.eyebrow { margin-bottom: 20px; }
+      /* Accent bar on stacked items — adds colour rhythm on scroll */
+      .tenet { position: relative; padding-left: 16px; }
+      .tenet::before {
+        content: ''; position: absolute; left: 0; top: 28px; bottom: 28px;
+        width: 2px; background: var(--accent-blue);
+      }
+      .tenet:nth-child(2)::before { background: var(--accent); }
+      .tenet:nth-child(3)::before { background: var(--accent-teal); }
+      .tenet:nth-child(4)::before { background: var(--accent-deep); }
+      /* Stats wrap to 2-col on narrow phones to keep numbers big */
+      .index-stats { grid-template-columns: repeat(2, 1fr) !important; }
+      .index-p-stat:nth-child(2n) { border-right: 0; }
+      .index-p-stat:nth-child(3) {
+        grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 18px;
+      }
     }
   </style>
 </head>
@@ -1230,7 +1279,7 @@
   <header class="masthead">
     <div class="wrap masthead-inner">
       <a href="#top" class="wordmark" aria-label="SLIC home">
-        <span>SLIC<span class="wordmark-dot"></span></span>
+        <img src="./assets/slic-logo.jpg" alt="SLIC" loading="eager">
         <small data-i18n="masthead.tagline">Smart &amp; Livable City</small>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
@@ -1267,7 +1316,7 @@
           <span data-i18n="lede.place">Bangkok · Southeast Asia</span>
         </div>
         <div class="lede-grid">
-          <h1 class="display reveal" data-i18n="lede.title" data-i18n-html="true">We make cities <em>smarter</em> and <em>more livable.</em></h1>
+          <h1 class="display reveal" data-i18n="lede.title" data-i18n-html="true">We make cities <em class="alt">smarter</em> and <em>more livable.</em></h1>
           <div class="lede-right reveal">
             <p class="standfirst" data-i18n="lede.standfirst">A Thai consultancy and innovation partner building data-driven, citizen-centred smart cities with public institutions, private enterprises, and academic networks across Southeast Asia.</p>
             <div class="lede-links">
@@ -1288,7 +1337,7 @@
     <section class="section" id="firm">
       <div class="wrap">
         <div class="section-header">
-          <span class="eyebrow reveal" data-i18n="firm.label">§ 01 · The Firm</span>
+          <span class="eyebrow eyebrow-blue reveal" data-i18n="firm.label">§ 01 · The Firm</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="firm.title" data-i18n-html="true">Not just consultants. <em>Innovation partners.</em></h2>
             <p class="section-intro reveal" data-i18n="firm.intro">Smart &amp; Livable City Co., Ltd. began as friends and colleagues who shared one belief — that cities could be made better with the right tools and a little discipline.</p>
@@ -1329,7 +1378,7 @@
     <section class="section" id="services">
       <div class="wrap">
         <div class="section-header">
-          <span class="eyebrow reveal" data-i18n="services.label">§ 02 · Practice</span>
+          <span class="eyebrow eyebrow-blue reveal" data-i18n="services.label">§ 02 · Practice</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="services.title">Innovation as a service.</h2>
             <p class="section-intro reveal" data-i18n="services.intro">The 4C framework carries an engagement from first conversation to lasting impact — one contract, four discrete modes.</p>
@@ -1365,7 +1414,7 @@
     <section class="section" id="work">
       <div class="wrap">
         <div class="section-header">
-          <span class="eyebrow reveal" data-i18n="work.label">§ 03 · Work</span>
+          <span class="eyebrow eyebrow-teal reveal" data-i18n="work.label">§ 03 · Work</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="work.title">Projects that move cities forward.</h2>
             <p class="section-intro reveal" data-i18n="work.intro">From AI-powered data platforms to immersive learning environments — work that's been built, deployed, and tested against real municipal friction.</p>
@@ -1649,24 +1698,18 @@
           </div>
           <div class="roster-row">
             <div class="roster-num">03</div>
-            <div class="roster-name">Dr. Non Akaraprasertkul</div>
-            <div class="roster-role" data-i18n="team.t3_role">Advisor to the Executive Committee</div>
-            <div class="roster-tags">Architecture · Urban · Anthropology</div>
-          </div>
-          <div class="roster-row">
-            <div class="roster-num">04</div>
             <div class="roster-name">Amarin Prachusilpa</div>
             <div class="roster-role" data-i18n="team.t4_role">Board Member &amp; Managing Director</div>
             <div class="roster-tags">Engineering · Technology</div>
           </div>
           <div class="roster-row">
-            <div class="roster-num">05</div>
-            <div class="roster-name">Chonlawan Vanichpan</div>
+            <div class="roster-num">04</div>
+            <div class="roster-name">Chollawan Wanichpan</div>
             <div class="roster-role" data-i18n="team.t5_role">Board Member</div>
             <div class="roster-tags">Private Sector · Urban · Design</div>
           </div>
           <div class="roster-row">
-            <div class="roster-num">06</div>
+            <div class="roster-num">05</div>
             <div class="roster-name">Korawich Asavatreesakul</div>
             <div class="roster-role" data-i18n="team.t6_role">Board Member</div>
             <div class="roster-tags">Negotiation · Project Initiation</div>
@@ -1802,7 +1845,7 @@
         'nav.index': 'Index', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': 'Contact',
 
         'lede.edition': '2026 Edition', 'lede.place': 'Bangkok · Southeast Asia',
-        'lede.title': 'We make cities <em>smarter</em> and <em>more livable.</em>',
+        'lede.title': 'We make cities <em class="alt">smarter</em> and <em>more livable.</em>',
         'lede.standfirst': 'A Thai consultancy and innovation partner building data-driven, citizen-centred smart cities with public institutions, private enterprises, and academic networks across Southeast Asia.',
         'lede.cta1': 'See the Work', 'lede.cta2': 'Open a Dialogue',
 
@@ -1941,7 +1984,7 @@
         'nav.index': 'ดัชนี', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': 'ติดต่อ',
 
         'lede.edition': 'ฉบับปี 2569', 'lede.place': 'กรุงเทพฯ · เอเชียตะวันออกเฉียงใต้',
-        'lede.title': 'เราทำให้เมือง <em>ฉลาดขึ้น</em> และ <em>น่าอยู่ขึ้น</em>',
+        'lede.title': 'เราทำให้เมือง <em class="alt">ฉลาดขึ้น</em> และ <em>น่าอยู่ขึ้น</em>',
         'lede.standfirst': 'บริษัทที่ปรึกษาและพันธมิตรด้านนวัตกรรมจากประเทศไทย ร่วมสร้างเมืองอัจฉริยะที่ขับเคลื่อนด้วยข้อมูลและเน้นประชาชนเป็นศูนย์กลาง กับภาครัฐ ภาคเอกชน และเครือข่ายวิชาการทั่วภูมิภาคเอเชียตะวันออกเฉียงใต้',
         'lede.cta1': 'ดูผลงาน', 'lede.cta2': 'เริ่มสนทนา',
 
@@ -2080,7 +2123,7 @@
         'nav.index': '指数', 'nav.lfc': 'LFC', 'nav.slicx': 'SLICx', 'nav.contact': '联系',
 
         'lede.edition': '2026年版', 'lede.place': '曼谷 · 东南亚',
-        'lede.title': '让城市 <em>更智慧</em>、<em>更宜居</em>。',
+        'lede.title': '让城市 <em class="alt">更智慧</em>、<em>更宜居</em>。',
         'lede.standfirst': '一家来自泰国的咨询与创新合作伙伴，携手公共机构、私营企业与学术网络，在东南亚打造以数据驱动、以市民为中心的智慧城市。',
         'lede.cta1': '查看项目', 'lede.cta2': '开启对话',
 
