@@ -98,8 +98,19 @@
       letter-spacing: -0.01em;
       color: var(--ink);
     }
-    .display em { font-style: italic; font-weight: 400; color: var(--accent); }
-    .display em.alt { color: var(--accent-blue); }
+    .display em {
+      font-style: italic; font-weight: 400; color: var(--accent);
+      background-image: linear-gradient(transparent 62%, rgba(184,92,40,0.20) 62%, rgba(184,92,40,0.20) 92%, transparent 92%);
+      padding: 0 0.06em;
+    }
+    .display em.alt {
+      color: var(--accent-blue);
+      background-image: linear-gradient(transparent 62%, rgba(30,75,184,0.20) 62%, rgba(30,75,184,0.20) 92%, transparent 92%);
+    }
+    .display em.teal {
+      color: var(--accent-teal);
+      background-image: linear-gradient(transparent 62%, rgba(47,155,145,0.22) 62%, rgba(47,155,145,0.22) 92%, transparent 92%);
+    }
 
     .standfirst {
       font-family: var(--serif);
@@ -170,6 +181,7 @@
       list-style: none;
     }
     .primary-nav a {
+      position: relative;
       font-family: var(--mono);
       font-size: 11px;
       letter-spacing: 0.22em;
@@ -177,13 +189,20 @@
       color: var(--ink-soft);
       font-weight: 500;
       padding: 8px 0;
-      border-bottom: 1px solid transparent;
-      transition: color 150ms var(--ease), border-color 150ms var(--ease);
+      transition: color 180ms var(--ease), transform 180ms var(--ease);
     }
-    .primary-nav a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
+    .primary-nav a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 2px;
+      height: 2px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 220ms var(--ease);
     }
+    .primary-nav a:hover { color: var(--accent); transform: translateY(-2px); }
+    .primary-nav a:hover::after { transform: scaleX(1); }
+    .primary-nav li:nth-child(4n+1) a:hover { color: var(--accent-blue); }
+    .primary-nav li:nth-child(4n+1) a:hover::after { background: var(--accent-blue); }
+    .primary-nav li:nth-child(4n+3) a:hover { color: var(--accent-teal); }
+    .primary-nav li:nth-child(4n+3) a:hover::after { background: var(--accent-teal); }
 
     .utility {
       display: flex;
@@ -274,14 +293,108 @@
     .section {
       padding: clamp(64px, 10vw, 128px) 0;
       border-bottom: 1px solid var(--rule);
+      overflow: hidden;
     }
     .section-header {
+      position: relative;
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: clamp(24px, 4vw, 64px);
       margin-bottom: clamp(40px, 6vw, 80px);
       align-items: baseline;
     }
+    .section-header[data-num]::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -0.55em; right: -0.05em;
+      font-family: var(--serif);
+      font-weight: 400; font-style: italic;
+      font-size: clamp(140px, 22vw, 320px);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--rule);
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+    .section-header[data-num][data-color="blue"]::before { -webkit-text-stroke-color: rgba(30,75,184,0.22); }
+    .section-header[data-num][data-color="amber"]::before { -webkit-text-stroke-color: rgba(184,92,40,0.22); }
+    .section-header[data-num][data-color="teal"]::before { -webkit-text-stroke-color: rgba(47,155,145,0.28); }
+    .section-header > * { position: relative; z-index: 1; }
+
+    /* ── Ticker strip ──────────────────────────── */
+    .ticker {
+      background: var(--ink);
+      color: var(--surface);
+      overflow: hidden;
+      padding: 22px 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      position: relative;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 48px;
+      padding-left: 48px;
+      animation: tick 48s linear infinite;
+      align-items: center;
+    }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-item {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.6vw, 34px);
+      font-weight: 400;
+      white-space: nowrap;
+      color: var(--cream-on-dark);
+    }
+    .ticker-item em {
+      font-style: italic;
+      font-weight: 400;
+      margin-right: 10px;
+    }
+    .ticker-item:nth-child(6n+1) em { color: var(--accent); }
+    .ticker-item:nth-child(6n+2) em { color: var(--accent-blue); }
+    .ticker-item:nth-child(6n+3) em { color: var(--accent-teal); }
+    .ticker-item:nth-child(6n+4) em { color: var(--accent); }
+    .ticker-item:nth-child(6n+5) em { color: var(--accent-blue); }
+    .ticker-item:nth-child(6n) em { color: var(--accent-teal); }
+    .ticker-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    @keyframes tick {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-50%, 0, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none; }
+    }
+
+    /* ── Chip tags ─────────────────────────────── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .chip {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      line-height: 1.4;
+      white-space: nowrap;
+      border: 1px solid;
+    }
+    .chip-blue { color: var(--accent-blue); border-color: rgba(30,75,184,0.35); background: rgba(30,75,184,0.06); }
+    .chip-amber { color: var(--accent-deep); border-color: rgba(184,92,40,0.35); background: rgba(184,92,40,0.06); }
+    .chip-teal { color: var(--accent-teal); border-color: rgba(47,155,145,0.45); background: rgba(47,155,145,0.06); }
+    .chip-ink { color: var(--ink); border-color: var(--rule); background: var(--surface-deep); }
     .section-title.display {
       font-size: clamp(32px, 4.6vw, 56px);
       max-width: 18ch;
@@ -964,7 +1077,12 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      text-align: right;
+    }
+    .roster-tags.chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: flex-end;
     }
 
     /* ── downloads ─────────────────────────────── */
@@ -1231,6 +1349,7 @@
         margin-top: 6px;
       }
       .roster-tags { text-align: left; }
+      .roster-tags.chips { justify-content: flex-start; }
       .partners-row { grid-template-columns: repeat(3, 1fr); }
       .slicx-gallery { grid-template-columns: repeat(2, 1fr); }
       .colophon-top { gap: 32px; }
@@ -1328,6 +1447,41 @@
       </div>
     </section>
 
+    <!-- ── TICKER ───────────────────────────────── -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item"><em>157</em> <span data-i18n="ticker.cities">Cities Ranked</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>5</em> <span data-i18n="ticker.pillars">Pillars</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>36</em> <span data-i18n="ticker.indicators">Indicators</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>118</em> <span data-i18n="ticker.thai">Thai Cities Measured</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>16</em> <span data-i18n="ticker.cohorts">LFC Cohorts</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>1,500+</em> <span data-i18n="ticker.alumni">Alumni</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>2026</em> <span data-i18n="ticker.edition">Edition</span></span>
+        <span class="ticker-dot"></span>
+        <!-- duplicate for seamless loop -->
+        <span class="ticker-item"><em>157</em> <span>Cities Ranked</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>5</em> <span>Pillars</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>36</em> <span>Indicators</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>118</em> <span>Thai Cities Measured</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>16</em> <span>LFC Cohorts</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>1,500+</em> <span>Alumni</span></span>
+        <span class="ticker-dot"></span>
+        <span class="ticker-item"><em>2026</em> <span>Edition</span></span>
+        <span class="ticker-dot"></span>
+      </div>
+    </div>
+
     <!-- ── HERO PHOTO ───────────────────────────── -->
     <figure class="hero-photo">
       <img src="../slic-photos/mainphoto2.jpg" alt="SLIC team and partners in action" loading="eager">
@@ -1336,7 +1490,7 @@
     <!-- ── FIRM / TENETS ──────────────────────── -->
     <section class="section" id="firm">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="01" data-color="blue">
           <span class="eyebrow eyebrow-blue reveal" data-i18n="firm.label">§ 01 · The Firm</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="firm.title" data-i18n-html="true">Not just consultants. <em>Innovation partners.</em></h2>
@@ -1377,7 +1531,7 @@
     <!-- ── SERVICES (4C) ──────────────────────── -->
     <section class="section" id="services">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="02" data-color="blue">
           <span class="eyebrow eyebrow-blue reveal" data-i18n="services.label">§ 02 · Practice</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="services.title">Innovation as a service.</h2>
@@ -1413,7 +1567,7 @@
     <!-- ── WORK ───────────────────────────────── -->
     <section class="section" id="work">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="03" data-color="teal">
           <span class="eyebrow eyebrow-teal reveal" data-i18n="work.label">§ 03 · Work</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="work.title">Projects that move cities forward.</h2>
@@ -1454,7 +1608,7 @@
     <!-- ── SLIC INDEX ─────────────────────────── -->
     <section class="section index-feature" id="index">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="04" data-color="amber">
           <span class="eyebrow eyebrow-accent reveal" data-i18n="index.label">§ 04 · Data Products</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="index.title" data-i18n-html="true">Two indices. <em>One methodology.</em></h2>
@@ -1520,7 +1674,7 @@
     <!-- ── LFC ────────────────────────────────── -->
     <section class="section lfc" id="lfc">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="05" data-color="amber">
           <span class="eyebrow eyebrow-accent reveal" data-i18n="lfc.label">§ 05 · LFC · Flagship Programme</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="lfc.title" data-i18n-html="true">Leadership for Change <em>Cohort 16.</em></h2>
@@ -1578,31 +1732,31 @@
               <div class="roster-num">01</div>
               <div class="roster-name">Prasert Boonsamphant<span class="roster-th">ประเสริฐ บุญสัมพันธ์</span></div>
               <div class="roster-role" data-i18n="lfc.f1_role">Chairman, Right Livelihood Foundation</div>
-              <div class="roster-tags">Right Livelihood · Finance · Governance</div>
+              <div class="roster-tags chips"><span class="chip chip-amber">Right Livelihood</span><span class="chip chip-blue">Finance</span><span class="chip chip-teal">Governance</span></div>
             </div>
             <div class="roster-row">
               <div class="roster-num">02</div>
               <div class="roster-name">Ernyu Cheusuwanna<span class="roster-th">เอื้นยู ชื่อสุวรรณ</span></div>
               <div class="roster-role" data-i18n="lfc.f2_role">Vice Chairman, Right Livelihood Foundation</div>
-              <div class="roster-tags">CSR · Governance · Business</div>
+              <div class="roster-tags chips"><span class="chip chip-teal">CSR</span><span class="chip chip-blue">Governance</span><span class="chip chip-amber">Business</span></div>
             </div>
             <div class="roster-row">
               <div class="roster-num">03</div>
               <div class="roster-name">Mongkol Leelathum<span class="roster-th">มงคล ลีลาธรรม</span></div>
               <div class="roster-role" data-i18n="lfc.f3_role">Executive Chairman, Right Livelihood Foundation</div>
-              <div class="roster-tags">Public Administration · Social Enterprise</div>
+              <div class="roster-tags chips"><span class="chip chip-blue">Public Administration</span><span class="chip chip-teal">Social Enterprise</span></div>
             </div>
             <div class="roster-row">
               <div class="roster-num">04</div>
               <div class="roster-name">Vichate Tantiwanich<span class="roster-th">วิเชษ ตันติวานิช</span></div>
               <div class="roster-role" data-i18n="lfc.f4_role">Chairman, Transformational Change Foundation</div>
-              <div class="roster-tags">Finance · Smart City · Leadership</div>
+              <div class="roster-tags chips"><span class="chip chip-blue">Finance</span><span class="chip chip-amber">Smart City</span><span class="chip chip-teal">Leadership</span></div>
             </div>
             <div class="roster-row">
               <div class="roster-num">05</div>
               <div class="roster-name">Dr. Non Akaraprasertkul<span class="roster-th">ดร.นน อัครประเสริฐกุล</span></div>
               <div class="roster-role" data-i18n="lfc.f5_role">Course Director, SLIC</div>
-              <div class="roster-tags">Smart City · Data · Urban Design</div>
+              <div class="roster-tags chips"><span class="chip chip-amber">Smart City</span><span class="chip chip-blue">Data</span><span class="chip chip-teal">Urban Design</span></div>
             </div>
           </div>
         </div>
@@ -1617,7 +1771,7 @@
     <!-- ── SLICx ──────────────────────────────── -->
     <section class="section slicx" id="slicx">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="06" data-color="amber">
           <span class="eyebrow eyebrow-accent reveal" data-i18n="slicx.label">§ 06 · SLICx · Expo</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="slicx.title">Where smart-city leaders converge.</h2>
@@ -1675,7 +1829,7 @@
     <!-- ── TEAM / ROSTER ──────────────────────── -->
     <section class="section" id="team">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="07" data-color="blue">
           <span class="eyebrow reveal" data-i18n="team.label">§ 07 · The Firm · Board</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="team.title">A diverse board by design.</h2>
@@ -1688,31 +1842,31 @@
             <div class="roster-num">01</div>
             <div class="roster-name">Vichate Tantiwanich</div>
             <div class="roster-role" data-i18n="team.t1_role">Chairman of the Board</div>
-            <div class="roster-tags">Finance · Business · Macro</div>
+            <div class="roster-tags chips"><span class="chip chip-blue">Finance</span><span class="chip chip-amber">Business</span><span class="chip chip-teal">Macro</span></div>
           </div>
           <div class="roster-row">
             <div class="roster-num">02</div>
             <div class="roster-name">Wichian Chedchutrakulthong</div>
             <div class="roster-role" data-i18n="team.t2_role">Vice Chairman</div>
-            <div class="roster-tags">Industry · Manufacturing</div>
+            <div class="roster-tags chips"><span class="chip chip-amber">Industry</span><span class="chip chip-teal">Manufacturing</span></div>
           </div>
           <div class="roster-row">
             <div class="roster-num">03</div>
             <div class="roster-name">Amarin Prachusilpa</div>
             <div class="roster-role" data-i18n="team.t4_role">Board Member &amp; Managing Director</div>
-            <div class="roster-tags">Engineering · Technology</div>
+            <div class="roster-tags chips"><span class="chip chip-blue">Engineering</span><span class="chip chip-teal">Technology</span></div>
           </div>
           <div class="roster-row">
             <div class="roster-num">04</div>
             <div class="roster-name">Chollawan Wanichpan</div>
             <div class="roster-role" data-i18n="team.t5_role">Board Member</div>
-            <div class="roster-tags">Private Sector · Urban · Design</div>
+            <div class="roster-tags chips"><span class="chip chip-amber">Private Sector</span><span class="chip chip-blue">Urban</span><span class="chip chip-teal">Design</span></div>
           </div>
           <div class="roster-row">
             <div class="roster-num">05</div>
             <div class="roster-name">Korawich Asavatreesakul</div>
             <div class="roster-role" data-i18n="team.t6_role">Board Member</div>
-            <div class="roster-tags">Negotiation · Project Initiation</div>
+            <div class="roster-tags chips"><span class="chip chip-teal">Negotiation</span><span class="chip chip-amber">Project Initiation</span></div>
           </div>
         </div>
       </div>
@@ -1721,7 +1875,7 @@
     <!-- ── DOWNLOADS ──────────────────────────── -->
     <section class="section" id="downloads">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-header" data-num="08" data-color="teal">
           <span class="eyebrow reveal" data-i18n="downloads.label">§ 08 · Materials</span>
           <div>
             <h2 class="section-title display reveal" data-i18n="downloads.title">Download the dossier.</h2>
@@ -1848,6 +2002,10 @@
         'lede.title': 'We make cities <em class="alt">smarter</em> and <em>more livable.</em>',
         'lede.standfirst': 'A Thai consultancy and innovation partner building data-driven, citizen-centred smart cities with public institutions, private enterprises, and academic networks across Southeast Asia.',
         'lede.cta1': 'See the Work', 'lede.cta2': 'Open a Dialogue',
+
+        'ticker.cities': 'Cities Ranked', 'ticker.pillars': 'Pillars', 'ticker.indicators': 'Indicators',
+        'ticker.thai': 'Thai Cities Measured', 'ticker.cohorts': 'LFC Cohorts',
+        'ticker.alumni': 'Alumni', 'ticker.edition': 'Edition',
 
         'firm.label': '§ 01 · The Firm',
         'firm.title': 'Not just consultants. <em>Innovation partners.</em>',
@@ -1988,6 +2146,10 @@
         'lede.standfirst': 'บริษัทที่ปรึกษาและพันธมิตรด้านนวัตกรรมจากประเทศไทย ร่วมสร้างเมืองอัจฉริยะที่ขับเคลื่อนด้วยข้อมูลและเน้นประชาชนเป็นศูนย์กลาง กับภาครัฐ ภาคเอกชน และเครือข่ายวิชาการทั่วภูมิภาคเอเชียตะวันออกเฉียงใต้',
         'lede.cta1': 'ดูผลงาน', 'lede.cta2': 'เริ่มสนทนา',
 
+        'ticker.cities': 'เมืองที่จัดอันดับ', 'ticker.pillars': 'เสาหลัก', 'ticker.indicators': 'ตัวชี้วัด',
+        'ticker.thai': 'เมืองไทยที่วัดผล', 'ticker.cohorts': 'รุ่น LFC',
+        'ticker.alumni': 'ศิษย์เก่า', 'ticker.edition': 'ฉบับ',
+
         'firm.label': '§ 01 · บริษัท',
         'firm.title': 'ไม่ใช่แค่ที่ปรึกษา <em>แต่เป็นพันธมิตรนวัตกรรม</em>',
         'firm.intro': 'บริษัท สมาร์ท แอนด์ ลิฟเอเบิล ซิตี้ จำกัด เริ่มต้นจากกลุ่มเพื่อนและเพื่อนร่วมงาน ที่มีความเชื่อร่วมกันว่าเมืองสามารถถูกพัฒนาให้ดีขึ้นได้ ด้วยเครื่องมือที่ถูกต้องและวินัยในการทำงาน',
@@ -2126,6 +2288,10 @@
         'lede.title': '让城市 <em class="alt">更智慧</em>、<em>更宜居</em>。',
         'lede.standfirst': '一家来自泰国的咨询与创新合作伙伴，携手公共机构、私营企业与学术网络，在东南亚打造以数据驱动、以市民为中心的智慧城市。',
         'lede.cta1': '查看项目', 'lede.cta2': '开启对话',
+
+        'ticker.cities': '城市排名', 'ticker.pillars': '支柱', 'ticker.indicators': '指标',
+        'ticker.thai': '泰国城市测评', 'ticker.cohorts': 'LFC 期数',
+        'ticker.alumni': '校友', 'ticker.edition': '版本',
 
         'firm.label': '§ 01 · 关于',
         'firm.title': '不仅是顾问， <em>更是创新伙伴。</em>',
