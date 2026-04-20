@@ -608,6 +608,59 @@
       color: var(--cream-on-dark);
     }
 
+    /* ── Index editorial product features ──────── */
+    .index-p-stat {
+      padding: 20px 16px 20px 0;
+      border-right: 1px solid var(--rule);
+    }
+    .index-p-stat:last-child { border-right: 0; }
+    .index-p-stat .n {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .index-p-stat .l {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .index-p-pillars { list-style: none; border-top: 1px solid var(--rule); margin: 24px 0; }
+    .index-p-pillars li {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 14px;
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .index-p-pillars li:last-child { border-bottom: 0; }
+    .index-p-pillars .pnum { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; }
+    .index-p-pillars .pname { font-family: var(--serif); font-size: clamp(15px, 1.4vw, 18px); }
+    .index-p-pillars .pweight { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); }
+    .index-p-tiers { list-style: none; border-top: 1px solid var(--rule); margin: 24px 0; }
+    .index-p-tiers li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .index-p-tiers li:last-child { border-bottom: 0; }
+    .index-p-tiers .tier-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .index-p-tiers .tier-desc { font-family: var(--serif); font-size: clamp(15px, 1.4vw, 18px); color: var(--ink); }
+    .index-product .work-media { aspect-ratio: 3/2; }
+    .index-product .work-text h3.display { font-size: clamp(26px, 3vw, 38px); margin-bottom: 14px; }
+    .index-product .work-text h3 em { color: var(--accent); }
+    .index-product .work-text p { margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .index-product .work-media { aspect-ratio: 4/3; }
+    }
+
     /* ── LFC dossier ───────────────────────────── */
     .lfc {
       background: var(--surface-deep);
@@ -1323,78 +1376,57 @@
           </div>
         </div>
 
-        <div class="data-products-grid reveal">
-
-          <!-- SLIC Index (global) -->
-          <aside class="index-card" aria-label="SLIC Index">
-            <div class="index-card-header">
-              <span><strong>SLIC Index</strong> · 2026 Edition</span>
-              <span data-i18n="index.card_scope">Global · Open Source</span>
+        <!-- SLIC Index — photo left, text right -->
+        <div class="work-feature index-product reveal">
+          <div class="work-media">
+            <img src="../files/photos/slic-waterfront.jpg" alt="Singapore Marina Bay at dusk — one of 157 cities in the SLIC Index" loading="lazy">
+          </div>
+          <div class="work-text">
+            <span class="eyebrow eyebrow-accent" style="margin-bottom:18px;display:block;" data-i18n="index.card_scope">SLIC Index · Global · Open Source</span>
+            <h3 class="display" data-i18n-html="true">The <em>SLIC Index.</em></h3>
+            <p data-i18n="index.card_blurb">157 cities ranked across five dimensions. Users control the weights — shift Growth versus Creative Momentum and the rankings update in real time. Every score traces to a citable public source. No lifestyle fantasy.</p>
+            <div class="index-stats" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin:24px 0;">
+              <div class="index-p-stat"><span class="n">157</span><span class="l" data-i18n="index.stat_cities">Cities</span></div>
+              <div class="index-p-stat"><span class="n">5</span><span class="l" data-i18n="index.stat_pillars">Pillars</span></div>
+              <div class="index-p-stat"><span class="n">36</span><span class="l" data-i18n="index.stat_indicators">Indicators</span></div>
             </div>
-            <p class="index-card-blurb" data-i18n="index.card_blurb">157 cities ranked across five dimensions. Users control the weights — shift Growth versus Creative Momentum and the rankings update in real time. Every score traces to a citable public source. No lifestyle fantasy.</p>
-            <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">157</span>
-                <span class="l" data-i18n="index.stat_cities">Cities</span>
-              </div>
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">5</span>
-                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
-              </div>
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">36</span>
-                <span class="l" data-i18n="index.stat_indicators">Indicators</span>
-              </div>
-            </div>
-            <ol class="pillars">
+            <ol class="index-p-pillars">
               <li><span class="pnum">I</span><span class="pname" data-i18n="index.p1">Growth</span><span class="pweight">25%</span></li>
               <li><span class="pnum">II</span><span class="pname" data-i18n="index.p2">Viability</span><span class="pweight">22%</span></li>
               <li><span class="pnum">III</span><span class="pname" data-i18n="index.p3">Capability</span><span class="pweight">18%</span></li>
               <li><span class="pnum">IV</span><span class="pname" data-i18n="index.p4">Community</span><span class="pweight">15%</span></li>
               <li><span class="pnum">V</span><span class="pname" data-i18n="index.p5">Creative Momentum</span><span class="pweight">20%</span></li>
             </ol>
-            <div class="index-card-footer">
-              <span data-i18n="index.card_foot">AMPI · no imputation · adjustable weights</span>
-              <span>
-                <a href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit ↗</a>
-                &nbsp;&nbsp;
-                <a href="https://nonarkara.github.io/SLIC-Index/methodology" target="_blank" rel="noopener" data-i18n="index.cta2" style="opacity:.7;">Methodology</a>
-              </span>
+            <div class="index-links" style="margin-top:24px;">
+              <a class="link" href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit SLIC Index ↗</a>
+              <a class="link link-ghost" href="https://nonarkara.github.io/SLIC-Index/methodology" target="_blank" rel="noopener" data-i18n="index.cta2">Methodology</a>
             </div>
-          </aside>
+          </div>
+        </div>
 
-          <!-- Smart City Thailand Index (SCITI) -->
-          <aside class="index-card" aria-label="Smart City Thailand Index">
-            <div class="index-card-header">
-              <span><strong>SCITI</strong> · Smart City Thailand Index</span>
-              <span data-i18n="thi.card_scope">Thailand · depa Certified Cities</span>
+        <!-- SCITI — text left, photo right -->
+        <div class="work-feature reverse index-product reveal">
+          <div class="work-media">
+            <img src="../files/photos/slic-overlook.jpg" alt="Bangkok skyline from above — among 118 Thai cities tracked by SCITI" loading="lazy">
+          </div>
+          <div class="work-text">
+            <span class="eyebrow eyebrow-accent" style="margin-bottom:18px;display:block;" data-i18n="thi.card_scope">SCITI · Thailand · depa Certified Cities</span>
+            <h3 class="display">Smart City<br>Thailand Index</h3>
+            <p data-i18n="thi.card_blurb">Not a certification checklist — a reality check. 118 Thai cities measured against 15+ verifiable data sources. Scores reflect what is actually built and operating, not what is planned. Cities earn Alpha, Beta, or Gamma tier.</p>
+            <div class="index-stats" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin:24px 0;">
+              <div class="index-p-stat"><span class="n">118</span><span class="l" data-i18n="index.stat_cities">Cities</span></div>
+              <div class="index-p-stat"><span class="n">15+</span><span class="l" data-i18n="thi.stat_sources">Data Sources</span></div>
+              <div class="index-p-stat"><span class="n">3</span><span class="l" data-i18n="thi.stat_tiers">Tiers</span></div>
             </div>
-            <p class="index-card-blurb" data-i18n="thi.card_blurb">Not a certification checklist — a reality check. 118 Thai cities measured against 15+ verifiable data sources. Scores reflect what is actually built and operating, not what is planned. Cities earn Alpha, Beta, or Gamma tier.</p>
-            <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">118</span>
-                <span class="l" data-i18n="index.stat_cities">Cities</span>
-              </div>
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">15+</span>
-                <span class="l" data-i18n="thi.stat_sources">Data Sources</span>
-              </div>
-              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
-                <span class="n" style="color:#f8f5f0;">3</span>
-                <span class="l" data-i18n="thi.stat_tiers">Tiers</span>
-              </div>
-            </div>
-            <ol class="tiers">
+            <ol class="index-p-tiers">
               <li><span class="tier-label" data-i18n="thi.t1">Alpha</span><span class="tier-desc" data-i18n="thi.t1_desc">Fully integrated, operating at scale</span></li>
               <li><span class="tier-label" data-i18n="thi.t2">Beta</span><span class="tier-desc" data-i18n="thi.t2_desc">Functional, scaling toward Alpha</span></li>
               <li><span class="tier-label" data-i18n="thi.t3">Gamma</span><span class="tier-desc" data-i18n="thi.t3_desc">Certified, building foundational systems</span></li>
             </ol>
-            <div class="index-card-footer">
-              <span data-i18n="thi.card_foot">Outcomes · not plans · no imputation</span>
-              <a href="https://nonarkara.github.io/smart-city-thailand-index/" target="_blank" rel="noopener" data-i18n="thi.cta1">Visit ↗</a>
+            <div class="index-links" style="margin-top:24px;">
+              <a class="link" href="https://nonarkara.github.io/smart-city-thailand-index/" target="_blank" rel="noopener" data-i18n="thi.cta1">Visit SCITI ↗</a>
             </div>
-          </aside>
-
+          </div>
         </div>
       </div>
     </section>
