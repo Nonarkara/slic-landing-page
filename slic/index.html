@@ -547,6 +547,35 @@
       border-bottom-color: var(--accent);
     }
 
+    /* ── Hero photo (between lede and firm) ───── */
+    .hero-photo {
+      margin: 0;
+      aspect-ratio: 21 / 8;
+      overflow: hidden;
+      display: block;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.04);
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .hero-photo { aspect-ratio: 4 / 3; }
+    }
+
+    /* ── Data-products grid (two dark cards) ───── */
+    .data-products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 3vw, 40px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .data-products-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── LFC dossier ───────────────────────────── */
     .lfc {
       background: var(--surface-deep);
@@ -1128,6 +1157,11 @@
       </div>
     </section>
 
+    <!-- ── HERO PHOTO ───────────────────────────── -->
+    <figure class="hero-photo">
+      <img src="../slic-photos/mainphoto2.jpg" alt="SLIC team and partners in action" loading="eager">
+    </figure>
+
     <!-- ── FIRM / TENETS ──────────────────────── -->
     <section class="section" id="firm">
       <div class="wrap">
@@ -1250,43 +1284,34 @@
     <section class="section index-feature" id="index">
       <div class="wrap">
         <div class="section-header">
-          <span class="eyebrow eyebrow-accent reveal" data-i18n="index.label">§ 04 · Index · Flagship Data Product</span>
+          <span class="eyebrow eyebrow-accent reveal" data-i18n="index.label">§ 04 · Data Products</span>
           <div>
-            <h2 class="section-title display reveal" data-i18n="index.title" data-i18n-html="true">The <em>SLIC Index.</em></h2>
-            <p class="section-intro reveal" data-i18n="index.intro">A transparent, open-source ranking of the world's cities — the firm's flagship data product, built in-house and refreshed annually.</p>
+            <h2 class="section-title display reveal" data-i18n="index.title" data-i18n-html="true">Two indices. <em>One methodology.</em></h2>
+            <p class="section-intro reveal" data-i18n="index.intro">SLIC's two in-house rankings — one global, one country-level — built on transparent, source-cited scoring with no imputation.</p>
           </div>
         </div>
 
-        <div class="index-grid reveal">
-          <div class="index-left">
-            <h3 class="display" data-i18n="index.headline" data-i18n-html="true">Every score traces to <em>a source.</em></h3>
-            <p class="lead" data-i18n="index.lead">Absolute piecewise-linear scoring, AMPI aggregation, no imputation. Adding new cities never shifts existing scores. Every metric traces to a public, citable source.</p>
+        <div class="data-products-grid reveal">
 
-            <div class="index-stats">
-              <div class="index-stat">
-                <span class="n">157</span>
-                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
-              </div>
-              <div class="index-stat">
-                <span class="n">5</span>
-                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
-              </div>
-              <div class="index-stat">
-                <span class="n">36</span>
-                <span class="l" data-i18n="index.stat_indicators">Indicators</span>
-              </div>
-            </div>
-
-            <div class="index-links">
-              <a class="link" href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit SLIC Index ↗</a>
-              <a class="link link-ghost" href="https://nonarkara.github.io/SLIC-Index/methodology" target="_blank" rel="noopener" data-i18n="index.cta2">Read the methodology</a>
-            </div>
-          </div>
-
-          <aside class="index-card" aria-label="SLIC Index pillars">
+          <!-- SLIC Index (global) -->
+          <aside class="index-card" aria-label="SLIC Index">
             <div class="index-card-header">
               <span><strong>SLIC Index</strong> · 2026 Edition</span>
-              <span data-i18n="index.card_note">Pillar Weights</span>
+              <span data-i18n="index.card_scope">Global · Open Source</span>
+            </div>
+            <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">157</span>
+                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
+              </div>
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">5</span>
+                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
+              </div>
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">36</span>
+                <span class="l" data-i18n="index.stat_indicators">Indicators</span>
+              </div>
             </div>
             <ol class="pillars">
               <li><span class="pnum">I</span><span class="pname" data-i18n="index.p1">Growth</span><span class="pweight">25%</span></li>
@@ -1296,10 +1321,50 @@
               <li><span class="pnum">V</span><span class="pname" data-i18n="index.p5">Creative</span><span class="pweight">20%</span></li>
             </ol>
             <div class="index-card-footer">
-              <span data-i18n="index.card_foot">AMPI aggregation · no imputation</span>
-              <a href="https://nonarkara.github.io/SLIC-Index/rankings" target="_blank" rel="noopener" data-i18n="index.card_link">See rankings ↗</a>
+              <span data-i18n="index.card_foot">AMPI · no imputation</span>
+              <span>
+                <a href="https://nonarkara.github.io/SLIC-Index/" target="_blank" rel="noopener" data-i18n="index.cta1">Visit ↗</a>
+                &nbsp;&nbsp;
+                <a href="https://nonarkara.github.io/SLIC-Index/methodology" target="_blank" rel="noopener" data-i18n="index.cta2" style="opacity:.7;">Methodology</a>
+              </span>
             </div>
           </aside>
+
+          <!-- Smart City Thailand Index -->
+          <aside class="index-card" aria-label="Smart City Thailand Index">
+            <div class="index-card-header">
+              <span><strong data-i18n="thi.card_name">Thailand Index</strong> · 2026 Edition</span>
+              <span data-i18n="thi.card_scope">Thailand · depa Certified</span>
+            </div>
+            <div class="index-stats" style="border-color:rgba(255,255,255,.12);margin-bottom:24px;">
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">49</span>
+                <span class="l" data-i18n="index.stat_cities">Cities Ranked</span>
+              </div>
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">7</span>
+                <span class="l" data-i18n="index.stat_pillars">Pillars</span>
+              </div>
+              <div class="index-stat" style="border-color:rgba(255,255,255,.12);">
+                <span class="n" style="color:#f8f5f0;">TH</span>
+                <span class="l" data-i18n="thi.stat_focus">Country Focus</span>
+              </div>
+            </div>
+            <ol class="pillars">
+              <li><span class="pnum">I</span><span class="pname" data-i18n="thi.p1">Livability</span><span class="pweight"></span></li>
+              <li><span class="pnum">II</span><span class="pname" data-i18n="thi.p2">Economy</span><span class="pweight"></span></li>
+              <li><span class="pnum">III</span><span class="pname" data-i18n="thi.p3">Safety</span><span class="pweight"></span></li>
+              <li><span class="pnum">IV</span><span class="pname" data-i18n="thi.p4">Wellbeing</span><span class="pweight"></span></li>
+              <li><span class="pnum">V</span><span class="pname" data-i18n="thi.p5">Environment</span><span class="pweight"></span></li>
+              <li><span class="pnum">VI</span><span class="pname" data-i18n="thi.p6">Hospitality</span><span class="pweight"></span></li>
+              <li><span class="pnum">VII</span><span class="pname" data-i18n="thi.p7">Digital</span><span class="pweight"></span></li>
+            </ol>
+            <div class="index-card-footer">
+              <span data-i18n="thi.card_foot">Outcome-based · no imputation</span>
+              <a href="https://nonarkara.github.io/smart-city-thailand-index/" target="_blank" rel="noopener" data-i18n="thi.cta1">Visit ↗</a>
+            </div>
+          </aside>
+
         </div>
       </div>
     </section>
@@ -1638,15 +1703,18 @@
         'work.p3_desc': "Three days of keynotes, panels, tech showcases, and business matching at Queen Sirikit National Convention Center, hosted within Sustainability Expo (SX2025). The inaugural edition of SLIC's own expo format.",
         'work.p3_link': 'Read the dossier',
 
-        'index.label': '§ 04 · Index · Flagship Data Product',
-        'index.title': 'The <em>SLIC Index.</em>',
-        'index.intro': "A transparent, open-source ranking of the world's cities — the firm's flagship data product, built in-house and refreshed annually.",
-        'index.headline': 'Every score traces to <em>a source.</em>',
-        'index.lead': 'Absolute piecewise-linear scoring, AMPI aggregation, no imputation. Adding new cities never shifts existing scores. Every metric traces to a public, citable source.',
+        'index.label': '§ 04 · Data Products',
+        'index.title': 'Two indices. <em>One methodology.</em>',
+        'index.intro': "SLIC's two in-house rankings — one global, one country-level — built on transparent, source-cited scoring with no imputation.",
         'index.stat_cities': 'Cities Ranked', 'index.stat_pillars': 'Pillars', 'index.stat_indicators': 'Indicators',
-        'index.cta1': 'Visit SLIC Index ↗', 'index.cta2': 'Read the methodology',
-        'index.card_note': 'Pillar Weights', 'index.card_foot': 'AMPI aggregation · no imputation', 'index.card_link': 'See rankings ↗',
+        'index.card_scope': 'Global · Open Source',
+        'index.card_foot': 'AMPI · no imputation',
+        'index.cta1': 'Visit ↗', 'index.cta2': 'Methodology',
         'index.p1': 'Growth', 'index.p2': 'Viability', 'index.p3': 'Capability', 'index.p4': 'Community', 'index.p5': 'Creative',
+        'thi.card_name': 'Thailand Index', 'thi.card_scope': 'Thailand · depa Certified',
+        'thi.stat_focus': 'Country Focus',
+        'thi.card_foot': 'Outcome-based · no imputation', 'thi.cta1': 'Visit ↗',
+        'thi.p1': 'Livability', 'thi.p2': 'Economy', 'thi.p3': 'Safety', 'thi.p4': 'Wellbeing', 'thi.p5': 'Environment', 'thi.p6': 'Hospitality', 'thi.p7': 'Digital',
 
         'lfc.label': '§ 05 · LFC · Flagship Programme',
         'lfc.title': 'Leadership for Change <em>Cohort 16.</em>',
@@ -1763,15 +1831,18 @@
         'work.p3_desc': 'สามวันของปาฐกถา เสวนา นิทรรศการ และจับคู่ธุรกิจ ณ ศูนย์ประชุมแห่งชาติสิริกิติ์ ในงาน SX2025 — ครั้งแรกของ SLICx',
         'work.p3_link': 'อ่านรายละเอียด',
 
-        'index.label': '§ 04 · ดัชนี · ผลิตภัณฑ์ข้อมูลหลัก',
-        'index.title': '<em>SLIC Index</em>',
-        'index.intro': 'ระบบจัดอันดับเมืองแบบโอเพนซอร์สที่โปร่งใส — ผลิตภัณฑ์ข้อมูลเรือธงของบริษัท สร้างในองค์กร ปรับปรุงรายปี',
-        'index.headline': 'ทุกคะแนน <em>อ้างอิงถึงแหล่งข้อมูล</em>',
-        'index.lead': 'การให้คะแนนแบบ piecewise-linear เชิงสัมบูรณ์ รวมผลด้วย AMPI ไม่มีการคาดเดาข้อมูลที่ขาด การเพิ่มเมืองใหม่ไม่กระทบคะแนนเดิม ทุกตัวชี้วัดอ้างอิงแหล่งข้อมูลที่เปิดเผยและตรวจสอบได้',
+        'index.label': '§ 04 · ผลิตภัณฑ์ข้อมูล',
+        'index.title': 'สองดัชนี <em>หนึ่งระเบียบวิธี</em>',
+        'index.intro': 'ผลิตภัณฑ์ข้อมูลสองรายการของ SLIC — หนึ่งระดับโลก หนึ่งระดับประเทศ — สร้างบนการให้คะแนนที่โปร่งใสและอ้างอิงแหล่งที่มา ไม่มีการคาดเดาข้อมูล',
         'index.stat_cities': 'เมืองที่จัดอันดับ', 'index.stat_pillars': 'เสาหลัก', 'index.stat_indicators': 'ตัวชี้วัด',
-        'index.cta1': 'เข้าชม SLIC Index ↗', 'index.cta2': 'อ่านระเบียบวิธี',
-        'index.card_note': 'น้ำหนักเสาหลัก', 'index.card_foot': 'รวมด้วย AMPI · ไม่มีการคาดเดา', 'index.card_link': 'ดูอันดับ ↗',
+        'index.card_scope': 'ระดับโลก · โอเพนซอร์ส',
+        'index.card_foot': 'AMPI · ไม่มีการคาดเดา',
+        'index.cta1': 'เข้าชม ↗', 'index.cta2': 'ระเบียบวิธี',
         'index.p1': 'การเติบโต', 'index.p2': 'ความยั่งยืน', 'index.p3': 'ศักยภาพ', 'index.p4': 'ชุมชน', 'index.p5': 'ความสร้างสรรค์',
+        'thi.card_name': 'ดัชนีไทย', 'thi.card_scope': 'ประเทศไทย · ผ่านการรับรอง depa',
+        'thi.stat_focus': 'จุดเน้น',
+        'thi.card_foot': 'วัดผลลัพธ์จริง · ไม่มีการคาดเดา', 'thi.cta1': 'เข้าชม ↗',
+        'thi.p1': 'คุณภาพชีวิต', 'thi.p2': 'เศรษฐกิจ', 'thi.p3': 'ความปลอดภัย', 'thi.p4': 'สุขภาวะ', 'thi.p5': 'สิ่งแวดล้อม', 'thi.p6': 'การต้อนรับ', 'thi.p7': 'ดิจิทัล',
 
         'lfc.label': '§ 05 · LFC · หลักสูตรหลัก',
         'lfc.title': 'ผู้นำ-นำการเปลี่ยนแปลง <em>รุ่นที่ 16</em>',
@@ -1888,15 +1959,18 @@
         'work.p3_desc': '三天的主题演讲、论坛、技术展示与商业对接，在诗丽吉王后国家会议中心，作为 SX2025 可持续发展博览会的一部分 — SLIC 自有博览会格式的首届版本。',
         'work.p3_link': '阅读专题',
 
-        'index.label': '§ 04 · 指数 · 旗舰数据产品',
-        'index.title': '<em>SLIC 指数</em>',
-        'index.intro': '一个透明、开源的全球城市排名系统 — 公司旗舰数据产品，内部构建，每年更新。',
-        'index.headline': '每一个分数都 <em>追溯到来源。</em>',
-        'index.lead': '绝对分段线性评分，AMPI 聚合，不做数据填补。新增城市永远不改变既有分数。每项指标都可追溯至公开、可引用的来源。',
+        'index.label': '§ 04 · 数据产品',
+        'index.title': '两个指数。<em>一套方法论。</em>',
+        'index.intro': 'SLIC 的两款内部排名产品 — 一个全球级，一个国家级 — 均基于透明、可追溯来源的评分，不做数据填补。',
         'index.stat_cities': '已排名城市', 'index.stat_pillars': '支柱', 'index.stat_indicators': '指标',
-        'index.cta1': '访问 SLIC 指数 ↗', 'index.cta2': '阅读方法论',
-        'index.card_note': '支柱权重', 'index.card_foot': 'AMPI 聚合 · 不做填补', 'index.card_link': '查看排名 ↗',
+        'index.card_scope': '全球 · 开源',
+        'index.card_foot': 'AMPI · 不做填补',
+        'index.cta1': '访问 ↗', 'index.cta2': '方法论',
         'index.p1': '增长', 'index.p2': '可持续性', 'index.p3': '能力', 'index.p4': '社区', 'index.p5': '创造力',
+        'thi.card_name': '泰国指数', 'thi.card_scope': '泰国 · depa 认证',
+        'thi.stat_focus': '国家聚焦',
+        'thi.card_foot': '结果导向 · 不做填补', 'thi.cta1': '访问 ↗',
+        'thi.p1': '宜居性', 'thi.p2': '经济', 'thi.p3': '安全', 'thi.p4': '健康', 'thi.p5': '环境', 'thi.p6': '好客', 'thi.p7': '数字化',
 
         'lfc.label': '§ 05 · LFC · 旗舰项目',
         'lfc.title': '领导力变革 <em>第16期。</em>',
